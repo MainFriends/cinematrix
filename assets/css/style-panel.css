@@ -1,0 +1,48 @@
+:root {
+    --primary: #0b254b;
+    --light: #ffffff;
+    --light-blue: #F5F6FA;
+    --grey: #eff2f7;
+}
+
+.btn-dark {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 0;
+}
+
+.bg-light-blue { background-color: var(--light-blue);}
+
+#sidebar-container {
+    min-height: 100vh;
+    margin-left: -18rem;
+    transition: margin .25s ease-in-out;
+}
+
+#sidebar-container .logo{
+    padding: .875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-container .menu{
+    width: 18rem;
+}
+
+#content-wrapper.toggled #sidebar-container{
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-container {
+        margin-left: 0;
+    }
+
+    #page-container {
+        min-width: 0;
+        width: 100%;
+    }
+    
+    #content-wrapper.toggled #sidebar-container {
+        margin-left: -18rem;
+    }
+    
+}
