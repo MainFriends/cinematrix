@@ -1,10 +1,21 @@
+<?php
+require_once "inc/config.php";
+
+        $objeto = new Conexion();
+        $conexion = $objeto->Conectar();
+        $id = $_GET['id'];
+        $query = "SELECT * FROM PELICULA WHERE ID_PELICULA ='$id'";
+        $stm = $conexion->prepare($query);
+        $stm->execute();
+        $data = $stm->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pelicula - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
@@ -57,15 +68,15 @@
             <div class="row my-4">
               <div class="col-md-3">
                 <div class="row">
-                  <img class="rounded-top" src="assets/img/portadas/spidermanlejosdecasa.jpg" height="393.25" alt="">
+                <img src="<?php echo $data['PORTADA'] ?>" alt="">
                 </div>
                 <div class="row py-3">
                   <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
-                  <p>Spider-Man: Fram From Home</p>
+                  <p><?php echo $data['TITULO'] ?></p>
                 </div>
                 <div class="row">
                   <h5 class="border-bottom text-danger">SINOPSIS  </h5>
-                  <p>Peter Parker decide pasar unas merecidas vacaciones en Europa junto a MJ, Ned y el resto de sus amigos. Sin embargo, Peter debe volver a ponerse el traje de Spider-Man cuando Nick Fury le encomienda una nueva misión: frenar el ataque de unas criaturas que están causando el caos en el continente.</p>
+                  <p><?php echo $data['SINOPSIS'] ?></p>
                 </div>
               </div>
               <div class="col-md-9">
