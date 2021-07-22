@@ -131,31 +131,66 @@
                     <p>Tegucigalpa</p>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary">Primary</button>
+                <div class="d-grid gap-2 col-5 mx-auto my-3">
+                  <a href="file:///C:/xampp/htdocs/cinematrix/cinematrix/account.html?#list-profile" class="btn btn-info bg-primary fw-bold" role="button">Editar Perfil</a>
+                </div>
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                 <form>
-                  <div class="my-5 mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <h1 class="fw-bold my-3">Descripcion de tu cuenta</h1>
+                  <div class="my-3 mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text"></div>
+                  </div>
+                  <div class="my-3 mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div id="emailHelp" class="form-text"></div>
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+
+                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="my-3 mb-1">
+                      <label for="datetime">Fecha de nacimiento</label>
+                      <button type="button" class="btn btn-primary">1</button>
+                      <button type="button" class="btn btn-primary">2</button>
+
+                      <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1 my-3" type="button" class="btn btn-primary dropdown-toggle-"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  <div class="my-3 mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Ciudad</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text"></div>
                   </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="my-3 mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Pais</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div id="emailHelp" class="form-text"></div>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con las politicas de registro que corresponden al servicio de Cinematrix</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar perfil</button> <button type="submit" class="btn btn-primary">Cancelar</button
                 </form>
               </div>
               <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                 <!--CUERPO DE CONTRASE;A-->
+                <h1 class="fw-bold my-3">Cambia tu contraseña</h1>
               </div>
               <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                 <!--CUERPO DE NOTIFICACIONES-->
+                <h1 class="fw-bold my-3">Configuracion de notificaciones</h1>
               </div>
             </div>
           </div>
