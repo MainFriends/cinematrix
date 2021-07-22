@@ -12,7 +12,7 @@ div#carousel {
     transition: 1s; 
   } 
   figure#spinner img { 
-    width: 40%; max-width: 425px; 
+    width: 40%; max-width: 600px; 
     position: absolute; left: 30%;
     transform-origin: 50% 50% -500px;
     outline:1px solid transparent; 
@@ -34,7 +34,7 @@ div#carousel {
     font-size: 2rem; 
     transition: 0.6s color; 
     position: relative; 
-    margin-top: -6rem; 
+    margin-top: -14rem; 
     border-bottom:brown; 
     line-height: 0; }
   div#carousel ~ span:hover { color: rgb(182, 109, 109); cursor: pointer; }
