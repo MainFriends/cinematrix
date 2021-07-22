@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style-index.css">
     <link rel="stylesheet" href="assets/css/lightslider.css">  
+    <link rel="stylesheet" href="assets/css/multicarousel.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -70,8 +71,6 @@
               </div>
           </div>
 
-
-          
             <div class="row py-3">
               <div class="container w-60 px-5">
                 <h3 class="fw-bold px-2">Cartelera Semanal</h3>
@@ -161,8 +160,7 @@
                 </li>
                 </ul>
               </div>     
-    </div>
-
+            </div>
            <div class="row py-3">
             <div class="container w-60 px-5">
             <h3 class="fw-bold px-2">Preventa / Próximos Estrenos</h3>
@@ -252,8 +250,25 @@
         </li>
         </ul>
       </div>     
+     </div>
+    </div>
+  </div>
+<div class="container w-60 px5">
+  <div id="carousel">
+    <figure id="spinner">
+      <img src="assets/img/sliders/Portada-Promoción1.jpeg" width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción2.jpeg" width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción3.jpeg" width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción4.jpeg" width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción5.jpg"  width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción6.jpg"  width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción7.jpg"  width="650" height="500" class="model">
+      <img src="assets/img/sliders/Portada-Promoción8.png"  width="650" height="500" class="model">
+    </figure>
+  </div>
+  <span style="float:left" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
+  <span style="float:right" class="ss-icon" onclick="galleryspin('')">&gt;</span>
 </div>
-
     <footer>
       <div class="container-fluid">
         <div class="row bg-light">
@@ -291,5 +306,6 @@
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/lightslider.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/multicarousel.js"></script>
 </body>
 </html>
