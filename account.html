@@ -1,170 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista general de la cuenta - Cinematrix</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- CSS de la pagina-->
-    <link rel="stylesheet" href="assets/css/style-account.css">
-    <!-- Iconos -->
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vista general de la cuenta - Cinematrix</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- CSS de la pagina-->
+  <link rel="stylesheet" href="assets/css/style-account.css">
+  <!-- Iconos -->
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
-                <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="mb-0 collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">PELÍCULAS</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">CARTELERA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
-                  </li>
-                </ul>
-                <div class="nav-item dropdown">
-                  <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Ingresar
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
-                    <form class="px-4 py-1" action="#">
-                      <label class="label-control" for="">Correo electrónico</label>
-                      <input class="form-control" type="text">
-                      <label class="label-control" for="">Contraseña</label>
-                      <input class="form-control" type="password">
-                      <div class="py-2">
-                         <input type="checkbox" name="connected" class="form-check-input">
-                         <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                      </div>
-                      <div class="py-2 d-grid">
-                         <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
-                      </div>
-                    </form>
-                  </ul>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
+        <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="mb-0 collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">PELÍCULAS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CARTELERA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
+            </li>
+          </ul>
+          <div class="nav-item dropdown">
+            <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Ingresar
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
+              <form class="px-4 py-1" action="#">
+                <label class="label-control" for="">Correo electrónico</label>
+                <input class="form-control" type="text">
+                <label class="label-control" for="">Contraseña</label>
+                <input class="form-control" type="password">
+                <div class="py-2">
+                  <input type="checkbox" name="connected" class="form-check-input">
+                  <label for="connected" class="form-check-label">Mantenerme conectado</label>
                 </div>
-              </div>
-            </div>
-          </nav>
-
-          <!-- CUERPO -->
-          <div class="container shadow my-2">
-              <div class="row">
-                <div class="col-4 bg-dark bou rounded-start">
-                    <div class="text-center my-3">
-                        <img src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-9/126927505_3336886819757413_731241350087965538_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5-mg3O8KBTYAX_M7HmA&_nc_ht=scontent.ftgu3-1.fna&oh=6f9cd094ac640db775f2f9007e0d913b&oe=60FD1E94" width="150" class="rounded-circle" alt="...">
-                    </div>
-                    <div class="list-group" id="list-tab" role="tablist">
-                      <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home"><i class="icon ion-md-eye me-2"></i>Vista general de la cuenta</a>
-                      <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"><i class="icon ion-md-person me-2"></i>Editar perfil</a>
-                      <a class="list-group-item list-group-item-action bg-dark text-light" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages"><i class="icon ion-md-lock me-2"></i>Cambiar contraseña</a>
-                      <a class="list-group-item list-group-item-action bg-dark text-light" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings"><i class="icon ion-md-notifications me-2"></i>Notificaciones</a>
-                    </div>
+                <div class="py-2 d-grid">
+                  <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
                 </div>
-                  <div class="col-8 rounded-end">
-                      <div class="my-5 mx-3">
-                      
-                        <div class="tab-content" id="nav-tabContent">
-                          <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                              <h1 class="fw-bold my-2">Vista general de la cuenta</h1>
-                                <h2 class="fw-bold my-5">Perfil</h2>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6 my-2">
-                                        <p>Nombre de usuario</p>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <p>Josue Maradiaga</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6 my-2">
-                                        <p>Email</p>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <p>josue@hotmail.com</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6 my-2">
-                                        <p>Fecha de nacimiento</p>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <p>12 de febrero de 1998</p>
-                                    </div>
-                                </div>
-                                <div class="row border-bottom">
-                                    <div class="col-md-6 my-2">
-                                        <p>Pais</p>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <p>Honduras</p>
-                                    </div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-md-6 my-2">
-                                    <p>Ciudad</p>
-                                </div>
-                                <div class="col-md-6 my-2">
-                                    <p>Tegucigalpa</p>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-                        </div> 
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-
-
-          <!-- FIN CUERPO -->
-
-    </div>
-    <footer>
-      <div class="container-fluid" >
-        <div class="row bg-light">
-          <div class="col-md-4">
-            <div class="text-center">
-              <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="175" alt="">
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="text-start">
-             <h6 class="border-bottom">PROGRAMACIÓN</h6>
-            </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">Cartelera</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Próximamente</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Preventa</a>
-          </div>
-          <div class="col-md-2">
-            <div class="text-start">
-              <h6 class="border-bottom">SOBRE CINEMATRIX</h6>
-            </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">¿Quienes somos?</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Términos y condiciones</a>
-          </div>
-          <div class="col-md-2">
-            <div class="text-start">
-              <h6 class="border-bottom">CONTÁCTENOS</h6>
-            </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">Escríbenos</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Trabaje con nosotros</a>
+              </form>
+            </ul>
           </div>
         </div>
       </div>
-    </footer>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    </nav>
+
+    <!-- CUERPO -->
+    <div class="container shadow my-2">
+      <div class="row">
+        <div class="col-4 bg-dark bou rounded-start">
+          <div class="text-center my-3">
+            <img
+              src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-9/126927505_3336886819757413_731241350087965538_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5-mg3O8KBTYAX_M7HmA&_nc_ht=scontent.ftgu3-1.fna&oh=6f9cd094ac640db775f2f9007e0d913b&oe=60FD1E94"
+              width="150" class="rounded-circle" alt="...">
+          </div>
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
+              data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home"><i
+                class="icon ion-md-eye me-2"></i>Vista general de la cuenta</a>
+            <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list"
+              data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"><i
+                class="icon ion-md-person me-2"></i>Editar perfil</a>
+            <a class="list-group-item list-group-item-action bg-dark text-light" id="list-messages-list"
+              data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages"><i
+                class="icon ion-md-lock me-2"></i>Cambiar contraseña</a>
+            <a class="list-group-item list-group-item-action bg-dark text-light" id="list-settings-list"
+              data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings"><i
+                class="icon ion-md-notifications me-2"></i>Notificaciones</a>
+          </div>
+        </div>
+        <div class="col-8 rounded-end">
+          <div class="my-5 mx-3">
+
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <h1 class="fw-bold my-2">Vista general de la cuenta</h1>
+                <h2 class="fw-bold my-5">Perfil</h2>
+                <div class="row border-bottom">
+                  <div class="col-md-6 my-2">
+                    <p>Nombre de usuario</p>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <p>Josue Maradiaga</p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-6 my-2">
+                    <p>Email</p>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <p>josue@hotmail.com</p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-6 my-2">
+                    <p>Fecha de nacimiento</p>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <p>12 de febrero de 1998</p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-6 my-2">
+                    <p>Pais</p>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <p>Honduras</p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-6 my-2">
+                    <p>Ciudad</p>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <p>Tegucigalpa</p>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary">Primary</button>
+              </div>
+              <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <form>
+                  <div class="my-5 mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                <!--CUERPO DE CONTRASE;A-->
+              </div>
+              <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <!--CUERPO DE NOTIFICACIONES-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- FIN CUERPO -->
+
+  </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row bg-light">
+        <div class="col-md-4">
+          <div class="text-center">
+            <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="175" alt="">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="text-start">
+            <h6 class="border-bottom">PROGRAMACIÓN</h6>
+          </div>
+          <a style="text-decoration:none" href="#" class="text-secondary">Cartelera</a> <br>
+          <a style="text-decoration:none" href="#" class="text-secondary">Próximamente</a> <br>
+          <a style="text-decoration:none" href="#" class="text-secondary">Preventa</a>
+        </div>
+        <div class="col-md-2">
+          <div class="text-start">
+            <h6 class="border-bottom">SOBRE CINEMATRIX</h6>
+          </div>
+          <a style="text-decoration:none" href="#" class="text-secondary">¿Quienes somos?</a> <br>
+          <a style="text-decoration:none" href="#" class="text-secondary">Términos y condiciones</a>
+        </div>
+        <div class="col-md-2">
+          <div class="text-start">
+            <h6 class="border-bottom">CONTÁCTENOS</h6>
+          </div>
+          <a style="text-decoration:none" href="#" class="text-secondary">Escríbenos</a> <br>
+          <a style="text-decoration:none" href="#" class="text-secondary">Trabaje con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
