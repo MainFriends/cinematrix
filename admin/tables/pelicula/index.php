@@ -11,6 +11,8 @@
     <meta name="author" content="Diego Velázquez">
     <meta name="description" content="Tablero con Bootstrap 4 - Templune">
     <title>Cinematrix - Panel de Administración</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
 
      <!-- bootstrap5 y main.css -->
     <link href="../../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +39,7 @@
             <img class="me-2" src="../../../assets/img/logos/cinematrix.svg" width="70" alt="">
           </div>
           <div class="col-md-8" style="margin: 0px; padding: 0px;">
-          <span class=" fs-2 mb-3">Cinematrix</span>
+          <span class=" fs-2 mb-3 fw-bold">Cinematrix</span>
           </div>
         </div>  
         </div>
@@ -46,24 +48,25 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button  bg-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  <button class="accordion-button bg-light collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                     <i class="icon ion-ios-create lead me-2"></i> Tablas
                   </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body bg-light">
-                    <a class="dropdown-item" href="../pelicula/index.php"><i class="icon ion-md-film me-2"></i>Películas</a>
-                    <a class="dropdown-item" href="../cartelera/index.php"><i class="icon ion-md-star me-2"></i>Carteleras</a>
-                    <a class="dropdown-item" href="../sala/index.php"><i class="icon ion-md-videocam me-2"></i>Salas</a>
-                    <a class="dropdown-item" href="../asiento/index.php"><i class="icon ion-md-contacts me-2"></i>Asientos</a>
-                    <a class="dropdown-item" href="../promocion/index.php"><i class="icon ion-md-pricetag me-2"></i>Promociones</a>
-                    <a class="dropdown-item" href="../progPromo/index.php"><i class="icon ion-md-calendar me-2"></i>Programa de promociones</a>
+                    <a class="dropdown-item rounded fw-ligth active" aria-current="page" href="../pelicula/index.php">Películas</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../cartelera/index.php">Carteleras</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Salas</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
                   </div>
                 </div>
               </div>        
             </div>
         </div>
       </div>
+
       <!-- NavBar -->
       <div id="page-content-wrapper" class="w-100 bg-light-blue">
           <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -87,28 +90,12 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="../../../inc/logout.php">Cerrar sesión</a></li>
                   </ul>
                 </li>
               </ul>
             </div>
           </nav>
-
-        <!-- Encabezado -->
-        <nav id="content">
-          <section class="py-3  border-bottom">
-                <div class="row">
-                    <div class="col">
-                        <h1 class="fw-bold mb-0">Bienvenido,
-                          <?php
-                            echo "$userSession."
-                          ?> 
-                        </h1>
-                    </div>
-                </div>
-            </section>
-        </nav>
 
       <!-- Visualizar Tabla -->
       <div class="row">
@@ -118,7 +105,7 @@
               Gestión de contenido
             </div>
             <div class="card-body">
-              <button class="btn btn-primary rounded-pill fw-bold" id="addPelicula"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
+              <button class="btn btn-danger rounded-pill" id="addPelicula"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
               <hr>
               <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered" id="tablaPelicula" style="width:100%">
@@ -152,11 +139,11 @@
  <div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Película</h5>
+            <div class="modal-header bg-light">
+              <h5 class="modal-title fw-bold" id="exampleModalLabel">Película</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light">
               <form id="frmPelicula">
                 <div class="container">
                     <div class="row">
