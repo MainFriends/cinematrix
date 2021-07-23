@@ -137,7 +137,7 @@
 
    <!--Modal Pelicula -->
  <div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header bg-light">
               <h5 class="modal-title fw-bold" id="exampleModalLabel">Película</h5>
@@ -204,6 +204,24 @@
           </div>
         </div>
     </div>
+
+  <!-- Modal eliminar -->
+  <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header"  style="border: none;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>¿Esta seguro que desea eliminar </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="btnSi" data-bs-dismiss="modal">Sí</button>
+        <button type="button" class="btn btn-primary" id="btnCancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- JQuery, Bundle.JS, Bootstrap JS -->
   <script src="../../../assets/js/jquery.js"></script>

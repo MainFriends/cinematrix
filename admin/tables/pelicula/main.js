@@ -110,12 +110,15 @@ $(document).ready(function() {
 
   //Boton BORRAR
   $(document).on("click", ".btnBorrar", function(){
-    fila = $(this);
+    fila = $(this).closest("tr");
     id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    titulo = fila.find('td:eq(1)').text();
     opcion = 3; //borrar
-    var respuesta = confirm("¿Esta seguro de borrar "+id+"?");
-    if(respuesta){
-     $.ajax({
+    $("#title").val(titulo);
+    $("#modalEliminar").modal("show");
+  
+    $("#btnSi").on("click", function(){
+      $.ajax({
         url: "crud.php",
         type: "POST",
         dataType: "html",
@@ -127,8 +130,13 @@ $(document).ready(function() {
           console.log(response);
         }
       });
-    }
+      $("#modalEliminar").modal("hide");
+    });
+
+    $("#btnCancelar").on("click", function(){
+      $("#modalEliminar").modal("hide");
+    });
+
   });
-  
     
 });
