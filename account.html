@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="assets/css/style-account.css">
   <!-- Iconos -->
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <!-- Fuente -->
+  <link href = "https: //fonts.googleapis.com/css2? family = Poppins: wght @ 100 & display = swap "rel =" stylesheet ">"
+  <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>">
 </head>
 
 <body>
@@ -67,21 +70,21 @@
           <div class="text-center my-3">
             <img
               src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-9/126927505_3336886819757413_731241350087965538_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5-mg3O8KBTYAX_M7HmA&_nc_ht=scontent.ftgu3-1.fna&oh=6f9cd094ac640db775f2f9007e0d913b&oe=60FD1E94"
-              width="150" class="rounded-circle" alt="...">
+              width="180" class="rounded-circle" alt="...">
           </div>
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
               data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home"><i
-                class="icon ion-md-eye me-2"></i>Vista general de la cuenta</a>
+                class="far fa-eye ">  </i>  Vista general de la cuenta</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list"
-              data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"><i
-                class="icon ion-md-person me-2"></i>Editar perfil</a>
-            <a class="list-group-item list-group-item-action bg-dark text-light" id="list-messages-list"
-              data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages"><i
-                class="icon ion-md-lock me-2"></i>Cambiar contraseña</a>
+              data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"
+              ><i class="fas fa-user-edit"></i>   Editar perfil</a>
+            <a class="list-group-item list-group-item-action bg-dark text-light" id="list-contraseña-list"
+              data-bs-toggle="list" href="#list-contraseña" role="tab" aria-controls="list-contraseña"><i
+                class="fas fa-user-lock"></i> Cambiar contraseña</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-settings-list"
               data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings"><i
-                class="icon ion-md-notifications me-2"></i>Notificaciones</a>
+                class="fas fa-lock"></i> Notificaciones</a>
           </div>
         </div>
         <div class="col-8 rounded-end">
@@ -89,108 +92,123 @@
 
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                <h1 class="fw-bold my-2">Vista general de la cuenta</h1>
-                <h2 class="fw-bold my-5">Perfil</h2>
+                <h1 class="fw-bold my-3 md-2">PERFIL DE USUARIO</h1>
+                <h2 class="fw-bold my-5"></h2>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
                     <p>Nombre de usuario</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p>Josue Maradiaga</p>
+                    <p class="fw-bold" >Josue Maradiaga</p>
                   </div>
                 </div>
-                <div class="row border-bottom">
-                  <div class="col-md-6 my-2">
-                    <p>Email</p>
+                <div class="row border-bottom ">
+                  <div class="col-md-6 my-2 ">
+                      <p>Email </p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p>josue@hotmail.com</p>
+                    <p class="fw-bold">josue@hotmail.com</p>
                   </div>
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
                     <p>Fecha de nacimiento</p>
                   </div>
-                  <div class="col-md-6 my-2">
-                    <p>12 de febrero de 1998</p>
-                  </div>
+                  <div class="col-md-6 my-2 }">
+                    <p class="fw-bold">12 de febrero de 1998</p>
+                  </div>  
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
                     <p>Pais</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p>Honduras</p>
+                    <p class="fw-bold"> Honduras</p>
                   </div>
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Ciudad</p>
+                    <p >Ciudad</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p>Tegucigalpa</p>
+                    <p class="fw-bold">Tegucigalpa</p>
                   </div>
-                </div>
-                <div class="d-grid gap-2 col-5 mx-auto my-3">
-                  <a href="file:///C:/xampp/htdocs/cinematrix/cinematrix/account.html?#list-profile" class="btn btn-info bg-primary fw-bold" role="button">Editar Perfil</a>
                 </div>
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                 <form>
-                  <h1 class="fw-bold my-3">Descripcion de tu cuenta</h1>
+                  <h1 class="fw-bold my-5">DESCRIPCION DE TU CUENTA</h1>
                   <div class="my-3 mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
                     <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text"></div>
                   </div>
                   <div class="my-3 mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                    <label for="exampleInputEmail1" class="form-label fw-bold">Correo electrónico</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text"></div>
-                  </div>
-
-                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="my-3 mb-1">
-                      <label for="datetime">Fecha de nacimiento</label>
-                      <button type="button" class="btn btn-primary">1</button>
-                      <button type="button" class="btn btn-primary">2</button>
-
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1 my-3" type="button" class="btn btn-primary dropdown-toggle-"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                   <div class="my-3 mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Ciudad</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text"></div>
+                    <label class="fw-bold" for="datetime ">Fecha de nacimiento</label>
+                    <input type="date" class=" form-control my-3">
                   </div>
-                    <div class="my-3 mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Pais</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <div id="emailHelp" class="form-text"></div>
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con las politicas de registro que corresponden al servicio de Cinematrix</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar perfil</button> <button type="submit" class="btn btn-primary">Cancelar</button
+                  <class class="my-3 mb-3 fw-bold">Cambiar foto de perfil<div class="input-group">
+                    <input type="file" class="form-control my-2" href="rounded-circle"
+                    class ="img"
+                    <button type="button"  class="btn btn-outline-secondary my-2"></button>
+                  </div> </class>
+                  
+                  
+                  <div class="my-3 mb-3">
+                    <label for="exampleInputEmail1" class="form-label fw-bold">Ciudad</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="my-3 mb-3">
+                    <label for="exampleInputEmail1" class="form-label fw-bold">Pais</label>
+                    <input type="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con las politicas de registro
+                      que
+                      corresponden al servicio de Cinematrix</label>
+                   </div>
+                  <button type="submit" class="btn btn-ligth btn btn-outline-primary">Guardar perfil</button>
                 </form>
               </div>
-              <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                <!--CUERPO DE CONTRASE;A-->
-                <h1 class="fw-bold my-3">Cambia tu contraseña</h1>
-              </div>
-              <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                <!--CUERPO DE NOTIFICACIONES-->
-                <h1 class="fw-bold my-3">Configuracion de notificaciones</h1>
+
+                 <div class="tab-pane fade" id="list-contraseña" role="tabpanel" aria-labelledby="list-contraseña-list">
+                    <!--CUERPO DE CONTRASE;A-->
+                    <h1 class="fw-bold my-2">CAMBIA TU CONTRASEÑA</h1>
+                    <form>
+                      <div class="form-group fw-bold my-4" >
+                        <label for="formGroupExampleInput">Contraseña actual</label>
+                        <input type="text" class="form-control  p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
+                      </div>
+                      <div class="my-4  form-group fw-bold ">
+                        <label for="formGroupExampleInput2">Nueva contraseña</label>
+                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput2" placeholder=>
+                      </div>
+                      <div class="form-group fw-bold">
+                        <label for="formGroupExampleInput">Confirmar nueva contraseña</label>
+                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
+                      </div> 
+                      <div class=" mx-auto my-4">
+                        <button type="button" class="btn btn-outline-primary">Establecer nueva contraseña</button>
+                         <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                      </div>
+                    </form>
+                  </div>
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                  <!--CUERPO DE NOTIFICACIONES-->
+                  <h2 class="fw-bold my-4">CONFIGURACION DE NOTIFICACIONES</h2>
+                  <h4 class="bg-danger badge text-wrap fs-5 progress-bar">Nuevas peliculas <span class="badge badge-secondary"></span></h4>
+                  <p class="font-weight-light">Proximamente Spider-man no way home, estará llegando a nuestras pantallas.</p>
+                  <p class="font-weight-light">Se aproxima El titanic a la pantalla grande.</p>
+                  <p class="font-weight-light">Se viene la accion con Rapidos y furiosos 9.</p>
+                  <h4 class="bg-danger badge text-wrap fs-5 progress-bar" >Las mejores promociones<span class="badge badge-secondary"></span></h4>
+                  <p class="font-weight-light">Todos los martes estarán las entradas al 2x1.</p>
+                  <p class="font-weight-light">Descuento del 20% todos los dias para la tercera edad.</p>
+                  <p class="font-weight-light">Los viernes, los estudiantes con carné entran al 2x1.</p>
+                </div>
               </div>
             </div>
           </div>
