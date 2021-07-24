@@ -112,11 +112,9 @@ $(document).ready(function() {
   $(document).on("click", ".btnBorrar", function(){
     fila = $(this).closest("tr");
     id = parseInt($(this).closest("tr").find('td:eq(0)').text());
-    titulo = fila.find('td:eq(1)').text();
     opcion = 3; //borrar
-    $("#title").val(titulo);
     $("#modalEliminar").modal("show");
-  
+
     $("#btnSi").on("click", function(){
       $.ajax({
         url: "crud.php",

@@ -213,7 +213,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <p>¿Esta seguro que desea eliminar </p>
+        <p>¿Esta seguro que desea eliminar esta película? </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" id="btnSi" data-bs-dismiss="modal">Sí</button>
