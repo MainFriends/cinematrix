@@ -12,7 +12,6 @@
     <meta name="description" content="Tablero con Bootstrap 4 - Templune">
     <title>Cinematrix - Panel de Administración</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
 
      <!-- bootstrap5 y main.css -->
     <link href="../../../assets/css/bootstrap.min.css" rel="stylesheet">
