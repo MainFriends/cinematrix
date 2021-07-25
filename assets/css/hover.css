@@ -33,7 +33,7 @@
 }
 
 .contenedor figure:hover > .capa{
-    opacity: 1;
+    opacity: 100;
     visibility: visible;
 }
 
