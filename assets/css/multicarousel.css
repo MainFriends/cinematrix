@@ -10,9 +10,9 @@ body{
   user-select: none;
 }
 
-/*[type = radio]
+[type = radio]{
   display:none;
-}*/
+}
 
 #slider{
   height: 35vw;
