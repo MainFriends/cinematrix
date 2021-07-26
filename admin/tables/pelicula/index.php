@@ -70,7 +70,6 @@
       <div id="page-content-wrapper" class="w-100 bg-light-blue">
           <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <button class="btn btn-danger btn-lg " id="menu-toggle"><i class="fas fa-bars"></i></button>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -170,7 +169,7 @@
                         </div>
                         <div class="col-md-9 mb-2">
                             <label class="form-input">Sinopsis</label>
-                            <input class="form-control input-sm" type="text" id="sinopsis" >
+                            <textarea class="form-control" id="sinopsis" rows="3"></textarea>
                         </div>
                         <div class="col-md-4 mb-2">
                             <label class="form-input">Duración</label>
@@ -190,8 +189,8 @@
                             </select>
                         </div>
                         <div class="col-md-12 mb-2">
-                            <label class="form-input">Portada</label><br/>
-                            <input class="form-control input-sm" id="portada" type="file">
+                            <label class="form-input">URL Portada</label><br/>
+                            <input class="form-control input-sm" id="portada" type="Text">
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
