@@ -23,7 +23,7 @@
 </head>
 
 <body>
-   <div class="container-fluid">
+   <div class="container-fluid bg-light">
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
          <div class="container-fluid">
             <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
@@ -102,6 +102,7 @@
                </div>
             </div>
          </div>
+         
 
 
          <div class="row py-4">
@@ -465,6 +466,7 @@
                   <img src="assets/img/sliders/Portada-Promoción5.jpg" width="100%" height="100%">
                </label>
          </section>
+      </div>
 
           
    <footer>
