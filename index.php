@@ -6,6 +6,17 @@
       $userSession = $_SESSION['usuario'];
    }
    require_once "inc/functions.php";
+
+   // Consulta peliculas
+   $query = "SELECT * FROM PELICULA where id_estado = 5";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+   $queryP = "SELECT * FROM PELICULA where id_estado = 6";
+   $stm = $conexion->prepare($queryP);
+   $stm->execute();
+   $dataP = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,14 +114,15 @@
             </div>
          </div>
          
-
-
          <div class="row py-4">
             <div class="container w-60 px-4">
                <h4 class="fw-bold px-2">Cartelera Semanal</h4>
                <!--slider------------------->
                <ul id="autoWidth" class="cs-hidden">
                   <!--1------------------------------>
+                  <?php 
+                  foreach($data as $peli){   
+                  ?>
                   <li class="item-a">
                      <!--slider-box-->
                      <div class="box">
@@ -118,159 +130,25 @@
                         <!--Inicio del Hover-->
                         <div class="contenedor">
                         <figure>
-                        <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Thor_(pel%C3%ADcula)"><img class="rounded" src="assets/img/sliders/Portada-Thor1.png" width="200" height="250"
+                        <a href="pelicula.php?id=<?php echo $peli['ID_PELICULA']?>"><img class="rounded" src="<?php echo $peli['PORTADA']?>" width="200" height="250"
                            class="model">
                            <div class="capa">
-                              <h3>Thor</h3>
-                              <p>2011</p>
-                              </a> 
+                              <h3><?php echo $peli['TITULO']?></h3>
+                              <p><?php echo $peli['AÑO']?></p> 
+                              </a>  
                            </div> 
                      </figure>
                     </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
                      </div>
-                  </li>
-                  <!--2------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Inicio del Hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Spider-Man:_Far_From_Home"><img class="rounded" src="assets/img/sliders/Portada-Spiderman.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                              <h3>Spider-Man Far From Home</h3>
-                              <p>2019</p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--3------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Inicio del hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://www.cinemarkca.com/honduras/pelicula?tag=771&corporate_film_id=242904&coming_soon=false"><img class="rounded" src="assets/img/sliders/Portada-RapidoFurioso.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                              <h3>Rápidos y Furiosos 9</h3>
-                              <p>2021.</p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-                     </div>
-                  </li>
-                  <!--4------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Incio del hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://www.cinemarkca.com/honduras/pelicula?tag=771&corporate_film_id=244571&coming_soon=false"><img class="rounded" src="assets/img/sliders/Portada-LaPurga.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                              <h3>La Purga por Siempre</h3>
-                              <p>2021 </p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--5------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Inicio del hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://www.tomatazos.com/articulos/639814/RESENA-Duro-de-Cuidar-2-Una-lluvia-de-disparos-y-comedia"><img class="rounded" src="assets/img/sliders/Portada-DurodeCuidar.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                           <h3>Duro de Cuidar 2</h3>
-                           <p>2021</p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--6------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Inicio del hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://www.gamerfocus.co/cineytv/el-conjuro-3-el-diablo-me-obligo-a-hacerlo-resena-critica-analisis-expediente-warren-conjuring-review/"><img class="rounded" src="assets/img/sliders/Portada-Conjuro.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                              <h3>El Conjuro 3</h3>
-                              <p>2021</p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-                     </div>
-                  </li>
-                  <!--7------------------------------>
-                  <li class="item-a">
-                     <!--slider box-->
-                     <div class="box">
-                        <!--model-->
-                        <!--Inicio del hover-->
-                        <div class="contenedor">
-                           <figure>
-                        <a href="https://www.filmaffinity.com/es/film722036.html"><img class="rounded" src="assets/img/sliders/Portada-ComingAmerica.jpg" width="200" height="250"
-                           class="model">
-                           <div class="capa">
-                              <h3>Coming 2 America</h3>
-                              <p>2021</p>
-                        </a>
-                     </div>
-                  </figure>
-               </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-                     </div>
-                  </li>
+                  </li> 
+               <?php
+               }
+               ?>             
                </ul>
             </div>
          </div>
+
+         
 
          <!-- CARROUSEL PREVENTA -->
          <div class="row py-3">
@@ -279,156 +157,30 @@
                <!--slider------------------->
                <ul id="autoWidth2" class="cs-hidden2">
                   <!--1------------------------------>
+                  <?php 
+                  foreach($dataP as $peliP){   
+                  ?>
                   <li class="item-a">
                      <!--slider-box-->
                      <div class="box">
                         <!--model-->
-                        <!--Inicio del hover-->
+                        <!--Inicio del Hover-->
                         <div class="contenedor">
-                           <figure>
-                           <a href="https://www.fotogramas.es/noticias-cine/a28476929/thor-4-reparto-estreno-trailer-love-and-thunder/"><img class="rounded" src="assets/img/sliders/Portada-Thor4.jpeg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Thor 4</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
+                        <figure>
+                        <a href="pelicula.php?id=<?php echo $peliP['ID_PELICULA']?>"><img class="rounded" src="<?php echo $peliP['PORTADA']?>" width="200" height="250"
+                           class="model">
+                           <div class="capa">
+                              <h3><?php echo $peliP['TITULO']?></h3>
+                              <p><?php echo $peliP['AÑO']?></p> 
+                              </a>  
+                           </div> 
+                     </figure>
+                    </div>
                      </div>
-                  </li>
-                  <!--2------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://www.fotogramas.es/noticias-cine/a28476929/thor-4-reparto-estreno-trailer-love-and-thunder/"><img class="rounded" src="assets/img/sliders/Portada-DoctorStrange.jpeg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Doctor Strange</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>   
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--3------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://www.fotogramas.es/noticias-cine/a28476929/thor-4-reparto-estreno-trailer-love-and-thunder/"><img class="rounded" src="assets/img/sliders/Portada-ShangChi.jpeg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Shan Chi</h3>
-                                 <p>201</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>   
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--4------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Thor_(pel%C3%ADcula)"><img class="rounded" src="assets/img/sliders/Portada-Venom2.jpeg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Venom 2</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-                     </div>
-                  </li>
-                  <!--5------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Thor_(pel%C3%ADcula)"><img class="rounded" src="assets/img/sliders/Portada-Morbius.jpg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Morbius</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-
-                     </div>
-                  </li>
-                  <!--6------------------------------>
-                  <li class="item-a">
-                     <!--slider-box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Thor_(pel%C3%ADcula)"><img class="rounded" src="assets/img/sliders/Portada-WhatIf.jpg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>What If</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>
-                        <!--details-->
-                        <div class="details">
-                        </div>
-                     </div>
-                  </li>
-                  <!--2-->
-                  <li class="item-a">
-                     <!--slider box-->
-                     <div class="box">
-                        <!--model-->
-                        <div class="contenedor">
-                           <figure>
-                           <a href="https://marvelcinematicuniverse.fandom.com/es/wiki/Thor_(pel%C3%ADcula)"><img class="rounded" src="assets/img/sliders/Portada-JohnWick4.jpg" width="200" height="250"
-                              class="model">
-                              <div class="capa">
-                                 <h3>Jonh Wick 4</h3>
-                                 <p>2021</p>
-                                 </a> 
-                              </div> 
-                        </figure>
-                       </div>
-                        <!--details-->
-                        <div class="details">2 </div>
-                     </div>
-                  </li>
+                  </li> 
+               <?php
+               }
+               ?>      
                </ul>
             </div>
          </div>
