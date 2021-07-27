@@ -189,13 +189,8 @@
                             </select>
                         </div>
                         <div class="col-md-12 mb-2">
-<<<<<<< HEAD
-                            <label class="form-input">Portada URL</label><br/>
-                            <input class="form-control input-sm" id="portada" type="text">
-=======
                             <label class="form-input">URL Portada</label><br/>
                             <input class="form-control input-sm" id="portada" type="Text">
->>>>>>> master
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
