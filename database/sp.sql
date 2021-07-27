@@ -49,8 +49,8 @@ CREATE PROCEDURE SP_ADD_PELICULA(
                 _ID_GENERO INT,
                 _ID_CLASIFICACION INT,
                 _AÑO YEAR(4),
-                _SINOPSIS VARCHAR(100),
-                _PORTADA MEDIUMBLOB,
+                _SINOPSIS TEXT,
+                _PORTADA VARCHAR(200),
                 _ID_ESTADO INT
 )BEGIN
 		-- INSERTAMOS LA PELICULA
@@ -71,7 +71,7 @@ CREATE PROCEDURE SP_UPD_PELICULA(
                 _ID_GENERO INT,
                 _ID_CLASIFICACION INT,
                 _AÑO YEAR(4),
-                _SINOPSIS VARCHAR(100),
+                _SINOPSIS TEXT,
                 _ID_ESTADO INT
 )BEGIN
 		-- ACTUALIZAMOS LOS CAMPOS DE LA PELICULA
