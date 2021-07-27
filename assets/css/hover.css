@@ -34,10 +34,12 @@
 .contenedor figure:hover > .capa{
     opacity: 100;
     visibility: visible;
+    background-color: rgba(0,0,0,0.8);
 }
 
 .contenedor figure:hover > img{
     transform: scale(1,3);
+    opacity: 0,3,2;
 }
 
 .contenedor figure:hover > .capa h3{

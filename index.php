@@ -102,13 +102,13 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                <div class="carousel-inner">
                   <div class="carousel-item active">
-                     <img src="assets/img/sliders/slider1 (1).jpg" class="d-block w-100" style="height: 350px;" alt="...">
+                     <img src="https://static.cinepolis.com/img/front/9/2021714184950953-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
                   </div>
                   <div class="carousel-item">
-                     <img src="assets/img/sliders/slider2.jpg" class="d-block w-100" style="height: 350px;" alt="...">
+                     <img src="https://static.cinepolis.com/img/front/9/202172119174736-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
                   </div>
                   <div class="carousel-item">
-                     <img src="assets/img/sliders/slider3.jpg" class="d-block w-100" style="height: 350px;" alt="...">
+                     <img src="https://static.cinepolis.com/img/front/9/20217141477932-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
                   </div>
                </div>
             </div>
