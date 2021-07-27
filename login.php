@@ -1,6 +1,7 @@
 <?php
     require_once 'inc/functions.php';
     require_once 'inc/session.php';
+    $_SESSION['pag'] = 'login';
     session_start();
     session();    
 ?>

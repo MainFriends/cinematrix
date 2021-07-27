@@ -21,13 +21,26 @@
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
-                 header("location:admin/tables/pelicula/index.php");
+                 
+                if($_SESSION['pag']=='index'){
+                    header("location:index.php");
+                }else if($_SESSION['pag']=='promociones'){
+                    header("location:promociones.php");
+                }else if($_SESSION['pag']=='detallePromo'){
+                    header("location:detallePromo.php");
+                }else if($_SESSION['pag']=='login'){
+                    header("location:admin/tables/usuarios/index.php");
+                }
             }else{ //Cliente
                  session_start(); //Iniciamos la sesión
                  $_SESSION['usuario'] = $USER["NOMBRE"];
+                 $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
-                 header("location:../public/principal.php");
+                if($_SESSION['pag']=='login'){
+                    header("location:index.php");
+                }
             }
+            
         }else{
              echo "<div class='alert alert-danger text-center'>
                      <strong>¡Ups!</strong> El correo o la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.

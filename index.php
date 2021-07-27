@@ -1,5 +1,7 @@
 <?php
    session_start();
+   require_once 'inc/session.php';
+   $_SESSION['pag'] = 'index';
    if(isset($_SESSION['usuario'])){
       $userSession = $_SESSION['usuario'];
    }
@@ -62,17 +64,17 @@
                         Ingresar
                      </a>
                      <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
-                        <form class="px-4 py-1" action="#">
+                        <form class="px-4 py-1" method="POST">
                            <label class="label-control" for="">Correo electrónico</label>
-                           <input class="form-control" type="text">
+                           <input class="form-control" name="correo" type="text">
                            <label class="label-control" for="">Contraseña</label>
-                           <input class="form-control" type="password">
+                           <input class="form-control" name="pass" type="password">
                            <div class="py-2">
                               <input type="checkbox" name="connected" class="form-check-input">
                               <label for="connected" class="form-check-label">Mantenerme conectado</label>
                            </div>
                            <div class="py-2 d-grid">
-                              <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
+                              <button type="submit" class=" d-grid btn btn-primary" name="login" >Iniciar sesión</button>
                            </div>
                         </form>
                      </ul>
