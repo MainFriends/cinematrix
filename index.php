@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Página principal - Cinematrix</title>
    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" href="assets/css/style-index.css">
    <link rel="stylesheet" href="assets/css/lightslider.css">
@@ -33,7 +33,7 @@
                      <a class="nav-link" href="#">CARTELERA</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
+                     <a class="nav-link" href="promociones.php" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
                   </li>
                </ul>
                <div class="nav-item dropdown">

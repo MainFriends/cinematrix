@@ -77,7 +77,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link text-dark" href="#">Inicio</a>
+                  <a class="nav-link text-dark" href="../../../index.php">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,7 +87,7 @@
                       ?> 
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                    <li><a class="dropdown-item" href="../../../account.php">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="../../../inc/logout.php">Cerrar sesión</a></li>
                   </ul>
                 </li>

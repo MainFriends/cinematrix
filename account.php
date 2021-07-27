@@ -35,7 +35,7 @@
               <a class="nav-link" href="#">CARTELERA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
+              <a class="nav-link" href="promociones.php" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
             </li>
           </ul>
           <div class="nav-item dropdown">
