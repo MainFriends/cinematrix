@@ -46,3 +46,16 @@
     }
     
 }
+
+/* Modificando active del acordion TABLAS*/
+.dropdown-item.active {
+    background-color: #6c757d !important;
+}
+
+.accordion-button:not(.collapsed){
+    color: #343a40 !important;
+}
+
+body{
+    font-family: 'Poppins';
+}

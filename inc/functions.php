@@ -4,7 +4,7 @@
             if($_SESSION['rol'] == 1){ //Administrador
                 header("location:admin/tables/pelicula/index.php");
             }else{ //Cliente
-                header("location:public/principal.php");
+                header("location:index.php");
             }
         }
     }

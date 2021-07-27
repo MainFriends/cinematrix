@@ -1,6 +1,7 @@
 <?php
     require_once 'inc/functions.php';
     require_once 'inc/session.php';
+    $_SESSION['pag'] = 'login';
     session_start();
     session();    
 ?>
@@ -13,17 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinematrix - Inicia sesión o regístrate</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body{
-            background: #383734;
-            background: linear-gradient(to right, #e3e3e4, #e3e3e7);
-        }
-        .bg{
-            background-image: url(assets/img/sliders/cinema-1.jpg);
-            background-position: center center;
-            background-size: cover;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-4 rounded shadow">

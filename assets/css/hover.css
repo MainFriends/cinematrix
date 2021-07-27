@@ -1,0 +1,63 @@
+
+.contenedor{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.contenedor figure{
+    position: relative;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.contenedor figure img{
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease-out;
+}
+
+.contenedor figure .capa{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0ms ease-out;
+    visibility: hidden;
+    text-align: center;
+}
+
+.contenedor figure:hover > .capa{
+    opacity: 100;
+    visibility: visible;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.contenedor figure:hover > img{
+    transform: scale(1,3);
+    opacity: 0,3,2;
+}
+
+.contenedor figure:hover > .capa h3{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: 200px;
+    transition: all 500ms ease-out;
+}
+
+.contenedor figure:hover .capa h3{
+    color: #fff;
+}
+
+.contenedor figure:hover > .capa p{
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 220px;
+    margin: auto;
+}

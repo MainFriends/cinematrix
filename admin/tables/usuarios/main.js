@@ -68,12 +68,32 @@ $(document).ready(function() {
   });
 
   //Boton EDITAR
-  $(document).on("click", ".btnEditar", function(){
-    opcion = 1; //editar
+  $(document).on("click", ".btnBorrar", function(){
     fila = $(this).closest("tr");
-    id = parseInt(fila.find('td:eq(0)').text());
+    id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    opcion = 3; //borrar
+    $("#modalEliminar").modal("show");
 
-    $("#modalUsuario").modal("show");
+    $("#btnSi").on("click", function(){
+      $.ajax({
+        url: "crud.php",
+        type: "POST",
+        dataType: "html",
+        data: {opcion:opcion, id:id},
+        success: function() {
+          tablaUsuario.row(fila.parents('tr')).remove().ajax.reload(null,false); 
+        },
+        error: function(response){
+          console.log(response);
+        }
+      });
+      $("#modalEliminar").modal("hide");
+    });
+
+    $("#btnCancelar").on("click", function(){
+      $("#modalEliminar").modal("hide");
+    });
+
   });
     
 });
