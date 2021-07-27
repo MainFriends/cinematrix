@@ -51,14 +51,14 @@
                     <i class="icon ion-ios-create lead me-2"></i> Tablas
                   </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body bg-light">
-                    <a class="dropdown-item rounded fw-ligth active" aria-current="page" href="../pelicula/index.php">Películas</a>
+                    <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../pelicula/index.php">Películas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../cartelera/index.php">Carteleras</a>
                     <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Salas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
-                    <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
+                    <a class="dropdown-item rounded fw-ligt active" href="../progPromo/index.php">Programa de promociones</a>
                   </div>
                 </div>
               </div>        
