@@ -1,3 +1,10 @@
+<?php
+   session_start();
+   if(isset($_SESSION['usuario'])){
+      $userSession = $_SESSION['usuario'];
+   }
+   require_once "inc/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +25,7 @@
 
 <body>
   <div class="container-fluid bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container-fluid">
         <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" >
         <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
@@ -38,27 +45,42 @@
               <a class="nav-link" href="promociones.php" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
             </li>
           </ul>
-          <div class="nav-item dropdown">
-            <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Ingresar
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
-              <form class="px-4 py-1" action="#">
-                <label class="label-control" for="">Correo electrónico</label>
-                <input class="form-control" type="text">
-                <label class="label-control" for="">Contraseña</label>
-                <input class="form-control" type="password">
-                <div class="py-2">
-                  <input type="checkbox" name="connected" class="form-check-input">
-                  <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                </div>
-                <div class="py-2 d-grid">
-                  <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
-                </div>
-              </form>
-            </ul>
-          </div>
+          <?php
+                  if(isset($_SESSION['usuario'])){
+                     $userApellido = $_SESSION["apellido"];
+                     echo "<div class='nav-item dropdown'>
+                     <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                        $userSession $userApellido
+                     </a>
+                     <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
+                       <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
+                     </ul>
+                   </div>";
+                  }else{
+                     echo '<div class="nav-item dropdown">
+                     <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Ingresar
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
+                        <form class="px-4 py-1" action="#">
+                           <label class="label-control" for="">Correo electrónico</label>
+                           <input class="form-control" type="text">
+                           <label class="label-control" for="">Contraseña</label>
+                           <input class="form-control" type="password">
+                           <div class="py-2">
+                              <input type="checkbox" name="connected" class="form-check-input">
+                              <label for="connected" class="form-check-label">Mantenerme conectado</label>
+                           </div>
+                           <div class="py-2 d-grid">
+                              <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
+                           </div>
+                        </form>
+                     </ul>
+                  </div>';
+                  }
+               ?>
         </div>
       </div>
     </nav>
