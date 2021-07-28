@@ -54,7 +54,8 @@
             $statement->execute();
             break;
         case 4: //Insertar registros
-            $query = "SELECT * FROM PELICULA";
+            $query = "SELECT ID_PELICULA, TITULO, DURACION, ID_GENERO, ID_CLASIFICACION, AÑO, substring(SINOPSIS, 1, 50) SINOPSIS, PORTADA, ID_ESTADO
+             FROM PELICULA";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
