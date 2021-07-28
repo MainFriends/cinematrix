@@ -8,13 +8,8 @@
       $userPais = $_SESSION['pais'];
       $userDate = $_SESSION['date'];
    }
-   require_once "inc/config.php";
-   $objeto = new Conexion();
-    $conexion = $objeto->Conectar();
-    $query = "SELECT * FROM usuario where ID_USUARIO = 1";
-    $stm = $conexion->prepare($query);
-    $stm->execute();
-    $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+   require_once "inc/functions.php";
+   require_once 'inc/editarPerfil.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +106,7 @@
                 class="far fa-eye ">  </i>  Vista general de la cuenta</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list"
               data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"
-              ><i class="fas fa-user-edit"></i>   Editar perfil</a>
+              ><i class="fas fa-user-edit btnEditarP"></i>   Editar perfil</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-contraseña-list"
               data-bs-toggle="list" href="#list-contraseña" role="tab" aria-controls="list-contraseña"><i
                 class="fas fa-user-lock"></i> Cambiar contraseña</a>
@@ -169,32 +164,43 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                <form>
+                <form method="POST">
                   <h1 class="fw-bold my-5">DESCRIPCION DE TU CUENTA</h1>
-                  <div class="my-3 mb-3">
-                    <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="my-3 mb-3">
+                        <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" value="<?php echo $userSession ?>" aria-describedby="emailHelp">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="my-3 mb-3">
+                        <label for="exampleInputEmail1" class="form-label fw-bold">Apellido</label>
+                        <input type="text" name="apellido" class="form-control" id="exampleInputEmail1" value="<?php echo $userApellido ?>" aria-describedby="emailHelp">
+                      </div>
+                    </div>
                   </div>
+                  
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Correo electrónico</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  </div>
-                  <div class="my-3 mb-3">
-                    <label class="fw-bold" for="datetime ">Fecha de nacimiento</label>
-                    <input type="date" class=" form-control my-3">
+                    <input type="email" name="correo" class="form-control" value="<?php echo $userCorreo?>" id="exampleInputEmail1" aria-describedby="emailHelp">
                   </div>
                   <class class="my-3 mb-3 fw-bold">Cambiar foto de perfil
                     <input type="file" class="form-control my-2">
                 </class>
-                  
-                  
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Ciudad</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" name="ciudad" value="<?php echo $userCiudad?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   </div>
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Pais</label>
-                    <input type="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <select name="pais" id="inputCountry" class="form-select" required>
+                    <option value="102">Honduras</option>
+                    <?php
+                        // Llenar la lista de opciones con paises de la DB
+                        registroPais();
+                    ?>
+                    </select>
                   </div>
                   <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -202,7 +208,7 @@
                       que
                       corresponden al servicio de Cinematrix</label>
                    </div>
-                  <button type="submit" class="btn btn-ligth btn btn-outline-primary">Guardar perfil</button>
+                  <button type="submit" name="editar" class="btn btn-ligth btn btn-outline-primary">Guardar perfil</button>
                 </form>
               </div>
 

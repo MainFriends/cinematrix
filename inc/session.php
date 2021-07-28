@@ -18,6 +18,7 @@
           $USER = $statement->fetch(PDO::FETCH_ASSOC); //Llenamos un array con la consulta
             if($USER["ID_ROL"] == 1){ //Administrador
                  session_start(); //Iniciamos la sesión
+                 $_SESSION['id_usuario'] = $USER["ID_USUARIO"];
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
@@ -37,6 +38,7 @@
                 }
             }else{ //Cliente
                  session_start(); //Iniciamos la sesión
+                 $_SESSION['id_usuario'] = $USER["ID_USUARIO"];
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
