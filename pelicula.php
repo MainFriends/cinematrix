@@ -15,17 +15,63 @@ require_once "inc/config.php";
         $stm->execute();
         $data = $stm->fetch(PDO::FETCH_ASSOC);
 
+        //CONSULTAR FECHA 1
+        $queryDate1 = "SELECT FECHA FROM CARTELERA
+        WHERE ID_PELICULA = '$id'
+        AND FECHA = CURDATE()";
+        $stm = $conexion->prepare($queryDate1);
+        $stm->execute();
+        $dataDate1 = $stm->fetch(PDO::FETCH_ASSOC);
+        $fecha = $dataDate1['FECHA'];
+
         //CONSULTA CARTELERA
-        $queryC = "SELECT DATE_FORMAT(HORA_INICIO, '%H:%i') HORA_INICIO, DATE_FORMAT(HORA_FIN, '%H:%i') HORA_FIN, IDIOMA, SUBTITULO, FORMATO
+        $queryC1 = "SELECT IDIOMA, SUBTITULO, FORMATO
         FROM CARTELERA, IDIOMA, SUBTITULO, FORMATO
         WHERE CARTELERA.ID_IDIOMA = IDIOMA.ID_IDIOMA
         AND CARTELERA.ID_SUB = SUBTITULO.ID_SUB
-        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO
-        AND HORA_INICIO >= curtime() 
-        AND ID_PELICULA = '$id'";
-        $stm = $conexion->prepare($queryC);
+        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO 
+        AND ID_PELICULA = '$id'
+        AND FECHA = '$fecha'";
+        $stm = $conexion->prepare($queryC1);
         $stm->execute();
-        $dataC = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $dataC1 = $stm->fetch(PDO::FETCH_ASSOC);
+
+        //CONSULTAR HORA INICIO
+        $queryHI1 = "SELECT DATE_FORMAT(HORA_INICIO, '%H:%i') HORA_INICIO FROM CARTELERA
+        WHERE ID_PELICULA = '$id'
+        AND FECHA = '$fecha'";
+        $stm = $conexion->prepare($queryHI1);
+        $stm->execute();
+        $dataHI1 = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        //CONSULTAR FECHA 2
+        $queryDate2 = "SELECT FECHA FROM CARTELERA
+        WHERE ID_PELICULA = '$id'
+        AND FECHA > '$fecha'";
+        $stm = $conexion->prepare($queryDate2);
+        $stm->execute();
+        $dataDate2 = $stm->fetch(PDO::FETCH_ASSOC);
+        $fecha2 = $dataDate2['FECHA'];
+
+        //CONSULTA CARTELERA
+        $queryC2 = "SELECT IDIOMA, SUBTITULO, FORMATO
+        FROM CARTELERA, IDIOMA, SUBTITULO, FORMATO
+        WHERE CARTELERA.ID_IDIOMA = IDIOMA.ID_IDIOMA
+        AND CARTELERA.ID_SUB = SUBTITULO.ID_SUB
+        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO 
+        AND ID_PELICULA = '$id'
+        AND FECHA = '$fecha2'";
+        $stm = $conexion->prepare($queryC2);
+        $stm->execute();
+        $dataC2 = $stm->fetch(PDO::FETCH_ASSOC);
+
+        //CONSULTAR HORA INICIO
+        $queryHI2 = "SELECT DATE_FORMAT(HORA_INICIO, '%H:%i') HORA_INICIO FROM CARTELERA
+        WHERE ID_PELICULA = '$id'
+        AND FECHA = '$fecha2'";
+        $stm = $conexion->prepare($queryHI2);
+        $stm->execute();
+        $dataHI2 = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,72 +155,77 @@ require_once "inc/config.php";
                       <li class="nav-item" role="presentation">
                         <button class="nav-danger active btn btn-outline-danger  me-1" id="pills-taquilla-tab" data-bs-toggle="pill"
                           data-bs-target="#pills-taquilla" type="button" role="tab" aria-controls="pills-taquilla"
-                          aria-selected="true">27/07/2021</button>
+                          aria-selected="true"><?php echo $dataDate1['FECHA'] ?></button>
                       </li>
                       <li class="nav-item" role="presentation">
                         <button class="nav-danger btn btn-outline-danger" id="pills-dulce-tab" data-bs-toggle="pill" data-bs-target="#pills-dulce"
-                          type="button" role="tab" aria-controls="pills-dulce" aria-selected="false">28/07/2021</button>
+                          type="button" role="tab" aria-controls="pills-dulce" aria-selected="false"><?php echo $dataDate2['FECHA']?></button>
                       </li>
                     </ul>
                   </div> <!-- Fin row -->
                   <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-taquilla" role="tabpanel" aria-labelledby="pills-taquilla-tab">
-                      <!-- Contenido Tab Fecha 2 -->
+                      <!-- Contenido Tab Fecha 1 -->
                       <div class="row">
-                        <div class="card">
-                          <div class="card-header fw-bold">Cinematrix - Multiplaza Tegucigalpa
-                              <span>
-                                  <div class="mx-2 badge bg-secondary text-wrap" style="width: 6rem;">
-                                      2D
-                                  </div>
-                                  <div class="badge bg-secondary text-wrap" style="width: 6rem;">
-                                      DOB
-                                  </div>
-                              </span>
+                          <div class="card">
+                            <div class="card-header fw-bold">Cinematrix - City Mall Tegucigalpa
+                                <span>
+                                    <div class="mx-2 badge bg-secondary text-wrap" style="width: 6rem;">
+                                        <?php echo $dataC1['FORMATO']?>
+                                    </div>
+                                    <div class="badge bg-secondary text-wrap" style="width: 6rem;">
+                                      <?php echo $dataC1['IDIOMA']?>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text fw-lighter ">*Los horarios aquí expuestos representan el inicio de cada función</p>
+                                <span>
+                                <p>LAT
+                                <?php
+                                  foreach($dataHI1 as $hora){
+                                ?>
+                                <a href="#" class=" my-0 btn btn-outline-danger btn-sm"><?php echo $hora['HORA_INICIO']?></a>
+                                <?php
+                                  }
+                                ?>
+                                </p>
+                                </span>
+                            </div>
                           </div>
-                          <div class="card-body">
-                              <p class="card-text fw-lighter ">*Los horarios aquí expuestos representan el inicio
-                                  de cada función</p>
-                              <a href="#" class=" my-0 btn btn-outline-danger btn-sm">2:45 PM</a>
-                              <a href="#" class=" mx-3 btn btn-outline-danger btn-sm">4:05 PM</a>
-                          </div>
-                        </div>
-                      </div>
+                        </div> 
                     </div> <!-- Fin Tab 1 -->
 
                     <div class="tab-pane fade" id="pills-dulce" role="tabpanel" aria-labelledby="pills-dulce-tab">
                       <!-- Contenido Tab Fecha 2 -->
-                      <?php
-                        foreach($dataC as $peliC){
-                      ?>
                         <div class="row">
                           <div class="card">
                             <div class="card-header fw-bold">Cinematrix - City Mall Tegucigalpa
                                 <span>
                                     <div class="mx-2 badge bg-secondary text-wrap" style="width: 6rem;">
-                                        <?php echo $peliC['FORMATO']?>
+                                        <?php echo $dataC2['FORMATO']?>
                                     </div>
                                     <div class="badge bg-secondary text-wrap" style="width: 6rem;">
-                                      <?php echo $peliC['IDIOMA']?>
+                                      <?php echo $dataC2['IDIOMA']?>
                                     </div>
                                 </span>
                             </div>
                             <div class="card-body">
                                 <p class="card-text fw-lighter ">*Los horarios aquí expuestos representan el inicio
                                     de cada función</p>
-                                <a href="#" class=" my-0 btn btn-outline-danger btn-sm"><?php echo $peliC['HORA_INICIO']?></a>
-                                <a href="#" class=" mx-3 btn btn-outline-danger btn-sm"><?php echo $peliC['HORA_FIN']?></a>
+                                <?php
+                                  foreach($dataHI2 as $hora){
+                                ?>
+                                <a href="#" class=" my-0 btn btn-outline-danger btn-sm"><?php echo $hora['HORA_INICIO']?></a>
+                                <?php
+                                  }
+                                ?>
                             </div>
                           </div>
-                        </div>
-                      <?php
-                        }
-                      ?>  
+                        </div> 
                     </div> <!-- Fin Tab 2 -->
                   </div>
-                </div> <!-- Fin col 9 -->
-                  
-                  
+                </div> <!-- Fin col 9 -->      
         </div>
         
         
