@@ -1,5 +1,6 @@
 <?php
-require_once "inc/config.php";
+        session_start();
+        require_once "inc/config.php";
 
         $objeto = new Conexion();
         $conexion = $objeto->Conectar();
