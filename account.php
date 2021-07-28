@@ -2,8 +2,19 @@
    session_start();
    if(isset($_SESSION['usuario'])){
       $userSession = $_SESSION['usuario'];
+      $userApellido = $_SESSION['apellido'];
+      $userCorreo = $_SESSION['correo'];
+      $userCiudad = $_SESSION['ciudad'];
+      $userPais = $_SESSION['pais'];
+      $userDate = $_SESSION['date'];
    }
-   require_once "inc/functions.php";
+   require_once "inc/config.php";
+   $objeto = new Conexion();
+    $conexion = $objeto->Conectar();
+    $query = "SELECT * FROM usuario where ID_USUARIO = 1";
+    $stm = $conexion->prepare($query);
+    $stm->execute();
+    $data = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +102,7 @@
         <div class="col-4 bg-dark bou rounded-start">
           <div class="text-center my-3">
             <img
-              src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-9/126927505_3336886819757413_731241350087965538_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5-mg3O8KBTYAX_M7HmA&_nc_ht=scontent.ftgu3-1.fna&oh=6f9cd094ac640db775f2f9007e0d913b&oe=60FD1E94"
+              src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-1/p720x720/208927779_5724511864257129_6485008293404637166_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=7206a8&_nc_ohc=t4YtV8dYM6oAX-93MW8&_nc_ht=scontent.ftgu3-1.fna&oh=8b0a54c5658ec968014c1f11ae5c529b&oe=6126196F"
               width="180" class="rounded-circle" alt="...">
           </div>
           <div class="list-group" id="list-tab" role="tablist">
@@ -121,7 +132,7 @@
                     <p>Nombre de usuario</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold" >Josue Maradiaga</p>
+                    <p class="fw-bold" ><?php echo "$userSession $userApellido" ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom ">
@@ -129,7 +140,7 @@
                       <p>Email </p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold">josue@hotmail.com</p>
+                    <p class="fw-bold"><?php echo "$userCorreo" ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom">
@@ -137,7 +148,7 @@
                     <p>Fecha de nacimiento</p>
                   </div>
                   <div class="col-md-6 my-2 }">
-                    <p class="fw-bold">12 de febrero de 1998</p>
+                    <p class="fw-bold"><?php echo $userDate ?></p>
                   </div>  
                 </div>
                 <div class="row border-bottom">
@@ -145,7 +156,7 @@
                     <p>Pais</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold"> Honduras</p>
+                    <p class="fw-bold"><?php echo $userPais ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom">
@@ -153,7 +164,7 @@
                     <p >Ciudad</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold">Tegucigalpa</p>
+                    <p class="fw-bold"><?php echo $userCiudad ?></p>
                   </div>
                 </div>
               </div>

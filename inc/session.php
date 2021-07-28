@@ -21,6 +21,10 @@
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
+                 $_SESSION['correo'] = $USER["CORREO"];
+                 $_SESSION['pais'] = $USER["PAIS"];
+                 $_SESSION['ciudad'] = $USER["CIUDAD"];
+                 $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
                  
                 if($_SESSION['pag']=='index'){
                     header("location:index.php");
@@ -36,8 +40,16 @@
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
-                if($_SESSION['pag']=='login'){
+                 $_SESSION['correo'] = $USER["CORREO"];
+                 $_SESSION['pais'] = $USER["PAIS"];
+                 $_SESSION['ciudad'] = $USER["CIUDAD"];
+                 $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
+                 if($_SESSION['pag']=='index'){
                     header("location:index.php");
+                }else if($_SESSION['pag']=='promociones'){
+                    header("location:promociones.php");
+                }else if($_SESSION['pag']=='detallePromo'){
+                    header("location:detallePromo.php");
                 }
             }
             
