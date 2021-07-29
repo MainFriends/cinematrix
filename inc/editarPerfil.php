@@ -36,12 +36,31 @@ $conexion = $objeto->Conectar();
         $_SESSION['ciudad'] = $USER["CIUDAD"];
         $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
         $_SESSION['confirm'] = 'true';
-        header("location:account.php");
         echo "<div class='alert alert-success alert-dismissible  text-center fade show' role='alert'>
         <strong>¡Felicidades!</strong> Se han guardado tus cambios.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
+    if(isset($_FILES["foto"]["name"])){
+        // archivo temporal (ruta y nombre)
+        $tmp_name = $_FILES["foto"]["tmp_name"];
+        // Obtenemos los datos de la imagen tamaño, tipo y nombre
+        $tamano = $_FILES["foto"]['size'];
+        $tipo = $_FILES["foto"]['type'];
+        $nombre = $_FILES["foto"]["name"];
+        //ruta completa
+        $archivo_temporal = $_FILES['foto']['tmp_name'];
+        //leer el archivo(imagen) temporal en binario
+        $fp = fopen($archivo_temporal, 'r+b');
+        $data = fread($fp, filesize($archivo_temporal));
+        //insertamos el archive binario que hemos obtenido y lo guardamos en la base de datos Mysql
+        $query = "UPDATE USUARIO SET FOTO_PERFIL = ? WHERE ID_USUARIO = ?";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(1, $data, PDO::PARAM_STR);
+        $statement->bindParam(2, $id, PDO::PARAM_INT);
+        $statement->execute();
+    }
+    header("location:account.php");
 }
 
 if(isset($_POST['changePass'])){
@@ -69,9 +88,6 @@ if(isset($_POST['changePass'])){
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
-
-
-
 }
 
 ?>

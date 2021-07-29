@@ -10,6 +10,10 @@
    }
    require_once "inc/functions.php";
    require_once 'inc/editarPerfil.php';
+   $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = 1";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $foto = $stm->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,9 +98,8 @@
       <div class="row bg">
         <div class="col-4 bg-dark bou rounded-start">
           <div class="text-center my-3">
-            <img
-              src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-1/p720x720/208927779_5724511864257129_6485008293404637166_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=7206a8&_nc_ohc=t4YtV8dYM6oAX-93MW8&_nc_ht=scontent.ftgu3-1.fna&oh=8b0a54c5658ec968014c1f11ae5c529b&oe=6126196F"
-              width="180" class="rounded-circle" alt="...">
+            <?php 
+              echo '<img width="180" class="rounded-circle" alt="..." src="data:image/jpeg;base64,'.base64_encode($foto['FOTO_PERFIL']) .' "/>';?>
           </div>
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
@@ -161,7 +164,7 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                   <h1 class="fw-bold my-5">DESCRIPCION DE LA CUENTA</h1>
                   <div class="row">
                     <div class="col-md-6">
@@ -197,7 +200,7 @@
                   </div>
                   <div class="col-md-6 my-3 mb-3">
                     <label class="form-label fw-bold">Cambiar foto de perfil</label>
-                    <input type="file" class="form-control">
+                    <input type="file" name="foto" class="form-control">
                   </div>
                   <div class="text-start">
                   <button type="submit" name="editar" class="btn btn-primary">Guardar perfil</button>

@@ -10,7 +10,7 @@ $(document).ready(function(){
             $('#msg').text("").css("color","green");
             $("#newPass").prop('disabled', false); 
         }else{
-            $('#msg').text("La contraseña no es igual").css("color","red")
+            $('#msg').text("Las contraseñas no coinciden").css("color","red")
             $("#newPass").prop('disabled', true);
         }
 
