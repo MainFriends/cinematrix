@@ -209,10 +209,10 @@
                  <div class="tab-pane fade" id="list-contraseña" role="tabpanel" aria-labelledby="list-contraseña-list">
                     <!--CUERPO DE CONTRASE;A-->
                     <h1 class="fw-bold my-2">CAMBIA TU CONTRASEÑA</h1>
-                    <form>
+                    <form method="POST">
                       <div class="form-group fw-bold my-4" >
                         <label for="formGroupExampleInput">Contraseña actual</label>
-                        <input type="password" class="form-control  p-2 mb-2 bg-body rounded" id="formGroupExampleInput">
+                        <input type="password" name="pass" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput">
                       </div>
                       <div class="my-4  form-group fw-bold ">
                         <label for="formGroupExampleInput2">Nueva contraseña</label>
@@ -220,12 +220,12 @@
                       </div>
                       <div class="form-group fw-bold">
                         <label for="formGroupExampleInput">Confirmar nueva contraseña</label>
-                        <input type="password" id="pass2" class="form-control p-2 mb-2 bg-body rounded">
+                        <input type="password" id="pass2" name="newPass" class="form-control p-2 mb-2 bg-body rounded">
                       </div>
                       <div id="msg"></div>
                       <div class=" mx-auto my-4">
-                        <button type="button" id="newPass" class="btn btn-primary">Establecer nueva contraseña</button>
-                         <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="submit" id="newPass" name="changePass" class="btn btn-primary">Establecer nueva contraseña</button>
+                        <a href="account.php" class="btn btn-danger">Cancelar</a>
                       </div>
                     </form>
                   </div>

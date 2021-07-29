@@ -3,6 +3,7 @@
  $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
+//EDITAR PERFIL
  if(isset($_POST['editar'])){
 
     $id = $_SESSION['id_usuario'];
@@ -12,8 +13,8 @@ $conexion = $objeto->Conectar();
     $ciudad = $_POST['ciudad'];
     $pais = $_POST['pais'];
 
-    $sql_registro = "CALL SP_UPD_PERFIL(?,?,?,?,?,?)";
-    $statement = $conexion->prepare($sql_registro);
+    $sql = "CALL SP_UPD_PERFIL(?,?,?,?,?,?)";
+    $statement = $conexion->prepare($sql);
     $statement->bindParam(1, $id, PDO::PARAM_INT);
     $statement->bindParam(2, $nombre, PDO::PARAM_STR);
     $statement->bindParam(3, $apellido, PDO::PARAM_STR);
@@ -41,6 +42,36 @@ $conexion = $objeto->Conectar();
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
+}
+
+if(isset($_POST['changePass'])){
+
+    $id = $_SESSION['id_usuario'];
+    $pass = $_POST['pass'];
+    $newPass = $_POST['newPass'];
+
+    try {
+    $query = "CALL SP_UPD_PASS(?,?,?)";
+    $statement = $conexion->prepare($query);
+    $statement->bindParam(1, $id, PDO::PARAM_INT);
+    $statement->bindParam(2, $pass, PDO::PARAM_STR);
+    $statement->bindParam(3, $newPass, PDO::PARAM_STR);
+    $statement->execute();
+
+    echo "<div class='alert alert-success alert-dismissible  text-center fade show' role='alert'>
+        <strong>¡Felicidades!</strong> Has cambiado tu contraseña correctamente.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+
+    } catch (PDOException $e) {
+        echo "<div class='alert alert-danger alert-dismissible  text-center fade show' role='alert'>
+        <strong>¡Ups!</strong> La contraseña ingresada es invalida.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+    }
+
+
+
 }
 
 ?>
