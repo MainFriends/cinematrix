@@ -103,8 +103,6 @@
               Gestión de contenido
             </div>
             <div class="card-body">
-              <button class="btn btn-danger rounded-pill" id="addPelicula"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
-              <hr>
               <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered" id="tablaUsuario" style="width:100%">
                     <thead class="text-center">
