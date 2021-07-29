@@ -18,15 +18,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vista general de la cuenta - Cinematrix</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <title>Mi Perfil - Cinematrix</title>
   <!-- CSS de la pagina-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style-account.css">
   <!-- Iconos -->
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-  <!-- Fuente -->
-  <link href = "https: //fonts.googleapis.com/css2? family = Poppins: wght @ 100 & display = swap "rel =" stylesheet ">
   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
+  <!-- Fuente -->
 </head>
 
 <body>
@@ -117,14 +115,13 @@
         </div>
         <div class="col-8 rounded-end">
           <div class="my-5 mx-3">
-
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                 <h1 class="fw-bold my-3 md-2">PERFIL DE USUARIO</h1>
                 <h2 class="fw-bold my-5"></h2>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Nombre de usuario</p>
+                    <p class="fw-lighter">Nombre de usuario</p>
                   </div>
                   <div class="col-md-6 my-2">
                     <p class="fw-bold" ><?php echo "$userSession $userApellido" ?></p>
@@ -132,7 +129,7 @@
                 </div>
                 <div class="row border-bottom ">
                   <div class="col-md-6 my-2 ">
-                      <p>Email </p>
+                      <p class="fw-lighter">Email</p>
                   </div>
                   <div class="col-md-6 my-2">
                     <p class="fw-bold"><?php echo "$userCorreo" ?></p>
@@ -140,7 +137,7 @@
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Fecha de nacimiento</p>
+                    <p class="fw-lighter">Fecha de nacimiento</p>
                   </div>
                   <div class="col-md-6 my-2 }">
                     <p class="fw-bold"><?php echo $userDate ?></p>
@@ -148,7 +145,7 @@
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Pais</p>
+                    <p class="fw-lighter">Pais</p>
                   </div>
                   <div class="col-md-6 my-2">
                     <p class="fw-bold"><?php echo $userPais ?></p>
@@ -156,7 +153,7 @@
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p >Ciudad</p>
+                    <p class="fw-lighter">Ciudad</p>
                   </div>
                   <div class="col-md-6 my-2">
                     <p class="fw-bold"><?php echo $userCiudad ?></p>
@@ -165,32 +162,28 @@
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                 <form method="POST">
-                  <h1 class="fw-bold my-5">DESCRIPCION DE TU CUENTA</h1>
+                  <h1 class="fw-bold my-5">DESCRIPCION DE LA CUENTA</h1>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="my-3 mb-3">
+                      <div class="">
                         <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" value="<?php echo $userSession ?>" aria-describedby="emailHelp">
+                        <input type="text" name="nombre" class="form-control" value="<?php echo $userSession ?>" aria-describedby="emailHelp">
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="my-3 mb-3">
+                      <div class="">
                         <label for="exampleInputEmail1" class="form-label fw-bold">Apellido</label>
-                        <input type="text" name="apellido" class="form-control" id="exampleInputEmail1" value="<?php echo $userApellido ?>" aria-describedby="emailHelp">
+                        <input type="text" name="apellido" class="form-control" value="<?php echo $userApellido ?>" aria-describedby="emailHelp">
                       </div>
                     </div>
                   </div>
-                  
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Correo electrónico</label>
-                    <input type="email" name="correo" class="form-control" value="<?php echo $userCorreo?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="correo" class="form-control" value="<?php echo $userCorreo?>" aria-describedby="emailHelp">
                   </div>
-                  <class class="my-3 mb-3 fw-bold">Cambiar foto de perfil
-                    <input type="file" class="form-control my-2">
-                </class>
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Ciudad</label>
-                    <input type="text" name="ciudad" value="<?php echo $userCiudad?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" name="ciudad" value="<?php echo $userCiudad?>" class="form-control" aria-describedby="emailHelp">
                   </div>
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Pais</label>
@@ -202,13 +195,14 @@
                     ?>
                     </select>
                   </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con las politicas de registro
-                      que
-                      corresponden al servicio de Cinematrix</label>
-                   </div>
-                  <button type="submit" name="editar" class="btn btn-ligth btn btn-outline-primary">Guardar perfil</button>
+                  <div class="col-md-6 my-3 mb-3">
+                    <label class="form-label fw-bold">Cambiar foto de perfil</label>
+                    <input type="file" class="form-control">
+                  </div>
+                  <div class="text-start">
+                  <button type="submit" name="editar" class="btn btn-primary">Guardar perfil</button>
+                  </div>
+                  
                 </form>
               </div>
 
@@ -218,19 +212,20 @@
                     <form>
                       <div class="form-group fw-bold my-4" >
                         <label for="formGroupExampleInput">Contraseña actual</label>
-                        <input type="text" class="form-control  p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
+                        <input type="password" class="form-control  p-2 mb-2 bg-body rounded" id="formGroupExampleInput">
                       </div>
                       <div class="my-4  form-group fw-bold ">
                         <label for="formGroupExampleInput2">Nueva contraseña</label>
-                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput2" placeholder=>
+                        <input type="password" id="pass1" class="form-control p-2 mb-2 bg-body rounded">
                       </div>
                       <div class="form-group fw-bold">
                         <label for="formGroupExampleInput">Confirmar nueva contraseña</label>
-                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
-                      </div> 
+                        <input type="password" id="pass2" class="form-control p-2 mb-2 bg-body rounded">
+                      </div>
+                      <div id="msg"></div>
                       <div class=" mx-auto my-4">
-                        <button type="button" class="btn btn-outline-primary">Establecer nueva contraseña</button>
-                         <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                        <button type="button" id="newPass" class="btn btn-primary">Establecer nueva contraseña</button>
+                         <button type="button" class="btn btn-danger">Cancelar</button>
                       </div>
                     </form>
                   </div>
@@ -290,6 +285,7 @@
     </div>
   </footer>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/validarPass.js"></script>
 </body>
-
 </html>

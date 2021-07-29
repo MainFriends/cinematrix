@@ -34,7 +34,12 @@ $conexion = $objeto->Conectar();
         $_SESSION['pais'] = $USER["PAIS"];
         $_SESSION['ciudad'] = $USER["CIUDAD"];
         $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
+        $_SESSION['confirm'] = 'true';
         header("location:account.php");
+        echo "<div class='alert alert-success alert-dismissible  text-center fade show' role='alert'>
+        <strong>¡Felicidades!</strong> Se han guardado tus cambios.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
     }
 }
 
