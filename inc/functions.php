@@ -2,7 +2,7 @@
     function session(){
         if(isset($_SESSION['rol'])){ //Valido si ya hay una sesión abierta
             if($_SESSION['rol'] == 1){ //Administrador
-                header("location:admin/tables/pelicula/index.php");
+                header("location:admin/tables/usuarios/index.php");
             }else{ //Cliente
                 header("location:index.php");
             }

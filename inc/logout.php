@@ -7,5 +7,7 @@
         header("location:../promociones.php");
     }else if($_SESSION['pag']=='detallePromo'){
         header("location:../detallePromo.php");
+    }else if($_SESSION['pag']=='admin'){
+        header("location:../login.php");
     }
 ?>  

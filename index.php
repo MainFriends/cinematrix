@@ -6,7 +6,6 @@
       $userSession = $_SESSION['usuario'];
    }
    require_once "inc/functions.php";
-
    // Consulta peliculas
    $query = "SELECT * FROM PELICULA where id_estado = 5";
    $stm = $conexion->prepare($query);

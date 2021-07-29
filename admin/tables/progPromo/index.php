@@ -1,6 +1,7 @@
 <?php
   session_start();
   $userSession = $_SESSION['usuario'];
+  $_SESSION['pag'] = 'admin';
   require_once "../../../inc/functions.php";
 ?>
 <!DOCTYPE html>
