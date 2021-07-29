@@ -7,10 +7,11 @@
       $userCiudad = $_SESSION['ciudad'];
       $userPais = $_SESSION['pais'];
       $userDate = $_SESSION['date'];
+      $userId = $_SESSION['id_usuario'];
    }
    require_once "inc/functions.php";
    require_once 'inc/editarPerfil.php';
-   $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = 1";
+   $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
    $stm = $conexion->prepare($query);
    $stm->execute();
    $foto = $stm->fetch(PDO::FETCH_ASSOC);
