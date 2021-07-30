@@ -1,4 +1,5 @@
 <?php
+        setlocale(LC_TIME, 'Spanish');      
         session_start();
         require_once "inc/config.php";
 
@@ -15,30 +16,9 @@
         $stm = $conexion->prepare($query);
         $stm->execute();
         $data = $stm->fetch(PDO::FETCH_ASSOC);
-
-        /*
-
-        //CONSULTA CARTELERA
-        $queryC1 = "SELECT IDIOMA, SUBTITULO, FORMATO
-        FROM CARTELERA, IDIOMA, SUBTITULO, FORMATO
-        WHERE CARTELERA.ID_IDIOMA = IDIOMA.ID_IDIOMA
-        AND CARTELERA.ID_SUB = SUBTITULO.ID_SUB
-        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO 
-        AND ID_PELICULA = '$id'
-        AND FECHA = '$fecha'";
-        $stm = $conexion->prepare($queryC1);
-        $stm->execute();
-        $dataC1 = $stm->fetch(PDO::FETCH_ASSOC);
-
-        //CONSULTAR HORA INICIO
-        $queryHI1 = "SELECT DATE_FORMAT(HORA_INICIO, '%H:%i') HORA_INICIO FROM CARTELERA
-        WHERE ID_PELICULA = '$id'
-        AND FECHA = '$fecha'";
-        $stm = $conexion->prepare($queryHI1);
-        $stm->execute();
-        $dataHI1 = $stm->fetchAll(PDO::FETCH_ASSOC);*/
-
-        $queryDate = "SELECT DISTINCT FECHA FROM CARTELERA
+        
+        //Query fecha para generar la card
+        $queryDate = "SELECT DISTINCT  FECHA FROM CARTELERA
         WHERE ID_PELICULA = '$id'
         AND FECHA >= CURDATE()";
         $stm = $conexion->prepare($queryDate);
@@ -128,22 +108,64 @@
           <div class="col-md-9">
             <?php
               foreach($dataDate as $fecha){
+                //Guardar la fecha actual del ciclo   
                 $date = $fecha['FECHA'];
-                $queryHI = "SELECT DATE_FORMAT(HORA_INICIO, '%H:%i') HORA_INICIO FROM CARTELERA
+
+                //Le damos formato a la fecha que se mostrará en el card
+                $fechaES = utf8_encode(strftime('%A %e', strtotime($fecha['FECHA'])));
+
+                // DOBLADA AL ESPAÑOL
+                $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                 WHERE ID_PELICULA = '$id'
-                AND FECHA = '$date'";
-                $stm = $conexion->prepare($queryHI);
+                AND FECHA = '$date'
+                AND ID_IDIOMA = 1";
+                $stm = $conexion->prepare($queryDOB);
                 $stm->execute();
                 $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
+                $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
+
+                // SUBTITULADA AL ESPAÑOL
+                $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                WHERE ID_PELICULA = '$id'
+                AND FECHA = '$date'
+                AND ID_SUB = 1";
+                $stm = $conexion->prepare($querySUB);
+                $stm->execute();
+                $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
+                $resulSUB = $stm->rowCount();
             ?>
             <div class="card my-2">
-              <div class="card-header">
-                <?php echo $fecha['FECHA']?> - Multiplaza Tegucigalpa
+              <div class="card-header fw-bold">
+                <?php echo ucwords($fechaES)?> - Multiplaza Tegucigalpa
               </div>
               <div class="card-body">
-                <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función</p>
-                <?php foreach($dataHI as $HI){?>
-                <a href="#" class="btn btn-primary"><?php echo $HI['HORA_INICIO']?></a>
+                <p class="card-text fw-lighter">*Los horarios aquí expuestos representan el inicio de cada función</p>
+            
+                <?php
+                // Si hay resultados para peliculas dobladas ejecuta esta sentencia
+                if($resulDOB >= 1){
+                ?>
+                    <p class="fw-bold"><span class="badge bg-secondary">DOB</span>
+                        <?php foreach($dataHI as $HIDOB){?>
+                        <a href="#" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
+                        <?php
+                        }
+                        ?>
+                    </p>
+                <?php
+                }
+                ?>
+                <?php
+                // Si hay resultados para peliculas subtituladas ejecuta esta sentencia
+                if($resulSUB >= 1){
+                ?>
+                    <p class="fw-bold"><span class="badge bg-secondary">SUB</span>
+                        <?php foreach($dataSUB as $HISUB){?>
+                        <a href="#" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
+                        <?php
+                        }
+                        ?>
+                    </p>
                 <?php
                 }
                 ?>
