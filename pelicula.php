@@ -221,8 +221,12 @@
     </div>
     </div>
 
- <!-- FOOTER--> 
-      <footer>
+ 
+</div>
+</div>
+
+<!-- FOOTER--> 
+<footer>
       <div class="container-fluid">
          <div class="row bg-light">
             <div class="col-md-4 my-3">
@@ -255,7 +259,7 @@
          </div>
       </div>
    </footer>
-</div>
+
 
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
