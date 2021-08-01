@@ -112,7 +112,8 @@
                         <tr>
                           <th>ID</th>
                           <th>ID PROMO</th>
-                          <th>FECHA</th>
+                          <th>FECHA INICIO</th>
+                          <th>FECHA FIN</th>
                           <th>ID ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
@@ -152,8 +153,12 @@
                           </select>
                       </div>
                       <div class="col-md-6 mb-2">
-                          <label class="form-label">Fecha</label>
-                          <input class="form-control input-sm" type="date" id="fecha" required>
+                          <label class="form-label">Fecha inicio</label>
+                          <input class="form-control input-sm" type="date" id="fechaI" required>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                          <label class="form-label">Fecha fin</label>
+                          <input class="form-control input-sm" type="date" id="fechaF" required>
                       </div>
                       <div class="col-md-6 mb-2">
                           <label class="form-label">Estado</label>
