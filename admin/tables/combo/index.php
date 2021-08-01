@@ -61,7 +61,7 @@
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
-                    <a class="dropdown-item rounded fw-ligth active" href="../combos/index.php">Combos</a>
+                    <a class="dropdown-item rounded fw-ligth active" href="../combo/index.php">Combos</a>
                   </div>
                 </div>
               </div>        
