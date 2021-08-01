@@ -6,29 +6,34 @@
     //Recepción de los datos enviados mediante el metodo POST desde js
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
-    $descuento = (isset($_POST['descuento'])) ? $_POST['descuento'] : '';
-    $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+    $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
+    $categoria = (isset($_POST['categoria'])) ? $_POST['categoria'] : '';
+    $precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
+    $imagen = (isset($_POST['imagen'])) ? $_POST['imagen'] : '';
 
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
         case 1: //Añadir un nueva promoción
-            $query = "CALL SP_ADD_PROMO(?,?,?)";
+            $query = "CALL SP_ADD_PROMO(?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $nombre, PDO::PARAM_STR);
-            $statement->bindParam(2, $descuento, PDO::PARAM_STR);
-            $statement->bindParam(3, $estado, PDO::PARAM_INT);
+            $statement->bindParam(2, $descripcion, PDO::PARAM_STR);
+            $statement->bindParam(3, $categoria, PDO::PARAM_INT);
+            $statement->bindParam(4, $precio, PDO::PARAM_STR);
+            $statement->bindParam(5, $imagen, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
         case 2: //Actualizar promoción
-            $query = "CALL SP_UPD_PROMO(?,?,?,?)";
+            $query = "CALL SP_UPD_PROMO(?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $nombre, PDO::PARAM_STR);
-            $statement->bindParam(3, $descuento, PDO::PARAM_STR);
-            $statement->bindParam(4, $estado, PDO::PARAM_INT);
+            $statement->bindParam(3, $descripcion, PDO::PARAM_STR);
+            $statement->bindParam(4, $categoria, PDO::PARAM_INT);
+            $statement->bindParam(5, $precio, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);

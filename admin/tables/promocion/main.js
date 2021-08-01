@@ -19,8 +19,9 @@ $(document).ready(function() {
       "columns":[
        {"data": "ID_PROMO"},
        {"data": "NOMBRE"},
-       {"data": "DESCUENTO"},
-       {"data": "ID_ESTADO"},
+       {"data": "DESCRIPCION"},
+       {"data": "ID_CATEGORIA"},
+       {"data": "PRECIO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -47,13 +48,15 @@ $(document).ready(function() {
    $("#frmPromo").submit(function(e) {
     e.preventDefault(); //Evita que se recargue la pagina
     nombre = $.trim($("#nombre").val());
-    descuento = $.trim($("#descuento").val());
-    estado = $.trim($("#estado").val());
+    descripcion = $.trim($("#descripcion").val());
+    categoria = $.trim($("#categoria").val());
+    precio = $.trim($("#precio").val());
+    imagen = $.trim($("#imagen").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, nombre:nombre, descuento:descuento, estado:estado, opcion:opcion},
+      data: {id:id, nombre:nombre, descripcion:descripcion, categoria:categoria, precio:precio, imagen:imagen, opcion:opcion},
       success: function(data){ // data es de CRUD.php
         tablaPromo.ajax.reload(null,false);
       },
@@ -78,12 +81,14 @@ $(document).ready(function() {
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    descuento = fila.find('td:eq(2)').text();
-    estado = fila.find('td:eq(3)').text();
+    descripcion = fila.find('td:eq(2)').text();
+    categoria = fila.find('td:eq(3)').text();
+    precio = fila.find('td:eq(4)').text();
     
     $("#nombre").val(nombre);
-    $("#descuento").val(descuento);
-    $("#estado").val(estado);
+    $("#descripcion").val(descripcion);
+    $("#categoria").val(categoria);
+    $("#precio").val(precio);
 
     $("#modalPromo").modal("show");
   });

@@ -138,4 +138,17 @@
             echo '<option value="'.$rol['ID_ROL'].'">'.$rol['NOMBRE'].'</option>';
         }
     }
+    
+    function mostrarCategoria(){
+        require_once "config.php";
+        $objeto = new Conexion();
+        $conexion = $objeto->Conectar();
+        $query = "SELECT * FROM CATEGORIA_PROMO";
+        $stm = $conexion->prepare($query);
+        $stm->execute();
+        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+        foreach($data as $categoria){
+            echo '<option value="'.$categoria['ID_CATEGORIA'].'">'.$categoria['NOMBRE'].'</option>';
+        }
+    }
 ?>
