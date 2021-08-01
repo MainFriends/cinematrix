@@ -60,7 +60,8 @@
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
-                    <a class="dropdown-item rounded fw-ligth active" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth active" href="../combos/index.php">Combos</a>
                   </div>
                 </div>
               </div>        
@@ -105,10 +106,10 @@
               Gestión de contenido
             </div>
             <div class="card-body">
-              <button class="btn btn-danger rounded-pill" id="addBoleto"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
+              <button class="btn btn-danger rounded-pill" id="addCombo"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
               <hr>
               <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered" id="tablaBoleto" style="width:100%">
+                <table class="table table-striped table-hover table-bordered" id="tablaCombo" style="width:100%">
                     <thead class="text-center">
                         <tr>
                           <th>ID</th>
@@ -132,7 +133,7 @@
   </div>
 
    <!--Modal Asiento -->
- <div class="modal fade" id="modalBoleto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modalCombo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
@@ -140,11 +141,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="frmBoleto">
+              <form id="frmCombo">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 mb-2">
-                            <label class="form-label">Nombre del boleto</label>
+                            <label class="form-label">Nombre del combo</label>
                             <input class="form-control input-sm" type="text" id="nombre" required>
                         </div>
                         <div class="col-md-7">
@@ -155,6 +156,10 @@
                             <label class="form-label">Precio</label>
                             <input class="form-control input-sm" type="text" id="precio" required>
                         </div>
+                        <div class="col-md-8 mb-3">
+                          <label class="form-label">Imagen URL</label>
+                          <input class="form-control input-sm" type="text" id="imagen">
+                      </div>
                         <div class="modal-footer">
                             <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
                         </div>
@@ -174,7 +179,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <p>¿Esta seguro que desea eliminar este boleto? </p>
+        <p>¿Esta seguro que desea eliminar este combo? </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" id="btnSi" data-bs-dismiss="modal">Sí</button>

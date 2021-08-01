@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
 
     //Inicializamos dataTable
-    var tablaBoleto = $('#tablaBoleto').DataTable({
+    var tablaCombo = $('#tablaCombo').DataTable({
       "ajax":{
         "url": "crud.php",
         "method": 'POST',
@@ -17,7 +17,7 @@ $(document).ready(function() {
         "dataSrc":""
       },
       "columns":[
-       {"data": "ID_BOLETO"},
+       {"data": "ID_COMBO"},
        {"data": "NOMBRE"},
        {"data": "DESCRIPCION"},
        {"data": "PRECIO"},
@@ -44,32 +44,33 @@ $(document).ready(function() {
 
    var fila; //Capturar la fila para editar o borrar registro
 
-   $("#frmBoleto").submit(function(e) {
+   $("#frmCombo").submit(function(e) {
     e.preventDefault(); //Evita que se recargue la pagina
     nombre = $.trim($("#nombre").val());
     descripcion = $.trim($("#descripcion").val());
     precio = $.trim($("#precio").val());
+    imagen = $.trim($("#imagen").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, nombre:nombre, descripcion:descripcion, precio:precio, opcion:opcion},
+      data: {id:id, nombre:nombre, descripcion:descripcion, precio:precio, imagen:imagen, opcion:opcion},
       success: function(data){ // data es de CRUD.php
-        tablaBoleto.ajax.reload(null,false);
+        tablaCombo.ajax.reload(null,false);
       },
       error: function(response){
         console.log(response);
     }
     });
-    $("#modalBoleto").modal("hide");
+    $("#modalCombo").modal("hide");
   });
 
   //Mostramos formulario
-  $("#addBoleto").click(function(){
+  $("#addCombo").click(function(){
     id=null;
     opcion = 1;
-    $("#frmBoleto").trigger("reset");
-    $("#modalBoleto").modal("show");        
+    $("#frmCombo").trigger("reset");
+    $("#modalCombo").modal("show");        
   });
 
   //Boton EDITAR
@@ -85,7 +86,7 @@ $(document).ready(function() {
     $("#descripcion").val(descripcion);
     $("#precio").val(precio);
 
-    $("#modalBoleto").modal("show");
+    $("#modalCombo").modal("show");
   });
 
   //Boton BORRAR
@@ -102,7 +103,7 @@ $(document).ready(function() {
         dataType: "html",
         data: {opcion:opcion, id:id},
         success: function() {
-          tablaBoleto.row(fila.parents('tr')).remove().ajax.reload(null,false); 
+          tablaCombo.row(fila.parents('tr')).remove().ajax.reload(null,false); 
         },
         error: function(response){
           console.log(response);
