@@ -96,20 +96,7 @@
         $stm->execute();
         $data = $stm->fetchAll(PDO::FETCH_ASSOC);
         foreach($data as $idioma){
-            echo '<option value="'.$idioma['ID_IDIOMA'].'">'.$idioma['IDIOMA'].'</option>';
-        }
-    }
-
-    function mostrarSubtitulos(){
-        require_once "config.php";
-        $objeto = new Conexion();
-        $conexion = $objeto->Conectar();
-        $query = "SELECT * FROM SUBTITULO";
-        $stm = $conexion->prepare($query);
-        $stm->execute();
-        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
-        foreach($data as $sub){
-            echo '<option value="'.$sub['ID_SUB'].'">'.$sub['SUBTITULO'].'</option>';
+            echo '<option value="'.$idioma['ID_IDIOMA'].'">'.$idioma['NOMBRE'].'</option>';
         }
     }
 

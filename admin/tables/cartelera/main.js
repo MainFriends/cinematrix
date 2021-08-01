@@ -23,10 +23,8 @@ $(document).ready(function() {
        {"data": "HORA_INICIO"},
        {"data": "HORA_FIN"},
        {"data": "ID_IDIOMA"},
-       {"data": "ID_SUB"},
        {"data": "ID_FORMATO"},
        {"data": "FECHA"},
-       {"data": "PRECIO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -57,15 +55,13 @@ $(document).ready(function() {
     horaInicio = $.trim($("#horaInicio").val());
     horaFin = $.trim($("#horaFin").val());
     idioma = $.trim($("#idioma").val());
-    subtitulo = $.trim($("#subtitulo").val());
     formato = $.trim($("#formato").val());
     fecha = $.trim($("#fecha").val());
-    precio = $.trim($("#precio").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, pelicula:pelicula, sala:sala, horaInicio:horaInicio, horaFin:horaFin, idioma:idioma, subtitulo:subtitulo, formato:formato, fecha:fecha, precio:precio, opcion:opcion},
+      data: {id:id, pelicula:pelicula, sala:sala, horaInicio:horaInicio, horaFin:horaFin, idioma:idioma, formato:formato, fecha:fecha, opcion:opcion},
       success: function(data){ // data es de CRUD.php
         tablaCartelera.ajax.reload(null,false);
       },
@@ -96,20 +92,16 @@ $(document).ready(function() {
     horaInicio = fila.find('td:eq(3)').text();
     horaFin = fila.find('td:eq(4)').text();
     idioma = fila.find('td:eq(5)').text();
-    subtitulo = fila.find('td:eq(6)').text();
-    formato = fila.find('td:eq(7)').text();
-    fecha = fila.find('td:eq(8)').text();
-    precio = fila.find('td:eq(9)').text();
+    formato = fila.find('td:eq(6)').text();
+    fecha = fila.find('td:eq(7)').text();
     
     $("#pelicula").val(pelicula);
     $("#sala").val(sala);
     $("#horaInicio").val(horaInicio);
     $("#horaFin").val(horaFin);
     $("#idioma").val(idioma);
-    $("#subtitulo").val(subtitulo);
     $("#formato").val(formato);
     $("#fecha").val(fecha);
-    $("#precio").val(precio);
 
     $("#modalCartelera").modal("show");
   });
@@ -118,6 +110,7 @@ $(document).ready(function() {
   $(document).on("click", ".btnBorrar", function(){
     fila = $(this).closest("tr");
     id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    pelicula = parseInt(fila.find('td:eq(1)').text());
     opcion = 3; //borrar
     $("#modalEliminar").modal("show");
 
@@ -126,7 +119,7 @@ $(document).ready(function() {
         url: "crud.php",
         type: "POST",
         dataType: "html",
-        data: {opcion:opcion, id:id},
+        data: {opcion:opcion, id:id, pelicula:pelicula},
         success: function() {
           tablaCartelera.row(fila.parents('tr')).remove().ajax.reload(null,false); 
         },

@@ -116,10 +116,8 @@
                           <th>HORA INICIO</th>
                           <th>HORA FIN</th>
                           <th>ID IDIOMA</th>
-                          <th>ID SUBTITULOS</th>
                           <th>ID FORMATO</th>
                           <th>FECHA</th>
-                          <th>PRECIO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>
@@ -183,15 +181,6 @@
                               ?>
                           </select>
                       </div>
-                      <div class="col-md-4 mb-2">
-                          <label class="form-label">Subtitulos</label>
-                          <select id="subtitulo" class="form-select mb-2" required>
-                              <option value="">-</option>
-                              <?php
-                                  mostrarSubtitulos();
-                              ?>
-                          </select>
-                      </div>
                       <div class="col-md-3 mb-2">
                           <label class="form-label">Formato</label>
                           <select id="formato" class="form-select mb-2" required>
@@ -204,10 +193,6 @@
                       <div class="col-md-5 mb-2">
                           <label class="form-label">Fecha</label>
                           <input class="form-control input-sm" type="date" id="fecha" required>
-                      </div>
-                      <div class="col-md-4 mb-2">
-                          <label class="form-label">Precio</label>
-                          <input class="form-control input-sm" type="number" id="precio" required>
                       </div>
                       <div class="modal-footer">
                           <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
