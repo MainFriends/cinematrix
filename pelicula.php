@@ -131,6 +131,10 @@
           </div><!-- FIN Columna descripción pelicula-->
           <!-- Inicio Columna Cartelera-->  
           <div class="col-md-9">
+            <div class="d-grid gap-2 d-md-block my-3">
+              <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled><?php echo $data['CLASIFICACION'] ?></button></abbr>
+              <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $data['DURACION'] ?></button>
+            </div>
             <?php
               foreach($dataDate as $fecha){
                 //Guardar la fecha actual del ciclo   
