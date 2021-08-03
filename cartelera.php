@@ -24,6 +24,8 @@
   $stm = $conexion->prepare($query);
   $stm->execute();
   $hoy = $stm->fetch(PDO::FETCH_ASSOC);
+  //Le damos formato a la fecha que se mostrará en el card
+  $dateConvertToday = utf8_encode(strftime('%a %d/%m/%Y', strtotime($hoy['FECHA'])));
 
   // RECOGER LAS FECHAS DESPUES DE HOY
   $queryf = "SELECT DISTINCT FECHA
@@ -139,15 +141,16 @@
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-dark btn-sm me-1" id="pills-lunesc-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-lunesc" type="button" role="tab" aria-controls="pills-lunesc"
-                      aria-selected="true"><?php echo $hoy['FECHA']?></button>
+                      aria-selected="true"><?php echo ucwords($dateConvertToday)?></button>
                   </li>
                   <?php   
                     foreach($fecha as $fechas){ // GENERAR LAS FECHAS SIGUIENTES
+                      $dateConvert = utf8_encode(strftime('%a %d/%m/%Y', strtotime($fechas['FECHA'])));
                   ?>
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-dark btn-sm me-1" id="pills-<?php echo $fechas['FECHA'] ?>-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-<?php echo $fechas['FECHA'] ?>" type="button" role="tab" aria-controls="pills-<?php echo $fechas['FECHA'] ?>"
-                      aria-selected="false"><?php echo $fechas['FECHA'] ?></button>
+                      aria-selected="false"><?php echo ucwords($dateConvert) ?></button>
                   </li>
                   <?php
                     }
