@@ -6,44 +6,52 @@
     //Recepción de los datos enviados mediante el metodo POST desde js
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $titulo = (isset($_POST['titulo'])) ? $_POST['titulo'] : '';
-    $genero = (isset($_POST['genero'])) ? $_POST['genero'] : '';
-    $clasificacion = (isset($_POST['clasificacion'])) ? $_POST['clasificacion'] : '';
     $sinopsis = (isset($_POST['sinopsis'])) ? $_POST['sinopsis'] : '';
     $duracion = (isset($_POST['duracion'])) ? $_POST['duracion'] : '';
+    $reparto = (isset($_POST['reparto'])) ? $_POST['reparto'] : '';
+    $director = (isset($_POST['director'])) ? $_POST['director'] : '';
     $año = (isset($_POST['año'])) ? $_POST['año'] : '';
-    $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+    $clasificacion = (isset($_POST['clasificacion'])) ? $_POST['clasificacion'] : '';
+    $genero = (isset($_POST['genero'])) ? $_POST['genero'] : '';
     $portada = (isset($_POST['portada'])) ? $_POST['portada'] : '';
+    $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+    
 
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
         case 1: //Añadir una nueva pelicula
-            $query = "CALL SP_ADD_PELICULA(?,?,?,?,?,?,?,?)";
+            $query = "CALL SP_ADD_PELICULA(?,?,?,?,?,?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $titulo, PDO::PARAM_STR);
-            $statement->bindParam(2, $duracion, PDO::PARAM_STR);
-            $statement->bindParam(3, $genero, PDO::PARAM_INT);
-            $statement->bindParam(4, $clasificacion, PDO::PARAM_INT);
-            $statement->bindParam(5, $año, PDO::PARAM_STR);
-            $statement->bindParam(6, $sinopsis, PDO::PARAM_STR);
-            $statement->bindParam(7, $portada, PDO::PARAM_STR);
-            $statement->bindParam(8, $estado, PDO::PARAM_INT);
+            $statement->bindParam(2, $sinopsis, PDO::PARAM_STR);
+            $statement->bindParam(3, $duracion, PDO::PARAM_INT);
+            $statement->bindParam(4, $reparto, PDO::PARAM_STR);
+            $statement->bindParam(5, $director, PDO::PARAM_STR);
+            $statement->bindParam(6, $año, PDO::PARAM_STR);
+            $statement->bindParam(7, $clasificacion, PDO::PARAM_INT);
+            $statement->bindParam(8, $genero, PDO::PARAM_INT);
+            $statement->bindParam(9, $portada, PDO::PARAM_STR);
+            $statement->bindParam(10, $estado, PDO::PARAM_INT);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
         case 2: //Actualizar pelicula
-            $query = "CALL SP_UPD_PELICULA(?,?,?,?,?,?,?,?)";
+            $query = "CALL SP_UPD_PELICULA(?,?,?,?,?,?,?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $titulo, PDO::PARAM_STR);
-            $statement->bindParam(3, $duracion, PDO::PARAM_STR);
-            $statement->bindParam(4, $genero, PDO::PARAM_INT);
-            $statement->bindParam(5, $clasificacion, PDO::PARAM_INT);
-            $statement->bindParam(6, $año, PDO::PARAM_STR);
-            $statement->bindParam(7, $sinopsis, PDO::PARAM_STR);
-            $statement->bindParam(8, $estado, PDO::PARAM_INT);
+            $statement->bindParam(3, $sinopsis, PDO::PARAM_STR);
+            $statement->bindParam(4, $duracion, PDO::PARAM_INT);
+            $statement->bindParam(5, $reparto, PDO::PARAM_STR);
+            $statement->bindParam(6, $director, PDO::PARAM_STR);
+            $statement->bindParam(7, $año, PDO::PARAM_STR);
+            $statement->bindParam(8, $clasificacion, PDO::PARAM_INT);
+            $statement->bindParam(9, $genero, PDO::PARAM_INT);
+            $statement->bindParam(10, $portada, PDO::PARAM_STR);
+            $statement->bindParam(11, $estado, PDO::PARAM_INT);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -54,7 +62,7 @@
             $statement->execute();
             break;
         case 4: //Insertar registros
-            $query = "SELECT ID_PELICULA, TITULO, DURACION, ID_GENERO, ID_CLASIFICACION, AÑO, substring(SINOPSIS, 1, 50) SINOPSIS, PORTADA, ID_ESTADO
+            $query = "SELECT ID_PELICULA, TITULO, REPARTO, DIRECTOR, DURACION, ID_GENERO, ID_CLASIFICACION, AÑO, substring(SINOPSIS, 1, 50) SINOPSIS, PORTADA, ID_ESTADO
              FROM PELICULA";
             $statement = $conexion->prepare($query);
             $statement->execute();

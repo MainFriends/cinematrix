@@ -3,7 +3,14 @@
     require_once 'inc/session.php';
     $_SESSION['pag'] = 'login';
     session_start();
-    session();    
+    session(); 
+
+    //Error de logueo
+    if(isset($_GET['error'])){
+       echo "<div class='alert alert-danger text-center'>
+            <strong>¡Ups!</strong> El correo o la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.
+            </div>";
+    }   
 ?>
 
 <!DOCTYPE html>

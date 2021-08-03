@@ -2,7 +2,7 @@
     function session(){
         if(isset($_SESSION['rol'])){ //Valido si ya hay una sesión abierta
             if($_SESSION['rol'] == 1){ //Administrador
-                header("location:admin/tables/pelicula/index.php");
+                header("location:admin/tables/usuarios/index.php");
             }else{ //Cliente
                 header("location:index.php");
             }
@@ -96,20 +96,7 @@
         $stm->execute();
         $data = $stm->fetchAll(PDO::FETCH_ASSOC);
         foreach($data as $idioma){
-            echo '<option value="'.$idioma['ID_IDIOMA'].'">'.$idioma['IDIOMA'].'</option>';
-        }
-    }
-
-    function mostrarSubtitulos(){
-        require_once "config.php";
-        $objeto = new Conexion();
-        $conexion = $objeto->Conectar();
-        $query = "SELECT * FROM SUBTITULO";
-        $stm = $conexion->prepare($query);
-        $stm->execute();
-        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
-        foreach($data as $sub){
-            echo '<option value="'.$sub['ID_SUB'].'">'.$sub['SUBTITULO'].'</option>';
+            echo '<option value="'.$idioma['ID_IDIOMA'].'">'.$idioma['NOMBRE'].'</option>';
         }
     }
 
@@ -149,6 +136,19 @@
         $data = $stm->fetchAll(PDO::FETCH_ASSOC);
         foreach($data as $rol){
             echo '<option value="'.$rol['ID_ROL'].'">'.$rol['NOMBRE'].'</option>';
+        }
+    }
+    
+    function mostrarCategoria(){
+        require_once "config.php";
+        $objeto = new Conexion();
+        $conexion = $objeto->Conectar();
+        $query = "SELECT * FROM CATEGORIA_PROMO";
+        $stm = $conexion->prepare($query);
+        $stm->execute();
+        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+        foreach($data as $categoria){
+            echo '<option value="'.$categoria['ID_CATEGORIA'].'">'.$categoria['NOMBRE'].'</option>';
         }
     }
 ?>

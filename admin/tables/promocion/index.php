@@ -1,6 +1,7 @@
 <?php
   session_start();
   $userSession = $_SESSION['usuario'];
+  $_SESSION['pag'] = 'admin';
   require_once "../../../inc/functions.php";
 ?>
 <!DOCTYPE html>
@@ -59,6 +60,8 @@
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth active" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../combo/index.php">Combos</a>
                   </div>
                 </div>
               </div>        
@@ -111,8 +114,9 @@
                         <tr>
                           <th>ID</th>
                           <th>NOMBRE</th>
-                          <th>DESCUENTO</th>
-                          <th>ID ESTADO</th>
+                          <th>DESCRIPCION</th>
+                          <th>ID_CATEGORIA</th>
+                          <th>PRECIO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>
@@ -131,7 +135,7 @@
 
    <!--Modal promocion -->
  <div class="modal fade" id="modalPromo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Promoción</h5>
@@ -141,22 +145,30 @@
               <form id="frmPromo">
                 <div class="container">
                     <div class="row">
-                      <div class="col-md-8">
+                      <div class="col-md-4">
                           <label class="form-label">Nombre de la promoción</label>
                           <input class="form-control input-sm" type="text" id="nombre" required>
                       </div>
-                      <div class="col-md-4 mb-2">
-                          <label class="form-label">Descuento</label>
-                          <input class="form-control input-sm" type="text" id="descuento" required>
+                      <div class="col-md-8 mb-2">
+                          <label class="form-label">Descripción</label>
+                          <textarea class="form-control" id="descripcion" rows="2" required></textarea>
                       </div>
-                      <div class="col-md-6 mb-2">
-                          <label class="form-label">Estado</label>
-                          <select id="estado" class="form-select mb-2" required>
+                      <div class="col-md-4 mb-2">
+                          <label class="form-label">Categoria</label>
+                          <select id="categoria" class="form-select mb-2" required>
                               <option value="">-</option>
                               <?php
-                                  mostrarEstados();
+                                  mostrarCategoria();
                               ?>
                           </select>
+                      </div>
+                      <div class="col-md-4 mb-2">
+                          <label class="form-label">Precio</label>
+                          <input class="form-control input-sm" type="text" id="precio" required>
+                      </div>
+                      <div class="col-md-4 mb-2">
+                          <label class="form-label">Imagen URL</label>
+                          <input class="form-control input-sm" type="text" id="imagen">
                       </div>
                       <div class="modal-footer">
                           <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>

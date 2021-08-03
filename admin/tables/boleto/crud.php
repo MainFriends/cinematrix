@@ -7,44 +7,39 @@
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
     $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
-    $categoria = (isset($_POST['categoria'])) ? $_POST['categoria'] : '';
     $precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
-    $imagen = (isset($_POST['imagen'])) ? $_POST['imagen'] : '';
 
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
-        case 1: //Añadir un nueva promoción
-            $query = "CALL SP_ADD_PROMO(?,?,?,?,?)";
+        case 1: //Añadir un nuevo boleto
+            $query = "CALL SP_ADD_BOLETO(?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $nombre, PDO::PARAM_STR);
             $statement->bindParam(2, $descripcion, PDO::PARAM_STR);
-            $statement->bindParam(3, $categoria, PDO::PARAM_INT);
-            $statement->bindParam(4, $precio, PDO::PARAM_STR);
-            $statement->bindParam(5, $imagen, PDO::PARAM_STR);
+            $statement->bindParam(3, $precio, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
-        case 2: //Actualizar promoción
-            $query = "CALL SP_UPD_PROMO(?,?,?,?,?)";
+        case 2: //Actualizar boleto
+            $query = "CALL SP_UPD_BOLETO(?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $nombre, PDO::PARAM_STR);
             $statement->bindParam(3, $descripcion, PDO::PARAM_STR);
-            $statement->bindParam(4, $categoria, PDO::PARAM_INT);
-            $statement->bindParam(5, $precio, PDO::PARAM_STR);
+            $statement->bindParam(4, $precio, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
-        case 3: //Eliminar promoción
-            $query = "DELETE FROM PROMOCION WHERE ID_PROMO = '$id'";
+        case 3: //Eliminar boleto
+            $query = "DELETE FROM BOLETO WHERE ID_BOLETO = '$id'";
             $statement = $conexion->prepare($query);
             $statement->execute();
             break;
         case 4: //Insertar registros
-            $query = "SELECT * FROM PROMOCION";
+            $query = "SELECT * FROM BOLETO";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data

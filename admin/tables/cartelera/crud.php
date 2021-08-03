@@ -10,32 +10,28 @@
     $horaInicio = (isset($_POST['horaInicio'])) ? $_POST['horaInicio'] : '';
     $horaFin = (isset($_POST['horaFin'])) ? $_POST['horaFin'] : '';
     $idioma = (isset($_POST['idioma'])) ? $_POST['idioma'] : '';
-    $subtitulo = (isset($_POST['subtitulo'])) ? $_POST['subtitulo'] : '';
     $formato = (isset($_POST['formato'])) ? $_POST['formato'] : '';
     $fecha = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
-    $precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
 
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
         case 1: //Añadir una nueva cartelera
-            $query = "CALL SP_ADD_CARTELERA(?,?,?,?,?,?,?,?,?)";
+            $query = "CALL SP_ADD_CARTELERA(?,?,?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $pelicula, PDO::PARAM_INT);
             $statement->bindParam(2, $sala, PDO::PARAM_INT);
             $statement->bindParam(3, $horaInicio, PDO::PARAM_STR);
             $statement->bindParam(4, $horaFin, PDO::PARAM_STR);
             $statement->bindParam(5, $idioma, PDO::PARAM_INT);
-            $statement->bindParam(6, $subtitulo, PDO::PARAM_INT);
-            $statement->bindParam(7, $formato, PDO::PARAM_INT);
-            $statement->bindParam(8, $fecha, PDO::PARAM_STR);
-            $statement->bindParam(9, $precio, PDO::PARAM_INT);
+            $statement->bindParam(6, $formato, PDO::PARAM_INT);
+            $statement->bindParam(7, $fecha, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
         case 2: //Actualizar cartelera
-            $query = "CALL SP_UPD_CARTELERA(?,?,?,?,?,?,?,?,?,?)";
+            $query = "CALL SP_UPD_CARTELERA(?,?,?,?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $pelicula, PDO::PARAM_INT);
@@ -43,10 +39,8 @@
             $statement->bindParam(4, $horaInicio, PDO::PARAM_STR);
             $statement->bindParam(5, $horaFin, PDO::PARAM_STR);
             $statement->bindParam(6, $idioma, PDO::PARAM_INT);
-            $statement->bindParam(7, $subtitulo, PDO::PARAM_INT);
-            $statement->bindParam(8, $formato, PDO::PARAM_INT);
-            $statement->bindParam(9, $fecha, PDO::PARAM_STR);
-            $statement->bindParam(10, $precio, PDO::PARAM_INT);
+            $statement->bindParam(7, $formato, PDO::PARAM_INT);
+            $statement->bindParam(8, $fecha, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -55,6 +49,11 @@
             $query = "DELETE FROM CARTELERA WHERE ID_CARTELERA = '$id'";
             $statement = $conexion->prepare($query);
             $statement->execute();
+
+            //Quitar el estado de la pelicula en cartelera
+            $queryD = "UPDATE PELICULA SET ID_ESTADO = 1 WHERE ID_PELICULA = '$pelicula'";
+            $stmt = $conexion->prepare($queryD);
+            $stmt->execute();
             break;
         case 4: //Insertar registros
             $query = "SELECT * FROM CARTELERA";

@@ -1,6 +1,7 @@
 <?php
   session_start();
   $userSession = $_SESSION['usuario'];
+  $_SESSION['pag'] = 'admin';
   require_once "../../../inc/functions.php";
 ?>
 <!DOCTYPE html>
@@ -59,6 +60,8 @@
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../combo/index.php">Combos</a>
                   </div>
                 </div>
               </div>        
@@ -113,6 +116,8 @@
                           <th>TITULO</th>
                           <th>SINOPSIS</th>
                           <th>DURACION</th>
+                          <th>REPARTO</th>
+                          <th>DIRECTOR</th>
                           <th>AÑO</th>
                           <th>ID GENERO</th>
                           <th>ID CLASIFICACION</th>
@@ -170,6 +175,14 @@
                         <div class="col-md-9 mb-2">
                             <label class="form-input">Sinopsis</label>
                             <textarea class="form-control" id="sinopsis" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="form-input">Reparto</label>
+                            <input class="form-control input-sm" type="text" id="reparto">
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="form-input">Director</label>
+                            <input class="form-control input-sm" type="text" id="director">
                         </div>
                         <div class="col-md-4 mb-2">
                             <label class="form-input">Duración</label>

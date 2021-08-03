@@ -2,8 +2,19 @@
    session_start();
    if(isset($_SESSION['usuario'])){
       $userSession = $_SESSION['usuario'];
+      $userApellido = $_SESSION['apellido'];
+      $userCorreo = $_SESSION['correo'];
+      $userCiudad = $_SESSION['ciudad'];
+      $userPais = $_SESSION['pais'];
+      $userDate = $_SESSION['date'];
+      $userId = $_SESSION['id_usuario'];
    }
    require_once "inc/functions.php";
+   require_once 'inc/editarPerfil.php';
+   $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $foto = $stm->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,15 +23,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vista general de la cuenta - Cinematrix</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <title>Mi Perfil - Cinematrix</title>
   <!-- CSS de la pagina-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style-account.css">
   <!-- Iconos -->
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-  <!-- Fuente -->
-  <link href = "https: //fonts.googleapis.com/css2? family = Poppins: wght @ 100 & display = swap "rel =" stylesheet ">
   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
+  <!-- Fuente -->
 </head>
 
 <body>
@@ -90,9 +99,8 @@
       <div class="row bg">
         <div class="col-4 bg-dark bou rounded-start">
           <div class="text-center my-3">
-            <img
-              src="https://scontent.ftgu3-1.fna.fbcdn.net/v/t1.6435-9/126927505_3336886819757413_731241350087965538_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5-mg3O8KBTYAX_M7HmA&_nc_ht=scontent.ftgu3-1.fna&oh=6f9cd094ac640db775f2f9007e0d913b&oe=60FD1E94"
-              width="180" class="rounded-circle" alt="...">
+            <?php 
+              echo '<img width="180" class="rounded-circle" alt="..." src="data:image/jpeg;base64,'.base64_encode($foto['FOTO_PERFIL']) .' "/>';?>
           </div>
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
@@ -100,7 +108,7 @@
                 class="far fa-eye ">  </i>  Vista general de la cuenta</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list"
               data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"
-              ><i class="fas fa-user-edit"></i>   Editar perfil</a>
+              ><i class="fas fa-user-edit btnEditarP"></i>   Editar perfil</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-contraseña-list"
               data-bs-toggle="list" href="#list-contraseña" role="tab" aria-controls="list-contraseña"><i
                 class="fas fa-user-lock"></i> Cambiar contraseña</a>
@@ -111,109 +119,117 @@
         </div>
         <div class="col-8 rounded-end">
           <div class="my-5 mx-3">
-
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                 <h1 class="fw-bold my-3 md-2">PERFIL DE USUARIO</h1>
                 <h2 class="fw-bold my-5"></h2>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Nombre de usuario</p>
+                    <p class="fw-lighter">Nombre de usuario</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold" >Josue Maradiaga</p>
+                    <p class="fw-bold" ><?php echo "$userSession $userApellido" ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom ">
                   <div class="col-md-6 my-2 ">
-                      <p>Email </p>
+                      <p class="fw-lighter">Email</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold">josue@hotmail.com</p>
+                    <p class="fw-bold"><?php echo "$userCorreo" ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Fecha de nacimiento</p>
+                    <p class="fw-lighter">Fecha de nacimiento</p>
                   </div>
                   <div class="col-md-6 my-2 }">
-                    <p class="fw-bold">12 de febrero de 1998</p>
+                    <p class="fw-bold"><?php echo $userDate ?></p>
                   </div>  
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p>Pais</p>
+                    <p class="fw-lighter">Pais</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold"> Honduras</p>
+                    <p class="fw-bold"><?php echo $userPais ?></p>
                   </div>
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md-6 my-2">
-                    <p >Ciudad</p>
+                    <p class="fw-lighter">Ciudad</p>
                   </div>
                   <div class="col-md-6 my-2">
-                    <p class="fw-bold">Tegucigalpa</p>
+                    <p class="fw-bold"><?php echo $userCiudad ?></p>
                   </div>
                 </div>
               </div>
               <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                <form>
-                  <h1 class="fw-bold my-5">DESCRIPCION DE TU CUENTA</h1>
-                  <div class="my-3 mb-3">
-                    <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <form method="POST" enctype="multipart/form-data">
+                  <h1 class="fw-bold my-5">DESCRIPCION DE LA CUENTA</h1>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="">
+                        <label for="exampleInputEmail1" class="form-label fw-bold">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" value="<?php echo $userSession ?>" aria-describedby="emailHelp">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="">
+                        <label for="exampleInputEmail1" class="form-label fw-bold">Apellido</label>
+                        <input type="text" name="apellido" class="form-control" value="<?php echo $userApellido ?>" aria-describedby="emailHelp">
+                      </div>
+                    </div>
                   </div>
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Correo electrónico</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="correo" class="form-control" value="<?php echo $userCorreo?>" aria-describedby="emailHelp">
                   </div>
-                  <div class="my-3 mb-3">
-                    <label class="fw-bold" for="datetime ">Fecha de nacimiento</label>
-                    <input type="date" class=" form-control my-3">
-                  </div>
-                  <class class="my-3 mb-3 fw-bold">Cambiar foto de perfil
-                    <input type="file" class="form-control my-2">
-                </class>
-                  
-                  
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Ciudad</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" name="ciudad" value="<?php echo $userCiudad?>" class="form-control" aria-describedby="emailHelp">
                   </div>
                   <div class="my-3 mb-3">
                     <label for="exampleInputEmail1" class="form-label fw-bold">Pais</label>
-                    <input type="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <select name="pais" id="inputCountry" class="form-select" required>
+                    <option value="102">Honduras</option>
+                    <?php
+                        // Llenar la lista de opciones con paises de la DB
+                        registroPais();
+                    ?>
+                    </select>
                   </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con las politicas de registro
-                      que
-                      corresponden al servicio de Cinematrix</label>
-                   </div>
-                  <button type="submit" class="btn btn-ligth btn btn-outline-primary">Guardar perfil</button>
+                  <div class="col-md-6 my-3 mb-3">
+                    <label class="form-label fw-bold">Cambiar foto de perfil</label>
+                    <input type="file" name="foto" class="form-control">
+                  </div>
+                  <div class="text-start">
+                  <button type="submit" name="editar" class="btn btn-primary">Guardar perfil</button>
+                  </div>
+                  
                 </form>
               </div>
 
                  <div class="tab-pane fade" id="list-contraseña" role="tabpanel" aria-labelledby="list-contraseña-list">
                     <!--CUERPO DE CONTRASE;A-->
                     <h1 class="fw-bold my-2">CAMBIA TU CONTRASEÑA</h1>
-                    <form>
+                    <form method="POST">
                       <div class="form-group fw-bold my-4" >
                         <label for="formGroupExampleInput">Contraseña actual</label>
-                        <input type="text" class="form-control  p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
+                        <input type="password" name="pass" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput">
                       </div>
                       <div class="my-4  form-group fw-bold ">
                         <label for="formGroupExampleInput2">Nueva contraseña</label>
-                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput2" placeholder=>
+                        <input type="password" id="pass1" class="form-control p-2 mb-2 bg-body rounded">
                       </div>
                       <div class="form-group fw-bold">
                         <label for="formGroupExampleInput">Confirmar nueva contraseña</label>
-                        <input type="text" class="form-control p-2 mb-2 bg-body rounded" id="formGroupExampleInput" placeholder=>
-                      </div> 
+                        <input type="password" id="pass2" name="newPass" class="form-control p-2 mb-2 bg-body rounded">
+                      </div>
+                      <div id="msg"></div>
                       <div class=" mx-auto my-4">
-                        <button type="button" class="btn btn-outline-primary">Establecer nueva contraseña</button>
-                         <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                        <button type="submit" id="newPass" name="changePass" class="btn btn-primary">Establecer nueva contraseña</button>
+                        <a href="account.php" class="btn btn-danger">Cancelar</a>
                       </div>
                     </form>
                   </div>
@@ -273,6 +289,7 @@
     </div>
   </footer>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/validarPass.js"></script>
 </body>
-
 </html>
