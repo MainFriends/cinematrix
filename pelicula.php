@@ -23,7 +23,8 @@
         //Query fecha para generar la card
         $queryDate = "SELECT DISTINCT  FECHA FROM CARTELERA
         WHERE ID_PELICULA = '$id'
-        AND FECHA >= CURDATE()";
+        AND FECHA >= CURDATE()
+        ORDER BY FECHA";
         $stm = $conexion->prepare($queryDate);
         $stm->execute();
         $dataDate = $stm->fetchAll(PDO::FETCH_ASSOC);

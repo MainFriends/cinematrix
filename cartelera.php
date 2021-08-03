@@ -1,3 +1,53 @@
+<?php 
+  setlocale(LC_TIME, 'Spanish');      
+  session_start();
+  require_once 'inc/session.php';
+  $_SESSION['pag'] = 'pelicula';
+  if(isset($_SESSION['usuario'])){
+      $userSession = $_SESSION['usuario'];
+  }
+
+  // FECHA 1
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+  FROM PELICULA, CLASIFICACION, CARTELERA
+  WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
+  AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+  AND FECHA = '2021/08/03'";
+  $stm = $conexion->prepare($query);
+  $stm->execute();
+  $data = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+  // FECHA 2
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+  FROM PELICULA, CLASIFICACION, CARTELERA
+  WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
+  AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+  AND FECHA = '2021/08/03'";
+  $stm = $conexion->prepare($query);
+  $stm->execute();
+  $data2 = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+  // FECHA 3
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+  FROM PELICULA, CLASIFICACION, CARTELERA
+  WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
+  AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+  AND FECHA = '2021/08/03'";
+  $stm = $conexion->prepare($query);
+  $stm->execute();
+  $data3 = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+  // FECHA 4
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+  FROM PELICULA, CLASIFICACION, CARTELERA
+  WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
+  AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+  AND FECHA = '2021/08/03'";
+  $stm = $conexion->prepare($query);
+  $stm->execute();
+  $data4 = $stm->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +55,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Carteleras - Cinematrix</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -14,7 +64,7 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <img class="me-1 mb-2" src="/assets/img/logos/cinematrix.svg" width="70" alt="">
+        <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
         <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,124 +157,108 @@
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-secondary me-1" id="pills-lunesc-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-lunesc" type="button" role="tab" aria-controls="pills-lunesc"
-                      aria-selected="true">LUN. 26.7.2021</button>
+                      aria-selected="true">JUE. 05/08/2021</button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-secondary me-1" id="pills-martesc-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-martesc" type="button" role="tab" aria-controls="pills-martesc"
-                      aria-selected="false">MAR. 27.7.2021.</button>
+                      aria-selected="false">VIE. 06/08/2021</button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-secondary me-1" id="pills-miercolesc-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-miercolesc" type="button" role="tab" aria-controls="pills-miercolesc"
-                      aria-selected="false">MIÉ. 28.7.2021</button>
+                      aria-selected="false">SAB. 07/08/2021</button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="btn btn-outline-secondary me-1" id="pills-juevesc-tab" data-bs-toggle="pill"
                       data-bs-target="#pills-juevesc" type="button" role="tab" aria-controls="pills-juevesc"
-                      aria-selected="true">JUE. 29.7.2021</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="btn btn-outline-secondary me-1" id="pills-viernesc-tab" data-bs-toggle="pill"
-                      data-bs-target="#pills-viernesc" type="button" role="tab" aria-controls="pills-viernesc"
-                      aria-selected="false">VIE. 30.7.2021.</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="btn btn-outline-secondary me-1" id="pills-sabc-tab" data-bs-toggle="pill"
-                      data-bs-target="#pills-sabc" type="button" role="tab" aria-controls="pills-sabc"
-                      aria-selected="false">SÁB. 31.7.2021</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="btn btn-outline-secondary me-1" id="pills-domc-tab" data-bs-toggle="pill"
-                      data-bs-target="#pills-domc" type="button" role="tab" aria-controls="pills-domc"
-                      aria-selected="false">DOM. 01.8.2021</button>
+                      aria-selected="false">DOM. 08/08/2021</button>
                   </li>
                 </ul>
 
 
-                <div class="tab-pane fade my-4" id="pills-lunesc" role="tabpanel" aria-labelledby="pills-lunesc-tab">
-                  
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="card mb-3 border-0">
-                        <div class="row g-0">
-                          <div class="col-md-4">
-                            <img src="https://static.cinepolis.com/resources/mx/movies/posters/414x603/36299-264342-20210624094914.jpg" class="rounded mx-auto d-block" width="50%"
-                              alt="...">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">Black Widow</h5>
-                              <div class="d-grid gap-2 d-md-block my-3">
-                                <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                              </div>
-                              <!--tarjeta interna-->
-                              <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                <div class="card-header">
-                                  <div class="d-grid gap-2 d-md-block">
-                                    <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                    <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                  </div>
-                                </div>
-                                <div class="card-body">
-                                  <h6>
-                                    <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                    </p>
-                                  </h6>
-                                  <button type="button" class="btn btn-outline-danger">16:10</button>
-                                </div>
-                              </div>
-    
-    
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--segunda tarjeta-->
-                    <div class=" my-4 col-md-12">
-                      <div class="card mb-3 border-0">
-                        <div class="row g-0">
-                          <div class="col-md-4">
-                            <img src="https://www.ecartelera.com/carteles/13100/13120/002_p.jpg" class="rounded mx-auto d-block" width="50%"
-                              alt="...">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">Space Jam</h5>
-                              <div class="d-grid gap-2 d-md-block my-3">
-                                <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                              </div>
-                              <!--tarjeta interna-->
-                              <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                <div class="card-header">
-                                  <div class="d-grid gap-2 d-md-block">
-                                    <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                    <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                  </div>
-                                </div>
-                                <div class="card-body">
-                                  <h6>
-                                    <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                    </p>
-                                  </h6>
-                                  <button type="button" class="btn btn-outline-danger">16:10</button>
-                                </div>
-                              </div>
-    
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--final de la tarjeta-->
-    
-                  </div>
+                <div class="tab-pane fade show my-4 active" id="pills-lunesc" role="tabpanel" aria-labelledby="pills-lunesc-tab">
+                    <?php
+                      foreach($data as $datos){
+                        $id = $datos['ID_PELICULA'];
 
-                </div>
-                <div class="tab-pane fade show active my-4" id="pills-martesc" role="tabpanel"
+                        // DOBLADA AL ESPAÑOL
+                        $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        WHERE ID_PELICULA = '$id'
+                        AND FECHA = '2021/08/03'
+                        AND ID_IDIOMA = 1";
+                        $stm = $conexion->prepare($queryDOB);
+                        $stm->execute();
+                        $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
+                        $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
+
+                        // ORIGINAL/SUBTITULADA
+                        $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        WHERE ID_PELICULA = '$id'
+                        AND FECHA = '2021/08/03'
+                        AND ID_IDIOMA = 2";
+                        $stm = $conexion->prepare($querySUB);
+                        $stm->execute();
+                        $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
+                        $resulSUB = $stm->rowCount();
+                    ?>
+                  <div class="row my-3">
+                    <div class="col-md-4">
+                      <img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="50%"
+                        alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="card-title"><?php echo $datos['TITULO']?></h5>
+                      <div class="d-grid gap-2 d-md-block my-3">
+                          <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
+                          <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['DURACION']?></button>
+                      </div>
+                        <!--TARJETA-->
+                        <div class="card my-2">
+                          <div class="card-header fw-bold">
+                            Multiplaza Tegucigalpa
+                          </div>
+                          <div class="card-body">
+                            <p class="card-text fw-lighter">*Los horarios aquí expuestos representan el inicio de cada función</p>
+                        
+                            <?php
+                            // Si hay resultados para peliculas dobladas ejecuta esta sentencia
+                            if($resulDOB >= 1){
+                            ?>
+                                <p class="fw-bold"><span class="badge bg-secondary">DOB</span>
+                                    <?php foreach($dataHI as $HIDOB){?>
+                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
+                                    <?php
+                                    }
+                                    ?>
+                                </p>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            // Si hay resultados para peliculas subtituladas ejecuta esta sentencia
+                            if($resulSUB >= 1){
+                            ?>
+                                <p class="fw-bold"><span class="badge bg-secondary">SUB</span>
+                                    <?php foreach($dataSUB as $HISUB){?>
+                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
+                                    <?php
+                                    }
+                                    ?>
+                                </p>
+                            <?php
+                            }
+                            ?>
+                          </div>
+                        </div>
+                    </div> <!-- FIN COL-8 -->
+                  
+                  </div> <!-- FIN ROW -->
+                    <?php
+                      }
+                    ?>
+                </div> <!-- FIN TAB -->
+                <div class="tab-pane fade my-4" id="pills-martesc" role="tabpanel"
                   aria-labelledby="pills-martesc-tab">
 
                   <div class="row">
@@ -265,45 +299,6 @@
                         </div>
                       </div>
                     </div>
-                    <!--segunda tarjeta-->
-                    <div class=" my-4 col-md-12">
-                      <div class="card mb-3 border-0">
-                        <div class="row g-0">
-                          <div class="col-md-4">
-                            <img src="https://www.ecartelera.com/carteles/13100/13120/002_p.jpg" class="rounded mx-auto d-block" width="50%"
-                              alt="...">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">Space Jam</h5>
-                              <div class="d-grid gap-2 d-md-block my-3">
-                                <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                              </div>
-                              <!--tarjeta interna-->
-                              <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                <div class="card-header">
-                                  <div class="d-grid gap-2 d-md-block">
-                                    <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                    <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                  </div>
-                                </div>
-                                <div class="card-body">
-                                  <h6>
-                                    <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                    </p>
-                                  </h6>
-                                  <button type="button" class="btn btn-outline-danger">14:10</button>
-                                </div>
-                              </div>
-    
-    
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--final de la tarjeta-->
     
                   </div>
                 
@@ -462,257 +457,6 @@
                                     </h6>
                                     <button type="button" class="btn btn-outline-danger">14:10</button>
                                     <button type="button" class="btn btn-outline-danger">16:10</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--final de la tarjeta-->
-      
-                    </div>
-
-                  </div>
-                  <div class="tab-pane fade my-4" id="pills-viernesc" role="tabpanel" aria-labelledby="pills-viernesc-tab">
-                    
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://static.cinepolis.com/resources/mx/movies/posters/414x603/36299-264342-20210624094914.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Black Widow</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">17:00</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--segunda tarjeta-->
-                      <div class=" my-4 col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://www.ecartelera.com/carteles/13100/13120/002_p.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Space Jam</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">15:00</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--final de la tarjeta-->
-      
-                    </div>
-                  
-                  </div>
-                  <div class="tab-pane fade my-4" id="pills-sabc" role="tabpanel" aria-labelledby="pills-sabc-tab">
-
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://static.cinepolis.com/resources/mx/movies/posters/414x603/36299-264342-20210624094914.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Black Widow</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">16:10</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--segunda tarjeta-->
-                      <div class=" my-4 col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://www.ecartelera.com/carteles/13100/13120/002_p.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Space Jam</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">16:10</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--final de la tarjeta-->
-      
-                    </div>
-
-                  </div>
-                  <div class="tab-pane fade my-4" id="pills-domc" role="tabpanel" aria-labelledby="pills-domc-tab">
-
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://static.cinepolis.com/resources/mx/movies/posters/414x603/36299-264342-20210624094914.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Black Widow</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">13:00</button>
-                                    <button type="button" class="btn btn-outline-danger">15:00</button>
-                                  </div>
-                                </div>
-      
-      
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--segunda tarjeta-->
-                      <div class=" my-4 col-md-12">
-                        <div class="card mb-3 border-0">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img src="https://www.ecartelera.com/carteles/13100/13120/002_p.jpg" class="rounded mx-auto d-block" width="50%"
-                                alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Space Jam</h5>
-                                <div class="d-grid gap-2 d-md-block my-3">
-                                  <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled>B12</button></abbr>
-                                  <button class="btn btn-outline-secondary btn-sm" disabled>135 min</button>
-                                </div>
-                                <!--tarjeta interna-->
-                                <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
-                                  <div class="card-header">
-                                    <div class="d-grid gap-2 d-md-block">
-                                      <button class="btn btn-secondary btn-sm" disabled>2D</button>
-                                      <button class="btn btn-secondary btn-sm" disabled>Sub</button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <h6>
-                                      <p class="card-text">*Los horarios aquí expuestos representan el inicio de cada función.
-                                      </p>
-                                    </h6>
-                                    <button type="button" class="btn btn-outline-danger">15:00</button>
-                                    <button type="button" class="btn btn-outline-danger">17:00</button>
                                   </div>
                                 </div>
       
