@@ -12,7 +12,7 @@
    $stm->execute();
    $data = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-   $queryP = "SELECT * FROM PELICULA where id_estado = 7";
+   $queryP = "SELECT * FROM PELICULA where id_estado = 6";
    $stm = $conexion->prepare($queryP);
    $stm->execute();
    $dataP = $stm->fetchAll(PDO::FETCH_ASSOC);

@@ -11,7 +11,7 @@
         $id = $_GET['id'];
 
         //CONSULTA PELICULA
-        $query = "SELECT TITULO, DURACION, GENERO, CLASIFICACION, SINOPSIS, PORTADA
+        $query = "SELECT *
         FROM PELICULA, GENERO, CLASIFICACION
         WHERE PELICULA.ID_GENERO = GENERO.ID_GENERO
         AND PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
@@ -112,13 +112,21 @@
             <div class="row">
                 <img src="<?php echo $data['PORTADA'] ?>" alt="">
             </div>
-            <div class="row py-3">
+            <div class="row mt-3">
                 <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
                 <p><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
                 <h5 class="border-bottom text-danger">SINOPSIS </h5>
                 <p><?php echo $data['SINOPSIS'] ?></p>
+            </div>
+            <div class="row">
+                <h5 class="border-bottom text-danger">REPARTO</h5>
+                <p><?php echo $data['REPARTO'] ?></p>
+            </div>
+            <div class="row">
+                <h5 class="border-bottom text-danger">DIRECTOR</h5>
+                <p><?php echo $data['DIRECTOR'] ?></p>
             </div>
           </div><!-- FIN Columna descripción pelicula-->
           <!-- Inicio Columna Cartelera-->  
@@ -141,11 +149,11 @@
                 $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
                 $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
 
-                // SUBTITULADA AL ESPAÑOL
+                // ORIGINAL/SUBTITULADA
                 $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                 WHERE ID_PELICULA = '$id'
                 AND FECHA = '$date'
-                AND ID_SUB = 1";
+                AND ID_IDIOMA = 2";
                 $stm = $conexion->prepare($querySUB);
                 $stm->execute();
                 $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
