@@ -1,6 +1,6 @@
 .list-group-item.active {
     background-color: #303030 !important;
-    border-color: #b80d0d;
+    border-color: #dc3545;
   }
 
   .list-group-item:hover {

@@ -55,12 +55,12 @@
                 <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body bg-light">
                     <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../pelicula/index.php">Películas</a>
-                    <a class="dropdown-item rounded fw-ligth active" href="../cartelera/index.php">Carteleras</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../cartelera/index.php">Carteleras</a>
                     <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Salas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
-                    <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth active" href="../boleto/index.php">Boletos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../combo/index.php">Combos</a>
                   </div>
                 </div>
@@ -106,20 +106,16 @@
               Gestión de contenido
             </div>
             <div class="card-body">
-              <button class="btn btn-danger rounded-pill" id="addCartelera"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
+              <button class="btn btn-danger rounded-pill" id="addBoleto"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
               <hr>
               <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered" id="tablaCartelera" style="width:100%">
+                <table class="table table-striped table-hover table-bordered" id="tablaBoleto" style="width:100%">
                     <thead class="text-center">
                         <tr>
                           <th>ID</th>
-                          <th>ID PELICULA</th>
-                          <th>ID SALA</th>
-                          <th>HORA INICIO</th>
-                          <th>HORA FIN</th>
-                          <th>ID IDIOMA</th>
-                          <th>ID FORMATO</th>
-                          <th>FECHA</th>
+                          <th>NOMBRE</th>
+                          <th>DESCRIPCION</th>
+                          <th>PRECIO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>
@@ -136,69 +132,33 @@
       </div>
   </div>
 
-   <!--Modal Cartelera -->
- <div class="modal fade" id="modalCartelera" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+   <!--Modal Asiento -->
+ <div class="modal fade" id="modalBoleto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cartelera</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Boleto</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="frmCartelera">
+              <form id="frmBoleto">
                 <div class="container">
                     <div class="row">
-                      <div class="col-md-8">
-                          <label class="form-label">Pelicula</label>
-                          <select id="pelicula" class="form-select" required>
-                              <option value="">-</option>
-                              <?php
-                                  mostrarPeliculas();
-                              ?>
-                          </select>
-                      </div>
-                      <div class="col-md-4">
-                          <label class="form-label">Sala</label>
-                          <select id="sala" class="form-select mb-2" required>
-                              <option value="">-</option>
-                              <?php
-                                  mostrarSalas();
-                              ?>
-                          </select>
-                      </div>
-                      <div class="col-md-4 mb-2">
-                          <label class="form-label">Hora inicio</label>
-                          <input class="form-control input-sm" type="time" id="horaInicio" required>
-                      </div>
-                      <div class="col-md-4 mb-2">
-                          <label class="form-label">Hora fin</label>
-                          <input class="form-control input-sm" type="time" id="horaFin" required>
-                      </div>
-                      <div class="col-md-4">
-                          <label class="form-label">Idioma</label>
-                          <select id="idioma" class="form-select mb-2" required>
-                              <option value="">-</option>
-                              <?php
-                                  mostrarIdiomas();
-                              ?>
-                          </select>
-                      </div>
-                      <div class="col-md-3 mb-2">
-                          <label class="form-label">Formato</label>
-                          <select id="formato" class="form-select mb-2" required>
-                              <option value="">-</option>
-                              <?php
-                                  mostrarFormatos();
-                              ?>
-                          </select>
-                      </div>
-                      <div class="col-md-5 mb-2">
-                          <label class="form-label">Fecha</label>
-                          <input class="form-control input-sm" type="date" id="fecha" required>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
-                      </div>
+                        <div class="col-md-5 mb-2">
+                            <label class="form-label">Nombre del boleto</label>
+                            <input class="form-control input-sm" type="text" id="nombre" required>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" rows="2" required></textarea>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Precio</label>
+                            <input class="form-control input-sm" type="text" id="precio" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
+                        </div>
                     </div>
                 </div>
               </form>
@@ -207,7 +167,7 @@
         </div>
     </div>
 
-      <!-- Modal eliminar -->
+         <!-- Modal eliminar -->
   <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -215,7 +175,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <p>¿Esta seguro que desea eliminar esta cartelera? </p>
+        <p>¿Esta seguro que desea eliminar este boleto? </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" id="btnSi" data-bs-dismiss="modal">Sí</button>

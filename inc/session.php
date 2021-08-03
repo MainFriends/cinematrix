@@ -17,11 +17,18 @@
        if($resultado==1){
           $USER = $statement->fetch(PDO::FETCH_ASSOC); //Llenamos un array con la consulta
             if($USER["ID_ROL"] == 1){ //Administrador
-                 session_start(); //Iniciamos la sesión
+                //Iniciar las variables de la sesión
+                 session_start();
+                 $_SESSION['id_usuario'] = $USER["ID_USUARIO"];
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
+                 $_SESSION['correo'] = $USER["CORREO"];
+                 $_SESSION['pais'] = $USER["PAIS"];
+                 $_SESSION['ciudad'] = $USER["CIUDAD"];
+                 $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
                  
+                 //Redirecciones segun pagina actual
                 if($_SESSION['pag']=='index'){
                     header("location:index.php");
                 }else if($_SESSION['pag']=='promociones'){
@@ -32,19 +39,29 @@
                     header("location:admin/tables/usuarios/index.php");
                 }
             }else{ //Cliente
-                 session_start(); //Iniciamos la sesión
+                //Iniciar las variables de la sesión
+                 session_start();
+                 $_SESSION['id_usuario'] = $USER["ID_USUARIO"];
                  $_SESSION['usuario'] = $USER["NOMBRE"];
                  $_SESSION['apellido'] = $USER["APELLIDO"];
                  $_SESSION['rol'] = $USER["ID_ROL"];
-                if($_SESSION['pag']=='login'){
+                 $_SESSION['correo'] = $USER["CORREO"];
+                 $_SESSION['pais'] = $USER["PAIS"];
+                 $_SESSION['ciudad'] = $USER["CIUDAD"];
+                 $_SESSION['date'] = $USER["FECHA_NACIMIENTO"];
+                 
+                 //Redirecciones segun pagina actual
+                if($_SESSION['pag']=='index'){
                     header("location:index.php");
+                }else if($_SESSION['pag']=='promociones'){
+                    header("location:promociones.php");
+                }else if($_SESSION['pag']=='detallePromo'){
+                    header("location:detallePromo.php");
                 }
             }
             
         }else{
-             echo "<div class='alert alert-danger text-center'>
-                     <strong>¡Ups!</strong> El correo o la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.
-                  </div>";  
+            header("location:login.php?error=true"); 
         }
     }
 ?>

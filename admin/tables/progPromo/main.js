@@ -19,7 +19,8 @@ $(document).ready(function() {
       "columns":[
        {"data": "ID_PPROMO"},
        {"data": "ID_PROMO"},
-       {"data": "FECHA"},
+       {"data": "FECHA_INICIO"},
+       {"data": "FECHA_FIN"},
        {"data": "ID_ESTADO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
@@ -47,13 +48,14 @@ $(document).ready(function() {
    $("#frmProgra").submit(function(e) {
     e.preventDefault(); //Evita que se recargue la pagina
     promo = $.trim($("#promo").val());
-    fecha = $.trim($("#fecha").val());
+    fechaI = $.trim($("#fechaI").val());
+    fechaF = $.trim($("#fechaF").val());
     estado = $.trim($("#estado").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, promo:promo, fecha:fecha, estado:estado, opcion:opcion},
+      data: {id:id, promo:promo, fechaI:fechaI, fechaF:fechaF, estado:estado, opcion:opcion},
       success: function(data){ // data es de CRUD.php
         tablaProgra.ajax.reload(null,false);
       },
@@ -78,11 +80,13 @@ $(document).ready(function() {
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
     promo = fila.find('td:eq(1)').text();
-    fecha = fila.find('td:eq(2)').text();
-    estado = fila.find('td:eq(3)').text();
+    fechaI = fila.find('td:eq(2)').text();
+    fechaF = fila.find('td:eq(3)').text();
+    estado = fila.find('td:eq(4)').text();
     
     $("#promo").val(promo);
-    $("#fecha").val(fecha);
+    $("#fechaI").val(fechaI);
+    $("#fechaF").val(fechaF);
     $("#estado").val(estado);
 
     $("#modalProgra").modal("show");

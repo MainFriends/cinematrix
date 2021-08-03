@@ -1,6 +1,7 @@
 <?php
   session_start();
   $userSession = $_SESSION['usuario'];
+  $_SESSION['pag'] = 'admin';
   require_once "../../../inc/functions.php";
 ?>
 <!DOCTYPE html>
@@ -59,6 +60,8 @@
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligt active" href="../progPromo/index.php">Programa de promociones</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../boleto/index.php">Boletos</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../combo/index.php">Combos</a>
                   </div>
                 </div>
               </div>        
@@ -111,7 +114,8 @@
                         <tr>
                           <th>ID</th>
                           <th>ID PROMO</th>
-                          <th>FECHA</th>
+                          <th>FECHA INICIO</th>
+                          <th>FECHA FIN</th>
                           <th>ID ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
@@ -151,8 +155,12 @@
                           </select>
                       </div>
                       <div class="col-md-6 mb-2">
-                          <label class="form-label">Fecha</label>
-                          <input class="form-control input-sm" type="date" id="fecha" required>
+                          <label class="form-label">Fecha inicio</label>
+                          <input class="form-control input-sm" type="date" id="fechaI" required>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                          <label class="form-label">Fecha fin</label>
+                          <input class="form-control input-sm" type="date" id="fechaF" required>
                       </div>
                       <div class="col-md-6 mb-2">
                           <label class="form-label">Estado</label>

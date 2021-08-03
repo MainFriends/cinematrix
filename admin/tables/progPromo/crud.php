@@ -6,29 +6,32 @@
     //Recepción de los datos enviados mediante el metodo POST desde js
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $promo = (isset($_POST['promo'])) ? $_POST['promo'] : '';
-    $fecha = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
+    $fechaI = (isset($_POST['fechaI'])) ? $_POST['fechaI'] : '';
+    $fechaF = (isset($_POST['fechaF'])) ? $_POST['fechaF'] : '';
     $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
         case 1: //Progamar promoción
-            $query = "CALL SP_ADD_PPROMO(?,?,?)";
+            $query = "CALL SP_ADD_PPROMO(?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $promo, PDO::PARAM_INT);
-            $statement->bindParam(2, $fecha, PDO::PARAM_STR);
-            $statement->bindParam(3, $estado, PDO::PARAM_INT);
+            $statement->bindParam(2, $fechaI, PDO::PARAM_STR);
+            $statement->bindParam(3, $fechaF, PDO::PARAM_STR);
+            $statement->bindParam(4, $estado, PDO::PARAM_INT);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
         case 2: //Actualizar programacion
-            $query = "CALL SP_UPD_PPROMO(?,?,?,?)";
+            $query = "CALL SP_UPD_PPROMO(?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $promo, PDO::PARAM_INT);
-            $statement->bindParam(3, $fecha, PDO::PARAM_STR);
-            $statement->bindParam(4, $estado, PDO::PARAM_INT);
+            $statement->bindParam(3, $fechaI, PDO::PARAM_STR);
+            $statement->bindParam(4, $fechaF, PDO::PARAM_STR);
+            $statement->bindParam(5, $estado, PDO::PARAM_INT);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);

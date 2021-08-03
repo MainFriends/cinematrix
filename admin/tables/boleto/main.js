@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
 
     //Inicializamos dataTable
-    var tablaPromo = $('#tablaPromo').DataTable({
+    var tablaBoleto = $('#tablaBoleto').DataTable({
       "ajax":{
         "url": "crud.php",
         "method": 'POST',
@@ -17,10 +17,9 @@ $(document).ready(function() {
         "dataSrc":""
       },
       "columns":[
-       {"data": "ID_PROMO"},
+       {"data": "ID_BOLETO"},
        {"data": "NOMBRE"},
        {"data": "DESCRIPCION"},
-       {"data": "ID_CATEGORIA"},
        {"data": "PRECIO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
@@ -45,34 +44,32 @@ $(document).ready(function() {
 
    var fila; //Capturar la fila para editar o borrar registro
 
-   $("#frmPromo").submit(function(e) {
+   $("#frmBoleto").submit(function(e) {
     e.preventDefault(); //Evita que se recargue la pagina
     nombre = $.trim($("#nombre").val());
     descripcion = $.trim($("#descripcion").val());
-    categoria = $.trim($("#categoria").val());
     precio = $.trim($("#precio").val());
-    imagen = $.trim($("#imagen").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, nombre:nombre, descripcion:descripcion, categoria:categoria, precio:precio, imagen:imagen, opcion:opcion},
+      data: {id:id, nombre:nombre, descripcion:descripcion, precio:precio, opcion:opcion},
       success: function(data){ // data es de CRUD.php
-        tablaPromo.ajax.reload(null,false);
+        tablaBoleto.ajax.reload(null,false);
       },
       error: function(response){
         console.log(response);
     }
     });
-    $("#modalPromo").modal("hide");
+    $("#modalBoleto").modal("hide");
   });
 
   //Mostramos formulario
-  $("#addPromo").click(function(){
+  $("#addBoleto").click(function(){
     id=null;
     opcion = 1;
-    $("#frmPromo").trigger("reset");
-    $("#modalPromo").modal("show");        
+    $("#frmBoleto").trigger("reset");
+    $("#modalBoleto").modal("show");        
   });
 
   //Boton EDITAR
@@ -82,15 +79,13 @@ $(document).ready(function() {
     id = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
     descripcion = fila.find('td:eq(2)').text();
-    categoria = fila.find('td:eq(3)').text();
-    precio = fila.find('td:eq(4)').text();
+    precio = parseInt(fila.find('td:eq(3)').text());
     
     $("#nombre").val(nombre);
     $("#descripcion").val(descripcion);
-    $("#categoria").val(categoria);
     $("#precio").val(precio);
 
-    $("#modalPromo").modal("show");
+    $("#modalBoleto").modal("show");
   });
 
   //Boton BORRAR
@@ -107,7 +102,7 @@ $(document).ready(function() {
         dataType: "html",
         data: {opcion:opcion, id:id},
         success: function() {
-          tablaPromo.row(fila.parents('tr')).remove().ajax.reload(null,false); 
+          tablaBoleto.row(fila.parents('tr')).remove().ajax.reload(null,false); 
         },
         error: function(response){
           console.log(response);

@@ -21,6 +21,8 @@ $(document).ready(function() {
        {"data": "TITULO"},
        {"data": "SINOPSIS"},
        {"data": "DURACION"},
+       {"data": "REPARTO"},
+       {"data": "DIRECTOR"},
        {"data": "AÑO"},
        {"data": "ID_GENERO"},
        {"data": "ID_CLASIFICACION"},
@@ -54,6 +56,8 @@ $(document).ready(function() {
     genero = $.trim($("#genero").val());
     clasificacion = $.trim($("#clasificacion").val());
     sinopsis = $.trim($("#sinopsis").val());
+    reparto = $.trim($("#reparto").val());
+    director = $.trim($("#director").val());
     duracion = $.trim($("#duracion").val());
     año = $.trim($("#año").val());
     estado = $.trim($("#estado").val());
@@ -62,7 +66,7 @@ $(document).ready(function() {
       url: "crud.php",
       type: "POST",
       dataType: "json",
-      data: {id:id, titulo:titulo, genero:genero, clasificacion:clasificacion, sinopsis:sinopsis, duracion:duracion, año:año, estado:estado, portada:portada, opcion:opcion},
+      data: {id:id, titulo:titulo, genero:genero, clasificacion:clasificacion, sinopsis:sinopsis, reparto:reparto, director:director, duracion:duracion, año:año, estado:estado, portada:portada, opcion:opcion},
       success: function(data){ // data es de CRUD.php
         console.log("Hola");
         tablaPelicula.ajax.reload(null,false);
@@ -91,15 +95,19 @@ $(document).ready(function() {
     id = parseInt(fila.find('td:eq(0)').text());
     titulo = fila.find('td:eq(1)').text();
     sinopsis = fila.find('td:eq(2)').text();
-    duracion = parseInt(fila.find('td:eq(3)').text());
-    año = parseInt(fila.find('td:eq(4)').text());
-    genero = parseInt(fila.find('td:eq(5)').text());
-    clasificacion = parseInt(fila.find('td:eq(6)').text());
-    estado = parseInt(fila.find('td:eq(7)').text());
+    duracion = fila.find('td:eq(3)').text();
+    reparto = fila.find('td:eq(4)').text();
+    director = fila.find('td:eq(5)').text();
+    año = fila.find('td:eq(6)').text();
+    genero = fila.find('td:eq(7)').text();
+    clasificacion = fila.find('td:eq(8)').text();
+    estado = fila.find('td:eq(9)').text();
     
     $("#titulo").val(titulo);
     $("#sinopsis").val(sinopsis);
     $("#duracion").val(duracion);
+    $("#reparto").val(reparto);
+    $("#director").val(director);
     $("#año").val(año);
     $("#genero").val(genero);
     $("#clasificacion").val(clasificacion);
