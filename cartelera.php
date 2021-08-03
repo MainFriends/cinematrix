@@ -63,7 +63,7 @@
                      <a class="nav-link" aria-current="page" href="pelicula.php">PELÍCULAS</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">CARTELERA</a>
+                     <a class="nav-link" href="cartelera.php">CARTELERA</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="promociones.php" tabindex="-1" aria-disabled="true">PROMOCIONES</a>

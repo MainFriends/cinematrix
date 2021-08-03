@@ -9,5 +9,9 @@
         header("location:../detallePromo.php");
     }else if($_SESSION['pag']=='admin'){
         header("location:../login.php");
+    }else if($_SESSION['pag']=='cartelera'){
+        header("location:../cartelera.php");
+    }else if($_SESSION['pag']=='pelicula'){
+        header("location:../pelicula.php");
     }
 ?>  
