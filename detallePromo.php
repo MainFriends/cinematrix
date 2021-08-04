@@ -1,4 +1,5 @@
 <?php
+   setlocale(LC_TIME, 'Spanish'); // lenguaje español de fecha
    session_start();
    require_once 'inc/session.php';
    $_SESSION['pag'] = 'detallePromo';
@@ -6,6 +7,19 @@
       $userSession = $_SESSION['usuario'];
    }
    require_once "inc/functions.php";
+
+   //Obtenemos el id de la promocion
+   $id = $_GET['id'];
+
+   // Consulta promociones de taquilla
+   $query = "SELECT * FROM promocion, programacion_promo 
+   WHERE promocion.id_promo = programacion_promo.id_promo
+   AND promocion.id_promo = '$id'";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataPromo = $stm->fetch(PDO::FETCH_ASSOC);
+   $dateStartConvert = utf8_encode(strftime('%d %b %Y', strtotime($dataPromo['FECHA_INICIO'])));
+   $dateEndConvert = utf8_encode(strftime('%d %b %Y', strtotime($dataPromo['FECHA_FIN'])));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +125,7 @@
           </div>
             <div class="col-md-4">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="promociones.html"><button class="btn btn-outline-danger me-md-2 btn-sm" type="button">Volver a las promociones</button></a>
+                <a href="promociones.php"><button class="btn btn-outline-danger me-md-2 btn-sm" type="button">Volver a las promociones</button></a>
               </div>
             </div>
           </div>
@@ -121,7 +135,7 @@
     <div class="container">
       <div class="row">
         <div class="my-4 col-md-8">
-          <h2>DESCUENTO TERCERA EDAD</h2>
+          <h2><?php echo $dataPromo['NOMBRE']?></h2>
         </div>
         
       </div>
@@ -130,21 +144,20 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-6">
-                  <img src="assets/img/promociones/terceraEdad.jpg" class="rounded float-start" width="100%"
+                <div class="col-md-8">
+                  <img src="<?php echo $dataPromo['IMAGEN']?>" class="rounded float-start" width="100%"
                     height="100%" alt="">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="card-title">
-                    <p>
-                    <h3>Descripción de la promoción</h3>
-                    </p><br>
-                    <p>DISFRUTA DE PRECIO ESPECIAL PARA PERSONAS MAYORES DE 60 AÑOS, AL MOSTRAR UN DOCUMENTO DE
-                      IDENTIDAD VIGENTE.</p>
+                    <h4>Descripción de la promoción</h4>
+                    <p class="mt-3"><?php echo $dataPromo['DESCRIPCION']?></p>
+                    <div class="mt-2 mb-2 border-bottom"></div>
+                    <h6>Duración</h6>
                     <!--relojito-->
-                    <p><i class="bi bi-clock"></i> Comienza: </p>
+                    <p class="mb-2"><i class="bi bi-clock"></i> Comienza: <?php echo ucwords($dateStartConvert)?> </p>
                     <!--relojito-->
-                    <p><i class="bi bi-clock"></i> Termina: </p>
+                    <p><i class="bi bi-clock"></i> Termina: <?php echo ucwords($dateEndConvert)?> </p>
                   </div>
                 </div>
               </div>

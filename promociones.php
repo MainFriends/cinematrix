@@ -1,5 +1,5 @@
 <?php
-   setlocale(LC_TIME, 'Spanish'); // Fecha spanish
+   setlocale(LC_TIME, 'Spanish'); // lenguaje español de fecha
    session_start();
    require_once 'inc/session.php';
    $_SESSION['pag'] = 'promociones';
