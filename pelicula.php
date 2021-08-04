@@ -46,6 +46,9 @@
     <title>Pelicula - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+    <!-- ICONOS -->
+   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
+
     <style type="text/css">
     a{
 	    text-decoration:none;
@@ -87,9 +90,9 @@
                         <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
-                      <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
-                      <li><a class='dropdown-item' href='admin/tables/usuarios/index.php'>Dashboard</a></li>
-                      <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
+                        <li><a class='dropdown-item' href='admin/tables/usuarios/index.php'><i class='fas fa-tachometer-alt me-2'></i>Dashboard</a></li>
+                        <li><a class='dropdown-item' href='account.php'><i class='fas fa-user-edit me-2'></i>Editar perfil</a></li>
+                        <li><a class='dropdown-item' href='inc/logout.php'><i class='fas fa-sign-out-alt me-2'></i>Cerrar sesión</a></li>
                       </ul>
                    </div>";
                    }else{
@@ -99,8 +102,8 @@
                         <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
-                      <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
-                      <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
+                        <li><a class='dropdown-item' href='account.php'><i class='fas fa-user-edit me-2'></i>Editar perfil</a></li>
+                        <li><a class='dropdown-item' href='inc/logout.php'><i class='fas fa-sign-out-alt me-2'></i>Cerrar sesión</a></li>
                       </ul>
                    </div>";
                    }
