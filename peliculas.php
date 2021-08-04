@@ -1,10 +1,37 @@
+<?php
+   session_start();
+   require_once 'inc/session.php';
+   $_SESSION['pag'] = 'peliculas';
+   if(isset($_SESSION['usuario'])){
+      $userSession = $_SESSION['usuario'];
+   }
+
+   // Consulta peliculas en cartelera
+   $query = "SELECT * FROM PELICULA where id_estado = 8";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataCartelera = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+   // Consulta peliculas en pre-venta
+   $query = "SELECT * FROM PELICULA where id_estado = 6";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataPreventa = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+   // Consulta peliculas en proximamente
+   $query = "SELECT * FROM PELICULA where id_estado = 7";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataProximamente = $stm->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Películas - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 
@@ -87,142 +114,58 @@
 <div class="container w-60 px-4 ">
     <div class="row py-4" >
       <h4 class="fw-bold">Cartelera Semanal</h4>
-
-      <div class="col-md-2">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-Venom2.jpeg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-Thor4.jpeg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-Spiderman.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-Conjuro.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-DurodeCuidar.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 mt-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-DoctorStrange.jpeg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3 mt-3">
-      <div class="card" style="width: 13rem;">
-      <img src="assets/img/sliders/Portada-EscuadronSuicida.jpeg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
+      <?php
+         foreach($dataCartelera as $cartelera){
+      ?>
+      <div class="col-md-2 me-4">
+         <div class="card" style="width: 12rem;">
+            <a href="#"><img src="<?php echo $cartelera['PORTADA']?>" height="300" width="200" alt="..."></a> 
+         </div>
+      </div>
+      <?php
+      }
+      ?>
     </div>
-    </div>
+</div>
 
     <!-- PREVENTA-->
 <div class="container w-60 px-4 ">
     <div class="row py-4" >
       <h4 class="fw-bold">Preventa</h4>
 
-      <div class="col-md-2">
-      <div class="card" style="width: 13rem;">
-      <img src="https://lumiere-a.akamaihd.net/v1/images/image_2ff75a5c.jpeg?region=0%2C0%2C540%2C810" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://es.web.img3.acsta.net/pictures/21/04/21/11/08/5393301.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="http://gnula.nu/wp-content/uploads/2021/07/Prime_Time_poster_polonia.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://cloudfront-us-east-1.images.arcpublishing.com/copesa/DKXOA5MXJ5DXZF46R5PVRYF6WM.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://lumiere-a.akamaihd.net/v1/images/image_517212da.jpeg?region=0%2C0%2C540%2C810" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 mt-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://lumiere-a.akamaihd.net/v1/images/p_rayaandthelastdragon_es_06f8daf0.jpeg?region=0%2C0%2C540%2C810" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3 mt-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://es.web.img3.acsta.net/pictures/21/05/19/18/24/3325682.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-        
+      <?php
+         foreach($dataPreventa as $preventa){
+      ?>
+      <div class="col-md-2 me-4">
+         <div class="card" style="width: 12rem;">
+            <a href="#"><img src="<?php echo $preventa['PORTADA']?>" height="300" width="200" alt="..."></a> 
+         </div>
+      </div>
+      <?php
+      }
+      ?> 
     </div>
-    </div>
+</div>
 
     <!-- PROXIMAMENTE-->
     <div class="container w-60 px-4 ">
     <div class="row py-4" >
       <h4 class="fw-bold">Proximamente</h4>
 
-      <div class="col-md-2">
-      <div class="card" style="width: 13rem;">
-      <img src="https://somoskudasai.com/wp-content/uploads/2020/11/EoD3BdSXcAA_Kfy.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://i1.wp.com/elpalomitron.com/wp-content/uploads/2020/05/Tr%C3%A1iler-de-la-cuarta-temporada-de-Shingeki-no-Kyojin-cartel-El-Palomitr%C3%B3n.jpg?resize=500%2C700&ssl=1" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://static.wikia.nocookie.net/2164aac6-9297-4ab3-9f67-8f941ae4945a" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://pm1.narvii.com/6357/981609f7658674afb8da30dc16b2e8e6d5f482ec_hq.jpg" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-
-      <div class="col-md-2 ms-3">
-      <div class="card" style="width: 13rem;">
-      <img src="https://static.wikia.nocookie.net/doblaje/images/5/5e/Fullmetal-Alchemist-Poster.jpg/revision/latest?cb=20171106014624&path-prefix=es" class="card-img-top" height="300" alt="..."> 
-        </div>
-        </div>
-        
-    </div>
-    </div>
+      <?php
+         foreach($dataProximamente as $proximamente){
+      ?>
+      <div class="col-md-2 me-4">
+         <div class="card" style="width: 12rem;">
+            <a href="#"><img src="<?php echo $proximamente['PORTADA']?>" height="300" width="200" alt="..."></a> 
+         </div>
+      </div>
+      <?php
+      }
+      ?>
 
  
-</div>
+   </div>
 </div>
 
 <!-- FOOTER--> 
