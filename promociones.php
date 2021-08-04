@@ -1,4 +1,5 @@
 <?php
+   setlocale(LC_TIME, 'Spanish'); // Fecha spanish
    session_start();
    require_once 'inc/session.php';
    $_SESSION['pag'] = 'promociones';
@@ -6,6 +7,14 @@
       $userSession = $_SESSION['usuario'];
    }
    require_once "inc/functions.php";
+
+   // Consulta promociones de taquilla
+   $query = "SELECT * FROM promocion, programacion_promo 
+   WHERE promocion.id_promo = programacion_promo.id_promo
+   AND id_categoria = 2";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataTaquilla = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,24 +136,28 @@
             <div class="tab-pane fade show active" id="pills-taquilla" role="tabpanel"
               aria-labelledby="pills-taquilla-tab">
               <div class="row">
+                <?php
+                  foreach($dataTaquilla as $taquilla){
+                  $dateStartConvert = utf8_encode(strftime('%d %b %Y', strtotime($taquilla['FECHA_INICIO'])));
+                  $dateEndConvert = utf8_encode(strftime('%d %b %Y', strtotime($taquilla['FECHA_FIN'])));
+                ?>
                 <div class=" my-2 col-md-6">
                   <div class="card h-100">
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-6">
-                          <img src="assets/img/promociones/terceraEdad.jpg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
+                          <a href="detallePromo.php?id=<?php echo $taquilla['ID_PROMO'] ?>"> <img src="<?php echo $taquilla['IMAGEN']?>" class="rounded float-start" width="250px" height="175px" alt=""></a>
                         </div>
                         <div class="col-md-6">
                           <div class="card-title">
-                            <h5>Descuento Tercera Edad</h5>
+                            <h5><?php echo $taquilla['NOMBRE']?></h5>
                             <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
+                            <p><i class="bi bi-clock"></i> Comienza: <?php echo ucwords($dateStartConvert)?></p>
                             <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
+                            <p><i class="bi bi-clock"></i> Termina: <?php echo ucwords($dateEndConvert)?></p>
                             
                             <div class="d-grid gap-2 ">
-                              <a class="btn btn-danger btn-block" href="detallePromo.php" ><button class="btn btn-danger btn-block" type="button">VER DETALLE</button></a>
+                              <a class="btn btn-danger btn-block" href="detallePromo.php?id=<?php echo $taquilla['ID_PROMO'] ?>" >VER DETALLE</a>
                             </div>
                           </div>
                         </div>
@@ -152,79 +165,9 @@
                     </div>
                   </div>
                 </div>
-                <div class=" my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/2x1.jpg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>Promoción 2x1</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a class="btn btn-danger btn-block" href="detallePromo.html"><button class="btn btn-danger" type="button" >VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class=" my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/mitadprecio.jpeg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>M&M Mitad de Precio</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a class="btn btn-danger btn-block" href="detallePromo.html"> <button class="btn btn-danger" type="button">VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class=" my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/familiar.jpeg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>Familiar</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a class="btn btn-danger btn-block" href="detallePromo.html"> <button class="btn btn-danger" type="button">VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                <?php
+                  }
+                ?>
               </div>
             </div>
             <!--Panel dulcería-->
