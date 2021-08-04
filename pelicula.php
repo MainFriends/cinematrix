@@ -38,6 +38,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelicula - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <style type="text/css">
+    a{
+	    text-decoration:none;
+    }
+  </style>
 </head>
 
 <body>
@@ -45,8 +51,8 @@
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
          <div class="container-fluid">
-            <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
-            <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
+            <a href="index.php"><img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt=""></a>
+            <span class="me-2 fs-3 fw-bold mb-0"><a class="fw-bold text-dark" href="index.php">Cinematrix</a></span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                aria-label="Toggle navigation">
