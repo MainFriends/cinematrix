@@ -5,6 +5,13 @@
    $_SESSION['pag'] = 'detallePromo';
    if(isset($_SESSION['usuario'])){
       $userSession = $_SESSION['usuario'];
+      $userId = $_SESSION['id_usuario'];
+
+      $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
+      $stm = $conexion->prepare($query);
+      $stm->execute();
+      $foto = $stm->fetch(PDO::FETCH_ASSOC);
+      $foto_perfil = $foto['FOTO_PERFIL'];
    }
    require_once "inc/functions.php";
 
@@ -67,7 +74,8 @@
                      if($_SESSION['rol']==1){
                       echo "<div class='nav-item dropdown'>
                       <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                         $userSession $userApellido
+                        <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                        <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
@@ -78,7 +86,8 @@
                    }else{
                       echo "<div class='nav-item dropdown'>
                       <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                         $userSession $userApellido
+                        <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                        <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>

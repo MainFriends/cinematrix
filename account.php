@@ -67,7 +67,8 @@
                      if($_SESSION['rol']==1){
                       echo "<div class='nav-item dropdown'>
                       <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                         $userSession $userApellido
+                        <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                        <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
@@ -78,7 +79,8 @@
                    }else{
                       echo "<div class='nav-item dropdown'>
                       <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                         $userSession $userApellido
+                        <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                        <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
@@ -120,7 +122,7 @@
         <div class="col-4 bg-dark bou rounded-start">
           <div class="text-center my-3">
             <?php 
-              echo '<img width="180" class="rounded-circle" alt="..." src="data:image/jpeg;base64,'.base64_encode($foto['FOTO_PERFIL']) .' "/>';?>
+              echo '<img width="180" height="180px" class="rounded-circle" alt="..." src="data:image/jpeg;base64,'.base64_encode($foto['FOTO_PERFIL']) .' "/>';?>
           </div>
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
