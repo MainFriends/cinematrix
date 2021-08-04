@@ -68,15 +68,28 @@
                <?php
                   if(isset($_SESSION['usuario'])){
                      $userApellido = $_SESSION["apellido"];
-                     echo "<div class='nav-item dropdown'>
-                     <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                        $userSession $userApellido
-                     </a>
-                     <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
-                       <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
-                       <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
-                     </ul>
-                   </div>";
+                     if($_SESSION['rol']==1){
+                        echo "<div class='nav-item dropdown'>
+                        <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                           $userSession $userApellido
+                        </a>
+                        <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                        <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
+                        <li><a class='dropdown-item' href='admin/tables/usuarios/index.php'>Dashboard</a></li>
+                        <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
+                        </ul>
+                     </div>";
+                     }else{
+                        echo "<div class='nav-item dropdown'>
+                        <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                           $userSession $userApellido
+                        </a>
+                        <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                        <li><a class='dropdown-item' href='account.php'>Mi Perfil</a></li>
+                        <li><a class='dropdown-item' href='inc/logout.php'>Cerrar sesión</a></li>
+                        </ul>
+                     </div>";
+                     }
                   }else{
                      echo '<div class="nav-item dropdown">
                      <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink"

@@ -296,6 +296,10 @@ CREATE PROCEDURE SP_UPD_PERFIL(
         SET NOMBRE = _NOMBRE, APELLIDO = _APELLIDO, CORREO = _CORREO, CIUDAD = _CIUDAD, ID_PAIS = _PAIS
                             WHERE ID_USUARIO = _ID;
                             
+		UPDATE LOGIN
+        SET CORREO = _CORREO
+        WHERE ID_USUARIO = _ID;
+                            
 		SET lc_time_names = 'es_ES';
 		SELECT USUARIO.ID_USUARIO, ID_ROL, NOMBRE, APELLIDO, USUARIO.CORREO, PAIS, CIUDAD, date_format(fecha_nacimiento, '%d de %M de %Y') FECHA_NACIMIENTO
         FROM LOGIN, USUARIO, PAIS WHERE LOGIN.ID_USUARIO = USUARIO.ID_USUARIO
