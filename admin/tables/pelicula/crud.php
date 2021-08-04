@@ -60,6 +60,7 @@
             $query = "DELETE FROM PELICULA WHERE ID_PELICULA = '$id'";
             $statement = $conexion->prepare($query);
             $statement->execute();
+            $data = $statement->rowCount();
             break;
         case 4: //Insertar registros
             $query = "SELECT ID_PELICULA, TITULO, REPARTO, DIRECTOR, DURACION, ID_GENERO, ID_CLASIFICACION, AÑO, substring(SINOPSIS, 1, 50) SINOPSIS, PORTADA, ID_ESTADO

@@ -127,13 +127,16 @@ $(document).ready(function() {
       $.ajax({
         url: "crud.php",
         type: "POST",
-        dataType: "html",
+        dataType: "json",
         data: {opcion:opcion, id:id},
-        success: function() {
+        success: function(data=1) {
           tablaPelicula.row(fila.parents('tr')).remove().ajax.reload(null,false); 
         },
-        error: function(response){
-          console.log(response);
+        error: function(data=0){
+          $("#modalWarning").modal("show");
+          $("#btnOk").on("click", function(){
+            $("#modalWarning").modal("hide");
+          });
         }
       });
       $("#modalEliminar").modal("hide");
