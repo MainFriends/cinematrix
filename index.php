@@ -6,13 +6,14 @@
       $userSession = $_SESSION['usuario'];
    }
    require_once "inc/functions.php";
-   // Consulta peliculas
+   // Consulta peliculas en cartelera
    $query = "SELECT * FROM PELICULA where id_estado = 8";
    $stm = $conexion->prepare($query);
    $stm->execute();
    $data = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-   $queryP = "SELECT * FROM PELICULA where id_estado = 6";
+   // Consulta peliculas en preventa / proximamente
+   $queryP = "SELECT * FROM PELICULA where id_estado = 6 or id_estado = 7";
    $stm = $conexion->prepare($queryP);
    $stm->execute();
    $dataP = $stm->fetchAll(PDO::FETCH_ASSOC);
