@@ -100,26 +100,27 @@
                    }
                   }else{
                     echo '<div class="nav-item dropdown">
-                    <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                       Ingresar
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
-                       <form class="px-4 py-1" method="POST">
-                          <label class="label-control" for="">Correo electrónico</label>
-                          <input class="form-control" name="correo" type="text">
-                          <label class="label-control" for="">Contraseña</label>
-                          <input class="form-control" name="pass" type="password">
-                          <div class="py-2">
-                             <input type="checkbox" name="connected" class="form-check-input">
-                             <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                          </div>
-                          <div class="py-2 d-grid">
-                             <button type="submit" class=" d-grid btn btn-primary" name="login" >Iniciar sesión</button>
-                          </div>
-                       </form>
-                    </ul>
-                 </div>';
+                     <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Ingresar
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
+                        <form class="px-4 py-1" method="POST">
+                           <label class="label-control" for="">Correo electrónico</label>
+                           <input class="form-control" name="correo" type="text">
+                           <label class="label-control" for="">Contraseña</label>
+                           <input class="form-control" name="pass" type="password">
+                           <div class="py-1">
+                              <input type="checkbox" name="connected" class="form-check-input">
+                              <label for="connected" class="form-check-label">Mantenerme conectado</label>
+                           </div>
+                           <div class="py-1 d-grid">
+                              <button type="submit" class=" d-grid btn btn-primary" name="login" >Iniciar sesión</button>
+                           </div>
+                           <p class="small">¿No tienes una cuenta? <a href="signup.php">Regístrate</a></p>
+                        </form>
+                     </ul>
+                  </div>';
                   }
                ?>
           </div>
