@@ -70,7 +70,7 @@ $(document).ready(function() {
   $("#addProgra").click(function(){
     id=null;
     opcion = 1;
-    $("#frmProga").trigger("reset");
+    $("#frmProgra").trigger("reset");
     $("#modalProgra").modal("show");        
   });
 

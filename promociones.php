@@ -15,6 +15,14 @@
    $stm = $conexion->prepare($query);
    $stm->execute();
    $dataTaquilla = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+   // Consulta promociones de dulceria
+   $query = "SELECT * FROM promocion, programacion_promo 
+   WHERE promocion.id_promo = programacion_promo.id_promo
+   AND id_categoria = 1";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $dataDulceria = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,87 +179,45 @@
               </div>
             </div>
             <!--Panel dulcería-->
-            <div class="tab-pane fade" id="pills-dulce" role="tabpanel" aria-labelledby="pills-dulce-tab">
+      <div class="tab-pane fade" id="pills-dulce" role="tabpanel" aria-labelledby="pills-dulce-tab">
+      <div class="row">
+      <?php
+        foreach($dataDulceria as $dulceria){
+        $dateStartConvertD = utf8_encode(strftime('%d %b %Y', strtotime($dulceria['FECHA_INICIO'])));
+        $dateEndConvertD = utf8_encode(strftime('%d %b %Y', strtotime($dulceria['FECHA_FIN'])));
+      ?>
+        <div class=" my-2 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
               <div class="row">
-                <div class="my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/cineindividual.jpg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>Cinepack Individual</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a class="btn btn-danger btn-block" href="detallePromo.html"> <button class="btn btn-danger" type="button">VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                <div class="col-md-6">
+                  <a href="detallePromo.php?id=<?php echo $dulceria['ID_PROMO'] ?>"> <img src="<?php echo $dulceria['IMAGEN']?>" class="rounded float-start" width="250px" height="175px" alt=""></a>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-title">
+                    <h5><?php echo $dulceria['NOMBRE']?></h5>
+                    <!--relojito-->
+                    <p><i class="bi bi-clock"></i> Comienza: <?php echo ucwords($dateStartConvertD)?></p>
+                    <!--relojito-->
+                    <p><i class="bi bi-clock"></i> Termina: <?php echo ucwords($dateEndConvertD)?></p>
+                    
+                    <div class="d-grid gap-2 ">
+                      <a class="btn btn-danger btn-block" href="detallePromo.php?id=<?php echo $dulceria['ID_PROMO'] ?>" >VER DETALLE</a>
                     </div>
                   </div>
                 </div>
-                <div class="my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/2x1.jpg" class="rounded float-start" width="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>Promoción 2x1</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a  class="btn btn-danger btn-block" href="detallePromo.html"> <button class="btn btn-danger" type="button">VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class=" my-2 col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <img src="assets/img/promociones/mitadprecio.jpeg" class="rounded float-start" width="100%"
-                            height="100%" alt="">
-                        </div>
-                        <div class="col-md-6">
-                          <div class="card-title">
-                            <h5>M&M Mitad de Precio</h5>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Comienza: </p>
-                            <!--relojito-->
-                            <p><i class="bi bi-clock"></i> Termina: </p>
-                            <div class="d-grid gap-2">
-                              <a class="btn btn-danger btn-block" href="detallePromo.html"> <button class="btn btn-danger" type="button">VER DETALLE</button></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
         </div>
+      <?php
+        }
+      ?>
       </div>
+      </div> 
+      </div>
+      </div>          
     </div>
-
   </div>
 
   <!--FINAL DEL CUERPO-->
