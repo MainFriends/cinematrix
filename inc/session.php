@@ -41,6 +41,8 @@
                     header("location:cartelera.php");
                 }else if($_SESSION['pag']=='pelicula'){
                     header("location:pelicula.php");
+                }else if($_SESSION['pag']=='peliculas'){
+                    header("location:peliculas.php");
                 }
             }else{ //Cliente
                 //Iniciar las variables de la sesión
@@ -65,6 +67,8 @@
                     header("location:cartelera.php");
                 }else if($_SESSION['pag']=='pelicula'){
                     header("location:pelicula.php");
+                }else if($_SESSION['pag']=='peliculas'){
+                    header("location:peliculas.php");
                 }
             }
             

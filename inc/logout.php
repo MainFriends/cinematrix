@@ -13,5 +13,7 @@
         header("location:../cartelera.php");
     }else if($_SESSION['pag']=='pelicula'){
         header("location:../pelicula.php");
+    }else if($_SESSION['pag']=='peliculas'){
+        header("location:../peliculas.php");
     }
 ?>  

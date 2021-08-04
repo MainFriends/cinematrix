@@ -242,7 +242,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-        <p>No es posible eliminar una película que está en cartelera.</p>
+        <p>No es posible eliminar una película que se encuentra en cartelera.</p>
         <div class="text-end">
           <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
         </div>
