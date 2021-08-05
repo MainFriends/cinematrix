@@ -140,8 +140,8 @@
 <!-- TITULO--> 
       <div class="card" style="background-color: #e9ecef;">
       <div class="card-body">
-        <h5 class="card-title">PELICULAS</h5>
-        <h7 class="card-subtitle mb-2 text-muted">DONDE LA REALIDAD SUPERA LA FICCION</h7>
+        <h5 class="card-title mb-0">PELICULAS</h5>
+        <h7 class="card-subtitle mb-2 text-muted small">DONDE LA REALIDAD SUPERA LA FICCION.</h7>
       </div>
     </div>
     <div class="container">

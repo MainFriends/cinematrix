@@ -156,14 +156,8 @@
         <div class="row my-3 mx-1">
            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
-                 <div class="carousel-item active">
-                    <img src="https://static.cinepolis.com/img/front/9/2021714184950953-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
-                 </div>
-                 <div class="carousel-item">
-                    <img src="https://static.cinepolis.com/img/front/9/202172119174736-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
-                 </div>
-                 <div class="carousel-item">
-                    <img src="https://static.cinepolis.com/img/front/9/20217141477932-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
+                 <div class="carousel-item active ms-3 mb-3">
+                    <img src="assets/img/sliders/cartelera.jpg" class="d-block w-100 mx-5" height="300px" alt="...">
                  </div>
               </div>
            </div>
