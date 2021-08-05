@@ -131,7 +131,7 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                <div class="carousel-inner">
                   <div class="carousel-item active">
-                     <img src="https://static.cinepolis.com/img/front/9/2021714184950953-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
+                     <img src="https://cinemarkla.modyocdn.com/uploads/fc29823c-c810-4258-aac7-328af3669ea7/original/BANNER-JUNGLE-CRUISE.jpg" class="d-block w-100" style="height: 300px;" alt="...">
                   </div>
                   <div class="carousel-item">
                      <img src="https://static.cinepolis.com/img/front/9/202172119174736-prin.jpg" class="d-block w-100" style="height: 300px;" alt="...">
