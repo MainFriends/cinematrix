@@ -224,27 +224,12 @@
 
                 <!--Promoción 1----->
                 <label for="s1" id="slide1">
-                   <img src="assets/img/sliders/Portada-Promoción1.jpeg" width="100%" height="100%">
+                   <img src="assets/img/sliders/miercoles2x1.jpg" width="100%" height="100%">
                 </label>
 
                 <!--Promoción 2----->
                 <label for="s2" id="slide2">
-                  <img src="assets/img/sliders/Portada-Promoción2.jpeg" width="100%" height="100%">
-               </label>
-
-               <!--Promoción 3----->
-               <label for="s3" id="slide3">
-                  <img src="assets/img/sliders/Portada-Promoción3.jpeg" width="100%" height="100%">
-               </label>
-
-               <!--Promoción 4----->
-               <label for="s4" id="slide4">
-                  <img src="assets/img/sliders/Portada-Promoción4.jpeg" width="100%" height="100%">
-               </label>
-
-               <!--Promoción 5----->
-               <label for="s5" id="slide5">
-                  <img src="assets/img/sliders/Portada-Promoción5.jpg" width="100%" height="100%">
+                  <img src="assets/img/sliders/miercoles.jpg" width="100%" height="100%">
                </label>
          </section>
       </div>
