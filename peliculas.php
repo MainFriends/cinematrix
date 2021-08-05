@@ -157,7 +157,7 @@
       ?>
       <div class="col-md-2 me-4">
          <div class="card" style="width: 12rem;">
-            <a href="#"><img src="<?php echo $cartelera['PORTADA']?>" height="300" width="200" alt="..."></a> 
+            <a href="pelicula.php?id=<?php echo $cartelera['ID_PELICULA']?>"><img src="<?php echo $cartelera['PORTADA']?>" height="300" width="200" alt="..."></a> 
          </div>
       </div>
       <?php

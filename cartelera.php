@@ -15,7 +15,7 @@
   }
 
   // CARTELERA HOY
-  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION
   FROM PELICULA, CLASIFICACION, CARTELERA
   WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
   AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
@@ -219,13 +219,12 @@
                     ?>
                   <div class="row mt-3">
                     <div class="col-md-4">
-                      <img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="200px" height="300px"
-                        alt="...">
+                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="200px" height="300px" alt="..."></a>
                     </div>
                     <div class="col-md-8">
                       <h5 class="card-title"><?php echo $datos['TITULO']?></h5>
                       <div class="d-grid gap-2 d-md-block my-3">
-                          <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
+                          <abbr title="<?php echo $datos['CLASIFICACION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
                           <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['DURACION']?></button>
                       </div>
                         <!--TARJETA-->
@@ -277,7 +276,7 @@
                 <?php //CARTELERAS DESPUES DE HOY
                 foreach($fecha as $fechas2){
                   $fechaactual = $fechas2['FECHA'];
-                  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DURACION
+                  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION
                   FROM PELICULA, CLASIFICACION, CARTELERA
                   WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
                   AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
@@ -290,7 +289,7 @@
                   aria-labelledby="pills-<?php echo $fechas2['FECHA'] ?>-tab">
                   <?php
                       foreach($dataA as $datos){
-                        $id = $datos['ID_PELICULA'];;
+                        $id = $datos['ID_PELICULA'];
 
                         // DOBLADA AL ESPAÑOL
                         $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
@@ -314,13 +313,12 @@
                     ?>
                   <div class="row my-3">
                     <div class="col-md-4">
-                      <img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="50%"
-                        alt="...">
+                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="50%" alt="..."></a>
                     </div>
                     <div class="col-md-8">
                       <h5 class="card-title"><?php echo $datos['TITULO']?></h5>
                       <div class="d-grid gap-2 d-md-block my-3">
-                          <abbr title="mayores de 18 años"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
+                          <abbr title="<?php echo $datos['DESCRIPCION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
                           <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['DURACION']?></button>
                       </div>
                         <!--TARJETA-->
@@ -329,7 +327,7 @@
                             Multiplaza Tegucigalpa
                           </div>
                           <div class="card-body">
-                            <p class="card-text fw-lighter">*Los horarios aquí expuestos representan el inicio de cada función</p>
+                            <p class="card-text fw-lighter text-muted small">*Los horarios aquí expuestos representan el inicio de cada función</p>
                         
                             <?php
                             // Si hay resultados para peliculas dobladas ejecuta esta sentencia
