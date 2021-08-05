@@ -39,6 +39,9 @@
    <link rel="stylesheet" href="assets/css/multicarousel.css">
    <link rel="stylesheet" href="assets/css/hover.css">
 
+   <!-- FONT -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
    <!-- ICONOS -->
    <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
 </head>
@@ -142,7 +145,7 @@
          
          <div class="row py-4">
             <div class="container w-60 px-4">
-               <h4 class="fw-bold px-2">Cartelera Semanal</h4>
+               <h4 class="fw-bold">Cartelera semanal</h4>
                <!--slider------------------->
                <ul id="autoWidth" class="cs-hidden">
                   <!--1------------------------------>
@@ -179,7 +182,7 @@
          <!-- CARROUSEL PREVENTA -->
          <div class="row py-3">
             <div class="container w-60 px-4">
-               <h4 class="fw-bold px-2">Preventa / Próximos Estrenos</h4>
+               <h4 class="fw-bold">Preventa / Próximos Estrenos</h4>
                <!--slider------------------->
                <ul id="autoWidth2" class="cs-hidden2">
                   <!--1------------------------------>

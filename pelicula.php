@@ -46,12 +46,19 @@
     <title>Pelicula - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+    <!-- FONT -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
     <!-- ICONOS -->
    <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
 
     <style type="text/css">
     a{
 	    text-decoration:none;
+    }
+
+    body{
+    font-family: 'Poppins';
     }
   </style>
 </head>
@@ -201,7 +208,7 @@
                 <?php echo ucwords($fechaES)?> - Multiplaza Tegucigalpa
               </div>
               <div class="card-body">
-                <p class="card-text fw-lighter">*Los horarios aquí expuestos representan el inicio de cada función</p>
+                <p class="card-text fw-lighter text-muted small">*Los horarios aquí expuestos representan el inicio de cada función</p>
             
                 <?php
                 // Si hay resultados para peliculas dobladas ejecuta esta sentencia

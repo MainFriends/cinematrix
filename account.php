@@ -31,6 +31,7 @@
   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
   <!-- Fuente -->
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
   <style type="text/css">
     a{

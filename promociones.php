@@ -42,12 +42,18 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+   <!-- FONT -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <!-- ICONOS -->
   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
 
   <style type="text/css">
     a{
 	    text-decoration:none;
+    }
+
+    body{
+    font-family: 'Poppins';
     }
   </style>
 </head>
@@ -134,7 +140,7 @@
     <div class="card" style="background-color: #E3E4E5;">
       <div class="card-body">
         <h5 class="card-title">PROMOCIONES DISPONIBLES</h5>
-        <h6 class="card-subtitle mb-2 text-muted">TODAS LAS PROMOCIONES ESTÁN SUJETAS A TÉRMINOS Y CONDICIONES</h6>
+        <h6 class="card-subtitle mb-2 text-muted small">TODAS LAS PROMOCIONES ESTÁN SUJETAS A TÉRMINOS Y CONDICIONES</h6>
       </div>
     </div>
     <div class="container">

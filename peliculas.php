@@ -40,6 +40,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Películas - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- FONT -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <!-- ICONOS -->
    <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
@@ -47,6 +49,10 @@
     <style type="text/css">
     a{
 	    text-decoration:none;
+    }
+
+    body{
+    font-family: 'Poppins';
     }
   </style>
 </head>
@@ -145,7 +151,7 @@
 <!-- PELICULAS ESTRENO-->
 <div class="container w-60 px-4 ">
     <div class="row py-4" >
-      <h4 class="fw-bold">Cartelera Semanal</h4>
+      <h4 class="fw-bold">Cartelera semanal</h4>
       <?php
          foreach($dataCartelera as $cartelera){
       ?>
@@ -182,7 +188,7 @@
     <!-- PROXIMAMENTE-->
     <div class="container w-60 px-4 ">
     <div class="row py-4" >
-      <h4 class="fw-bold">Proximamente</h4>
+      <h4 class="fw-bold">Próximamente</h4>
 
       <?php
          foreach($dataProximamente as $proximamente){
@@ -198,6 +204,9 @@
 
  
    </div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- FOOTER--> 

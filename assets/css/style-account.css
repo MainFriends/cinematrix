@@ -3,6 +3,10 @@
     border-color: #dc3545;
   }
 
+  body{
+    font-family: 'Poppins';
+  }
+
   .list-group-item:hover {
     background-color: #423e3e !important;
 }
