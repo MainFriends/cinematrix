@@ -38,6 +38,21 @@
     body{
     font-family: 'Poppins';
     }
+
+    .contenedor{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    }
+    .centrado{
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        left: 9px;
+        top: 6px;
+        font-size: x-small;
+        pointer-events: none;
+    }
   </style>
 </head>
 
@@ -133,7 +148,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="container">
+            <div class="container mb-3">
                 <div class="row mb-3">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -153,6 +168,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $A = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($A as $butaca){
                         //Determinamos la disponibilidad
@@ -162,8 +179,13 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
+                    
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -181,6 +203,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $B = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($B as $butaca){
                         //Determinamos la disponibilidad
@@ -190,8 +214,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -209,6 +237,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $C = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($C as $butaca){
                         //Determinamos la disponibilidad
@@ -218,8 +248,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -237,6 +271,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $D = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($D as $butaca){
                         //Determinamos la disponibilidad
@@ -246,8 +282,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -265,6 +305,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $E = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($E as $butaca){
                         //Determinamos la disponibilidad
@@ -274,8 +316,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -293,6 +339,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $F = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($F as $butaca){
                         //Determinamos la disponibilidad
@@ -302,8 +350,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -321,6 +373,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $G = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($G as $butaca){
                         //Determinamos la disponibilidad
@@ -330,8 +384,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -349,6 +407,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $H = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($H as $butaca){
                         //Determinamos la disponibilidad
@@ -358,8 +418,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -377,6 +441,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $I = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($I as $butaca){
                         //Determinamos la disponibilidad
@@ -386,8 +452,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -405,6 +475,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $J = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($J as $butaca){
                         //Determinamos la disponibilidad
@@ -414,8 +486,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -433,6 +509,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $K = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($K as $butaca){
                         //Determinamos la disponibilidad
@@ -442,8 +520,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
@@ -461,6 +543,8 @@
                     $stm = $conexion->prepare($query);
                     $stm->execute();
                     $L = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                    $i = 1; //Inicializar contador de asientos
                     
                     foreach($L as $butaca){
                         //Determinamos la disponibilidad
@@ -470,8 +554,12 @@
                             $estado = 'assets/img/butacas/butaca_ocupado.svg';
                         }
                     ?>
-                    <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="26px" height="26px">
+                    <div class="contenedor text-center">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                    <div class="centrado small"><?php echo $i?></div>
+                    </div>
                     <?php
+                    $i++;
                     }
                     ?>
                     </div>
