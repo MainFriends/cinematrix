@@ -209,7 +209,7 @@
                     <a href="asiento.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2" id="continuar">Continuar</a>
                 </div>
             </div>
-          </div><!-- FIN Columna Cartelera-->  
+          </div><!-- FIN Columna Boletos-->  
         </div>        
       </div> 
         
@@ -251,5 +251,6 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/validarCantidadBoleto.js"></script>
+    <script src="assets/js/asientos.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
         if(isset($_SESSION['usuario'])){
             $userSession = $_SESSION['usuario'];
             $userId = $_SESSION['id_usuario'];
+            $userEmail = $_SESSION['correo'];
 
             $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
             $stm = $conexion->prepare($query);
@@ -13,6 +14,21 @@
             $foto = $stm->fetch(PDO::FETCH_ASSOC);
             $foto_perfil = $foto['FOTO_PERFIL'];
         }
+
+        //Obtenemos el id de la cartelera
+        $id = $_GET['id'];
+
+        //CONSULTA CARTELERA
+        $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
+        FROM PELICULA, CARTELERA, FORMATO
+        WHERE PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO
+        AND ID_CARTELERA = '$id'";
+        $stm = $conexion->prepare($query);
+        $stm->execute();
+        $data = $stm->fetch(PDO::FETCH_ASSOC);
+
+        $fechaES = utf8_encode(strftime('%A %d %B %Y', strtotime($data['FECHA'])));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +154,32 @@
       <!-- FIN NAV -->
 
       <!-- Cuerpo-->
-      <div class="container">
+      <div class="container px-0">
+        <div class="row my-4">
+          <!-- Columna descripción pelicula-->
+          <div class="col-md-3">
+            <div class="row">
+                <img src="<?php echo $data['PORTADA'] ?>" alt="">
+            </div>
+            <div class="row mt-3">
+                <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
+                <p><?php echo $data['TITULO'] ?></p>
+            </div>
+            <div class="row">
+                <h5 class="border-bottom text-danger">FORMATO</h5>
+                <abbr title=""><button class="btn btn-warning btn-sm fw-bold" disabled><?php echo $data['FORMATO'] ?></button></abbr>
+            </div>
+            <div class="row mt-3">
+                <h5 class="border-bottom text-danger">FECHA Y HORARIO</h5>
+                <p class="small text-muted"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>   
+            </div>
+            <div class="row">
+                <h5 class="border-bottom text-danger">EMAIL</h5>
+                <p class="small text-muted"><?php echo $userEmail?></p>
+            </div>
+          </div><!-- FIN Columna descripción pelicula-->
+          <div class="col-md-9 px-0"><!-- Inicio columna boletos--> 
+          <div class="container shadow py-1 rounded bg-light">
         <div class="row mt-4">
             <h5 class="fw-bold">Escoge tu asiento</h5>
             <div class="text-center mb-4">
@@ -150,18 +191,18 @@
         <div class="row">
             <div class="container mb-3">
                 <div class="row mb-3">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
                         <div class="text-center bg-dark text-light">PANTALLA</div>
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
                 </div>
                 <div class="row">
                     <!-- FILA A -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">A</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'A%'";
@@ -180,7 +221,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     
@@ -189,14 +230,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">A</p>
                     </div>
                     <!-- FILA B -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">B</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'B%'";
@@ -215,7 +256,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -223,14 +264,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">B</p>
                     </div>
                     <!-- FILA C -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">C</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'C%'";
@@ -249,7 +290,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -257,14 +298,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">C</p>
                     </div>
                     <!-- FILA D -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">D</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'D%'";
@@ -283,7 +324,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -291,14 +332,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">D</p>
                     </div>
                     <!-- FILA E -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">E</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'E%'";
@@ -317,7 +358,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -325,14 +366,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">E</p>
                     </div>
                     <!-- FILA F -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">F</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'F%'";
@@ -351,7 +392,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -359,14 +400,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">F</p>
                     </div>
                     <!-- FILA G -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">G</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'G%'";
@@ -385,7 +426,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -393,14 +434,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">G</p>
                     </div>
                     <!-- FILA H -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">H</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'H%'";
@@ -419,7 +460,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -427,14 +468,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">H</p>
                     </div>
                     <!-- FILA I -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">I</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'I%'";
@@ -453,7 +494,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -461,14 +502,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">I</p>
                     </div>
                     <!-- FILA J -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">J</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'J%'";
@@ -487,7 +528,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -495,14 +536,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">J</p>
                     </div>
                     <!-- FILA K -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">K</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'K%'";
@@ -521,7 +562,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -529,14 +570,14 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">K</p>
                     </div>
                     <!-- FILA L -->
-                    <div class="col-md-2 text-end">
+                    <div class="col-md-1 text-center">
                     <p class="fw-bold">L</p>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-10 text-center px-0">
                     <?php
                     $query = "SELECT * FROM ASIENTO
                     WHERE NUM_ASIENTO LIKE 'L%'";
@@ -555,7 +596,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="29px" height="29px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                     <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -563,13 +604,16 @@
                     }
                     ?>
                     </div>
-                    <div class="col-md-2 text-start">
+                    <div class="col-md-1 text-center">
                         <p class="fw-bold">L</p>
                     </div>
                 </div>
             </div>
         </div>
       </div>
+          </div><!-- FIN Columna Boletos-->  
+        </div>        
+      </div> 
         
       <!-- FIN Cuerpo-->
   </div> <!-- FIN CONTAINER PRINCIPAL -->
@@ -607,23 +651,7 @@
     </div>
   </footer>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-
-        function reply_click(clicked_id){
-            
-            if (document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_disponible.svg') 
-            {
-                document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_seleccionado.svg';
-            }
-            else if(document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_seleccionado.svg')
-            {
-                document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_disponible.svg';
-            }
-        }
-
-
-        
-</script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/asientos.js"></script>
 </body>
 </html>
-
