@@ -234,7 +234,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     
@@ -269,7 +269,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -303,7 +303,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -337,7 +337,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -371,7 +371,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -405,7 +405,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -439,7 +439,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -473,7 +473,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -507,7 +507,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -541,7 +541,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -575,7 +575,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                         <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -609,7 +609,7 @@
                         }
                     ?>
                     <div class="contenedor text-center">
-                        <img src="<?php echo $estado?>" id="<?php echo $butaca['NUM_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
+                        <img src="<?php echo $estado?>" id="<?php echo $butaca['ID_ASIENTO']?>" onclick="reply_click(this.id)" width="28px" height="28px">
                     <div class="centrado small"><?php echo $i?></div>
                     </div>
                     <?php
@@ -624,7 +624,11 @@
             </div>
         </div>
       </div>
-          </div><!-- FIN Columna Boletos-->  
+            <div class="text-end mt-4">
+                <a href="boletos.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2">Volver</a>
+                <a href="snacks.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2" id="continuar">Continuar</a>
+            </div> 
+          </div><!-- FIN Columna Boletos--> 
         </div>        
       </div> 
         
@@ -670,8 +674,10 @@
 </html>
 
 <script>
+$("#continuar").addClass('disabled'); //Desactivar boton continuar
 var butacas = 0;
-var cantidad = <?php echo $_SESSION['cantADULTREGULAR']?> + <?php echo $_SESSION['cantCINEPACKPAREJA2D']?>
+var cantidad = <?php echo $_SESSION['cantADULTREGULAR']?> + <?php echo $_SESSION['cantCINEPACKPAREJA2D']?>;
+var arreglo = []
 
 function reply_click(clicked_id){
 
@@ -679,13 +685,45 @@ function reply_click(clicked_id){
     {
         document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_seleccionado.svg';
         butacas = butacas + 1
-        console.log(butacas)
+
+        //Extraemos el id del asiento seleccionado
+        asiento = document.getElementById(clicked_id).id
+
+        //Agregamos el asiento al array
+        arreglo.push(asiento)
     }
     else if(document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_seleccionado.svg')
     {
         document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_disponible.svg';
         butacas = butacas - 1
-    }       
+
+        //Extraemos el id del asiento seleccionado
+        asiento = document.getElementById(clicked_id).id
+
+        //Ubicamos la posicion en el arreglo del elemento que eliminaremos del array
+        let pos = arreglo.indexOf(asiento)
+        //Eliminamos
+        arreglo.splice(pos, 1)
+    }
+
+    //Habilitar / desabilitad boton continuar
+    if(butacas == cantidad){
+        $("#continuar").removeClass('disabled');
+    }else{
+        $("#continuar").addClass('disabled');
+    }
+
+    //Pasar cantidad de boletos por ajax
+    $("#continuar").click(function(){
+        $.ajax({
+        method:"POST",
+        url:"inc/detalleVenta.php",
+        data:{ arreglo },
+        success:function(response){
+           console.log("response");
+        }
+     });
+    }); 
     
 } 
 </script>
