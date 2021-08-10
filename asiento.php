@@ -655,3 +655,23 @@
     <script src="assets/js/asientos.js"></script>
 </body>
 </html>
+
+<script>
+var butacas = 0;
+var cantidad = <?php echo $_SESSION['cant_boletos']?>
+
+function reply_click(clicked_id){
+
+    if (document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_disponible.svg' && butacas < cantidad) 
+    {
+        document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_seleccionado.svg';
+        butacas = butacas + 1
+    }
+    else if(document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_seleccionado.svg')
+    {
+        document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_disponible.svg';
+        butacas = butacas - 1
+    }       
+    
+} 
+</script>
