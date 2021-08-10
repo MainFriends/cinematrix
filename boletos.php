@@ -191,8 +191,8 @@
                                 <p class="small text-muted"><?php echo $entrada['DESCRIPCION']?></p>
                             </div>
                                 <div class="col-md-4">
-                                    <select id="<?php echo $entrada['ID_BOLETO']?>" class="form-select form-select-sm mb-1 target" style="width:100px">
-                                        <option value="">0</option>
+                                    <select id="<?php echo $entrada['ID_BOLETO']?>" class="form-select form-select-sm mb-1 <?php echo $entrada['NOMBRE']?>" style="width:100px">
+                                        <option selected value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>

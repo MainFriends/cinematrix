@@ -658,7 +658,7 @@
 
 <script>
 var butacas = 0;
-var cantidad = <?php echo $_SESSION['cant_boletos']?>
+var cantidad = <?php echo $_SESSION['cantADULTREGULAR']?> + <?php echo $_SESSION['cantCINEPACKPAREJA2D']?>
 
 function reply_click(clicked_id){
 
@@ -666,6 +666,7 @@ function reply_click(clicked_id){
     {
         document.getElementById(clicked_id).src = 'assets/img/butacas/butaca_seleccionado.svg';
         butacas = butacas + 1
+        console.log(butacas)
     }
     else if(document.getElementById(clicked_id).src == 'http://localhost/cinematrix/assets/img/butacas/butaca_seleccionado.svg')
     {
