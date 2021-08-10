@@ -174,6 +174,19 @@
                 <p class="small text-muted"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>   
             </div>
             <div class="row">
+                <h5 class="border-bottom text-danger">ENTRADAS</h5>
+                <?php
+                if($_SESSION['cantADULTREGULAR']>0){
+                    $cantidad = $_SESSION['cantADULTREGULAR'];
+                    echo "<p class='small text-muted mb-0'>$cantidad ADULTREGULAR-HO</p>";
+                }
+                if($_SESSION['cantCINEPACKPAREJA2D']>0){
+                    $cantidad = $_SESSION['cantCINEPACKPAREJA2D']/2;
+                    echo "<p class='small text-muted'>$cantidad CINEPACKPAREJA2D-HN</p>";
+                }
+                ?>
+            </div>
+            <div class="row">
                 <h5 class="border-bottom text-danger">EMAIL</h5>
                 <p class="small text-muted"><?php echo $userEmail?></p>
             </div>
