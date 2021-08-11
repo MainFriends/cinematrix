@@ -37,7 +37,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinematrix</title>
+    <title>Elige tu asiento - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- FONT -->
@@ -163,7 +163,7 @@
             </div>
             <div class="row mt-3">
                 <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
-                <p><?php echo $data['TITULO'] ?></p>
+                <p class="text-muted"><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
                 <h5 class="border-bottom text-danger">FORMATO</h5>
@@ -192,10 +192,13 @@
             </div>
           </div><!-- FIN Columna descripción pelicula-->
           <div class="col-md-9 px-0"><!-- Inicio columna boletos--> 
-          <div class="container shadow py-1 rounded bg-light">
-        <div class="row mt-4">
-            <h5 class="fw-bold">Escoge tu asiento</h5>
-            <div class="text-center mb-4">
+          <div class="container shadow pb-3 rounded bg-light">
+        <div class="row">
+            <div class="card-header">
+            <h5 class="fw-bold mb-0"><i class="fas fa-couch me-2"></i>Elige tu asiento</h5>
+            <p class="small text-muted mb-0">Siéntete cómodo.</p>
+            </div>
+            <div class="text-center mb-4 mt-3">
             <img src="assets/img/butacas/butaca_disponible.svg" width="26px" height="26px"> <span class="mt-2 text-muted small">Disponible</span>
             <img src="assets/img/butacas/butaca_seleccionado.svg" width="26px" height="26px"> <span class="mt-2 text-muted small">Tu asiento</span>
             <img src="assets/img/butacas/butaca_ocupado.svg" width="26px" height="26px"> <span class="mt-2 text-muted small">Vendido</span>

@@ -52,7 +52,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinematrix</title>
+    <title>Alimentos y bebidas - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- FONT -->
@@ -163,7 +163,7 @@
             </div>
             <div class="row mt-3">
                 <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
-                <p><?php echo $data['TITULO'] ?></p>
+                <p class="text-muted"><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
                 <h5 class="border-bottom text-danger">FORMATO</h5>
@@ -211,7 +211,7 @@
            <div class="card">
                 <div class="card-header">
                     <h5 class="fw-bold mb-0"><i class="fas fa-hotdog me-2"></i>Alimentos y bebidas</h5>
-                    <p class="small text-muted mb-0">Elige tus snacks de preferencia</p>
+                    <p class="small text-muted mb-0">Elige tus snacks de preferencia.</p>
                 </div>
                 <div class="card-body">
                     <div class="row">

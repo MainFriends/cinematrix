@@ -154,7 +154,7 @@
             </div>
             <div class="row mt-3">
                 <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
-                <p><?php echo $data['TITULO'] ?></p>
+                <p class="text-muted"><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
                 <h5 class="border-bottom text-danger">FORMATO</h5>
@@ -171,8 +171,8 @@
           </div><!-- FIN Columna descripción pelicula-->
           <div class="col-md-9"><!-- Inicio columna boletos--> 
             <div class="row">
-                  <h5 class="fw-bold mb-0">ENTRADAS</h5>
-                  <p class="small text-muted border-bottom">Selecciona tus entradas. El valor se calculará luego de seleccionar las butacas</p>
+                  <h5 class="fw-bold mb-0"><i class="fas fa-film me-2"></i>ENTRADAS</h5>
+                  <p class="small text-muted border-bottom">Selecciona tus entradas.</p>
             </div>
             <div class="row">
                 <div class="card">
