@@ -38,6 +38,12 @@
         $stm = $conexion->prepare($query);
         $stm->execute();
         $asientos = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        //CONSULTA SNACKS
+        $query = "SELECT * FROM COMBO";
+        $stm = $conexion->prepare($query);
+        $stm->execute();
+        $snacks = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +186,7 @@
                 }
                 ?>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <h5 class="border-bottom text-danger">BUTACAS</h5>
                 <?php
                 foreach($userAsientos as $asientosUser){
@@ -196,13 +202,54 @@
                 }
                 ?>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <h5 class="border-bottom text-danger">EMAIL</h5>
                 <p class="small text-muted"><?php echo $userEmail?></p>
             </div>
           </div><!-- FIN Columna descripción pelicula-->
           <div class="col-md-9 px-0"><!-- Inicio columna boletos-->
-
+           <div class="card">
+                <div class="card-header">
+                    <h5 class="fw-bold mb-0"><i class="fas fa-hotdog me-2"></i>Alimentos y bebidas</h5>
+                    <p class="small text-muted mb-0">Elige tus snacks de preferencia</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <?php
+                            foreach($snacks as $snack){
+                        ?>
+                        <div class="col-md-6">
+                            <div class="card mb-2">
+                                <div class="card-body py-2 px-2">
+                                    <div class="row">
+                                        <div class="col-md-6 px-2 text-center">
+                                            <img src="<?php echo $snack['IMAGEN']?>" alt="" width="130px" height="150px">
+                                        </div>
+                                        <div class="col-md-6 px-3">
+                                            <h6 class="fw-bold"><?php echo $snack['NOMBRE']?></h6>
+                                            <p class="small text-muted"><?php echo $snack['DESCRIPCION']?></p>
+                                            <p class="fw-bold small mt-3 text-end">Precio: L <?php echo number_format($snack['PRECIO'],2)?></p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-md-9 text-end px-0">
+                                            <p class="text-muted mt-1">Cantidad:</p>
+                                            </div>
+                                            <div class="col-md-3 text-end">
+                                                <input class="form-control form-control-sm mb-2" type="number" min="0" max="10" value="0" style="width: 5rem;">
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
           </div><!-- FIN Columna Boletos--> 
         </div>        
       </div> 
