@@ -237,7 +237,7 @@
                                             <p class="text-muted mt-1">Cantidad:</p>
                                             </div>
                                             <div class="col-md-3 text-end">
-                                                <input class="form-control form-control-sm mb-2" type="number" min="0" max="10" value="0" style="width: 5rem;">
+                                                <input class="form-control form-control-sm mb-2" id="<?php echo $snack['ID_COMBO']?>" onclick="reply_click(this.id)" type="number" min="0" max="10" value="0" style="width: 5rem;">
                                             </div>
                                         </div> 
                                     </div>
@@ -247,6 +247,14 @@
                         <?php
                         }
                         ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                    
+                    </div>
+                    <div class="col-md-3">
+                        <h4 id="total"></h4>
                     </div>
                 </div>
             </div>
@@ -293,3 +301,64 @@
     <script src="assets/js/jquery.js"></script>
 </body>
 </html>
+
+<script>
+    var total = 0.00;
+    var cantidad = 0;
+
+    // COMBOS
+    var personal = 0;
+    var WK = 0;
+    var compartir = 0;
+    var nacho = 0;
+    var soda_grande = 0;
+    var soda_mediana = 0;
+    var agua = 0;            
+
+    $(document).ready(function(){
+        $("#total").text('Total L'+(Math.round(total * 100) / 100).toFixed(2));
+    });
+
+    function reply_click(clicked_id){
+        id = document.getElementById(clicked_id).id
+        cantidad = document.getElementById(clicked_id).value
+
+        $.ajax({
+            type:'POST',
+            url:'inc/getCombo.php',
+            dataType: "json",
+            data:{id:id},
+            success:function(data){ 
+                precio = data.PRECIO
+                subtotal = precio * cantidad
+                if(id==1){
+                    personal = subtotal
+                }else if(id==2){
+                    WK = subtotal
+                }else if(id==3){
+                    compartir = subtotal
+                }else if(id==4){
+                    nacho = subtotal
+                }else if(id==5){
+                    soda_grande = subtotal
+                }else if(id==6){
+                    soda_mediana = subtotal
+                }else if(id==7){
+                    agua = subtotal
+                }
+                total = personal + WK + compartir + nacho + soda_grande + soda_mediana + agua
+                $("#total").text('Total L'+(Math.round(total * 100) / 100).toFixed(2));
+            },error(response){
+                console.log(response)
+            }
+        });
+    }
+
+    //Impedir que le usuario escriba en el input
+    $('input').keydown(function() {
+    return false
+    });
+
+
+
+</script>

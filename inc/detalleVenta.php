@@ -15,5 +15,5 @@
 
     // GUARDAMOS LOS ASIENTOS QUE SELECCIONO EL USUARIO
     $data = $_POST['arreglo'];
-    $_SESSION['butacas'] = $data
+    $_SESSION['butacas'] = $data;
 ?>
