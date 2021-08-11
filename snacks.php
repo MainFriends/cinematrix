@@ -251,7 +251,35 @@
                 </div>
                 <div class="row">
                     <div class="col-md-9">
-                    
+                        <div class="row mx-3">
+                            <div class="col-md-6">
+                                <div id="NOMBRECOMBO1"></div>
+                                <div id="NOMBRECOMBO2"></div>
+                                <div id="NOMBRECOMBO3"></div>
+                                <div id="NOMBRECOMBO4"></div>
+                                <div id="NOMBRECOMBO5"></div>
+                                <div id="NOMBRECOMBO6"></div>
+                                <div id="NOMBRECOMBO7"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div id="CANTCOMB1"></div>
+                                <div id="CANTCOMB2"></div>
+                                <div id="CANTCOMB3"></div>
+                                <div id="CANTCOMB4"></div>
+                                <div id="CANTCOMB5"></div>
+                                <div id="CANTCOMB6"></div>
+                                <div id="CANTCOMB7"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="PRECIOCOMB1"></div>
+                                <div id="PRECIOCOMB2"></div>
+                                <div id="PRECIOCOMB3"></div>
+                                <div id="PRECIOCOMB4"></div>
+                                <div id="PRECIOCOMB5"></div>
+                                <div id="PRECIOCOMB6"></div>
+                                <div id="PRECIOCOMB7"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <h4 id="total"></h4>
@@ -303,6 +331,7 @@
 </html>
 
 <script>
+    var precio = 0;
     var total = 0.00;
     var cantidad = 0;
 
@@ -333,18 +362,102 @@
                 subtotal = precio * cantidad
                 if(id==1){
                     personal = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO1').show(); //Mostrar div
+                        $('#CANTCOMB1').show();
+                        $('#PRECIOCOMB1').show();
+                        $("#NOMBRECOMBO1").text(data.NOMBRE);
+                        $("#CANTCOMB1").text("x"+cantidad);
+                        $("#PRECIOCOMB1").text("L"+(Math.round(personal * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO1').hide(); //OCULTAR DIV
+                        $('#CANTCOMB1').hide();
+                        $('#PRECIOCOMB1').hide();
+                    }
                 }else if(id==2){
                     WK = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO2').show(); //Mostrar div
+                        $('#CANTCOMB2').show();
+                        $('#PRECIOCOMB2').show();
+                        $("#NOMBRECOMBO2").text(data.NOMBRE);
+                        $("#CANTCOMB2").text("x"+cantidad);
+                        $("#PRECIOCOMB2").text("L"+(Math.round(WK * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO2').hide(); //OCULTAR DIV
+                        $('#CANTCOMB2').hide();
+                        $('#PRECIOCOMB2').hide();
+                    }
                 }else if(id==3){
                     compartir = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO3').show(); //Mostrar div
+                        $('#CANTCOMB3').show();
+                        $('#PRECIOCOMB3').show();
+                        $("#NOMBRECOMBO3").text(data.NOMBRE);
+                        $("#CANTCOMB3").text("x"+cantidad);
+                        $("#PRECIOCOMB3").text("L"+(Math.round(compartir * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO3').hide(); //OCULTAR DIV
+                        $('#CANTCOMB3').hide();
+                        $('#PRECIOCOMB3').hide();
+                    }
                 }else if(id==4){
                     nacho = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO4').show(); //Mostrar div
+                        $('#CANTCOMB4').show();
+                        $('#PRECIOCOMB4').show();
+                        $("#NOMBRECOMBO4").text(data.NOMBRE);
+                        $("#CANTCOMB4").text("x"+cantidad);
+                        $("#PRECIOCOMB4").text("L"+(Math.round(nacho * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO4').hide(); //OCULTAR DIV
+                        $('#CANTCOMB4').hide();
+                        $('#PRECIOCOMB4').hide();
+                    }
                 }else if(id==5){
                     soda_grande = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO5').show(); //Mostrar div
+                        $('#CANTCOMB5').show();
+                        $('#PRECIOCOMB5').show();
+                        $("#NOMBRECOMBO5").text(data.NOMBRE);
+                        $("#CANTCOMB5").text("x"+cantidad);
+                        $("#PRECIOCOMB5").text("L"+(Math.round(soda_grande * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO5').hide(); //OCULTAR DIV
+                        $('#CANTCOMB5').hide();
+                        $('#PRECIOCOMB5').hide();
+                    }
                 }else if(id==6){
                     soda_mediana = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO6').show(); //Mostrar div
+                        $('#CANTCOMB6').show();
+                        $('#PRECIOCOMB6').show();
+                        $("#NOMBRECOMBO6").text(data.NOMBRE);
+                        $("#CANTCOMB6").text("x"+cantidad);
+                        $("#PRECIOCOMB6").text("L"+(Math.round(soda_mediana * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO6').hide(); //OCULTAR DIV
+                        $('#CANTCOMB6').hide();
+                        $('#PRECIOCOMB6').hide();
+                    }
                 }else if(id==7){
                     agua = subtotal
+                    if(cantidad>0){
+                        $('#NOMBRECOMBO7').show(); //Mostrar div
+                        $('#CANTCOMB7').show();
+                        $('#PRECIOCOMB7').show();
+                        $("#NOMBRECOMBO7").text(data.NOMBRE);
+                        $("#CANTCOMB7").text("x"+cantidad);
+                        $("#PRECIOCOMB7").text("L"+(Math.round(agua * 100) / 100).toFixed(2));
+                    }else{
+                        $('#NOMBRECOMBO7').hide(); //OCULTAR DIV
+                        $('#CANTCOMB7').hide();
+                        $('#PRECIOCOMB7').hide();
+                    }
                 }
                 total = personal + WK + compartir + nacho + soda_grande + soda_mediana + agua
                 $("#total").text('Total L'+(Math.round(total * 100) / 100).toFixed(2));
