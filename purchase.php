@@ -30,6 +30,9 @@
         $combo6 = $_SESSION['COMBO6'];
         $combo7 = $_SESSION['COMBO7'];
 
+        //VARIABLE GLOBAL TOTAL
+        $totalCompra = 25;
+
         //CONSULTA CARTELERA
         $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
         FROM PELICULA, CARTELERA, FORMATO
@@ -61,7 +64,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alimentos y bebidas - Cinematrix</title>
+    <title>Confirmación y pago - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- FONT -->
@@ -259,6 +262,209 @@
             </div>
           </div><!-- FIN Columna descripción pelicula-->
           <div class="col-md-9 px-0"><!-- Inicio columna boletos-->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="fw-bold mb-0"><i class="fas fa-shopping-cart me-2"></i>Confirmación y pago</h5>
+                    <p class="small text-muted mb-0">Observa el detalle de tu compra.</p>
+                </div>
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row border-bottom">
+                                <h5 class="card-title">Cinematrix - Multiplaza Tegucigalpa</h5>
+                                <p class="text-muted mb-2"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>
+                            </div> 
+                            <div class="row">
+                            <h5 class="mt-3 mb-0">BUTACAS</h5>
+                            <?php
+                                if($_SESSION['cantADULTREGULAR']>0){
+                                    //CONSULTA PRECIO
+                                    $query = "SELECT * FROM BOLETO WHERE ID_BOLETO = 1";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $boleto = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $cantidad = $_SESSION['cantADULTREGULAR'];
+                                    $total = $cantidad * $boleto['PRECIO'];
+                                    $nombre = $boleto['NOMBRE'];
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='small text-muted mb-0'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                            <span class='small text-muted mb-0'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($_SESSION['cantCINEPACKPAREJA2D']>0){
+                                    $query = "SELECT * FROM BOLETO WHERE ID_BOLETO = 2";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $boleto = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $cantidad = $_SESSION['cantCINEPACKPAREJA2D']/2;
+                                    $total = $cantidad * $boleto['PRECIO'];
+                                    $nombre = $boleto['NOMBRE'];
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='small text-muted mb-0'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                            <span class='small text-muted mb-0'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                            ?>
+                            <h5 class="mt-2 mb-0">ALIMENTOS Y BEBIDAS</h5>
+                            <?php
+                            foreach($snacks as $combo){
+                                if($combo1[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 1";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb1 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo1[0][1];
+                                    $total = $comb1['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo2[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 2";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb2 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo2[0][1];
+                                    $total = $comb2['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo3[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 3";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb3 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo3[0][1];
+                                    $total = $comb3['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo4[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 4";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb4 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo4[0][1];
+                                    $total = $comb4['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo5[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 5";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb5 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo5[0][1];
+                                    $total = $comb5['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo6[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 6";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb6 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo6[0][1];
+                                    $total = $comb6['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                                if($combo7[0][0]==$combo['ID_COMBO']){
+                                    $query = "SELECT * FROM COMBO WHERE ID_COMBO = 7";
+                                    $stm = $conexion->prepare($query);
+                                    $stm->execute();
+                                    $comb7 = $stm->fetch(PDO::FETCH_ASSOC);
+                                    $nombre = $combo['NOMBRE'];
+                                    $cantidad = $combo7[0][1];
+                                    $total = $comb7['PRECIO'] * $cantidad;
+                                    $totalCompra = $totalCompra + $total;
+                                    echo "<div class='row'>
+                                            <div class='col-md-4'>
+                                                <span class='text-muted small'>x$cantidad $nombre</span>
+                                            </div>
+                                            <div class='col-md-8 text-end'>
+                                                <span class='text-muted small'>L" .number_format($total,2)."</span>
+                                            </div>
+                                        </div>";
+                                }
+                            }
+                            ?>
+                            <div class="row">
+                                <div class="col-md-8 text-end text-muted small">
+                                    <span>+ Cargo por servicios</span>
+                                </div>
+                                <div class="col-md-4 text-end text-muted small">
+                                    <span>L 25.00</span>
+                                </div>
+                                <div class="col-md-8 text-end">
+                                    <span class="text-danger fw-bold">TOTAL</span>
+                                </div>
+                                <div class="col-md-4 text-end text-muted">
+                                    <span class="text-danger fw-bold">L <?php echo number_format($totalCompra,2)?></span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
            
           </div><!-- FIN Columna Boletos--> 
           <div class="text-end mt-4">
