@@ -32,6 +32,7 @@
 
         //VARIABLE GLOBAL TOTAL
         $totalCompra = 25;
+        $conversion = 0.042;
 
         //CONSULTA CARTELERA
         $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
@@ -527,7 +528,7 @@
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: <?php echo $totalCompra*0.042?>
+            value: <?php echo number_format($totalCompra*$conversion,2)?>
           }
         }]
       });
