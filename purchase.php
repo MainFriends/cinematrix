@@ -82,6 +82,8 @@
     font-family: 'Poppins';
     }
   </style>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=AcUdCT0r-0OmYDGQDWJz7XwKD2Iy1wx0epe63gyy8KX7QvUOZ_vWspeWkyqWfyHpoxXl7uboePUiqxJO"></script>
 </head>
 
 <body>
@@ -464,6 +466,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <h5 class="fw-bold ms-3 text-muted">Realiza tu pago</h5>
+                    <div class="text-center mt-2" id="paypal"></div>
+                </div>  
             </div>
            
           </div><!-- FIN Columna Boletos--> 
@@ -513,3 +519,18 @@
     <script src="assets/js/jquery.js"></script>
 </body>
 </html>
+
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: <?php echo $totalCompra*0.042?>
+          }
+        }]
+      });
+    }
+  }).render('#paypal');
+</script>
