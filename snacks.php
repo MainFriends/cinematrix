@@ -348,7 +348,13 @@
     var soda_mediana = 0;
     var agua = 0;
     
-    var combos = [];
+    var combo1  = [[0,0]];
+    var combo2  = [[0,0]];
+    var combo3  = [[0,0]];
+    var combo4  = [[0,0]];
+    var combo5  = [[0,0]];
+    var combo6  = [[0,0]];
+    var combo7  = [[0,0]];
 
     $(document).ready(function(){
         $("#total").text('Total L'+(Math.round(total * 100) / 100).toFixed(2));
@@ -374,11 +380,13 @@
                         $('#PRECIOCOMB1').show();
                         $("#NOMBRECOMBO1").text(data.NOMBRE);
                         $("#CANTCOMB1").text("x"+cantidad);
-                        $("#PRECIOCOMB1").text("L"+(Math.round(personal * 100) / 100).toFixed(2));   
+                        $("#PRECIOCOMB1").text("L"+(Math.round(personal * 100) / 100).toFixed(2));
+                        combo1  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO1').hide(); //OCULTAR DIV
                         $('#CANTCOMB1').hide();
                         $('#PRECIOCOMB1').hide();
+                        combo1  = [[0,0]];
                     }
                 }else if(id==2){
                     WK = subtotal
@@ -389,10 +397,12 @@
                         $("#NOMBRECOMBO2").text(data.NOMBRE);
                         $("#CANTCOMB2").text("x"+cantidad);
                         $("#PRECIOCOMB2").text("L"+(Math.round(WK * 100) / 100).toFixed(2));
+                        combo2  = [[id, cantidad]];  
                     }else{
                         $('#NOMBRECOMBO2').hide(); //OCULTAR DIV
                         $('#CANTCOMB2').hide();
                         $('#PRECIOCOMB2').hide();
+                        combo2  = [[0,0]]; 
                     }
                 }else if(id==3){
                     compartir = subtotal
@@ -403,10 +413,12 @@
                         $("#NOMBRECOMBO3").text(data.NOMBRE);
                         $("#CANTCOMB3").text("x"+cantidad);
                         $("#PRECIOCOMB3").text("L"+(Math.round(compartir * 100) / 100).toFixed(2));
+                        combo3  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO3').hide(); //OCULTAR DIV
                         $('#CANTCOMB3').hide();
                         $('#PRECIOCOMB3').hide();
+                        combo3  = [[0,0]];
                     }
                 }else if(id==4){
                     nacho = subtotal
@@ -417,10 +429,12 @@
                         $("#NOMBRECOMBO4").text(data.NOMBRE);
                         $("#CANTCOMB4").text("x"+cantidad);
                         $("#PRECIOCOMB4").text("L"+(Math.round(nacho * 100) / 100).toFixed(2));
+                        combo4  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO4').hide(); //OCULTAR DIV
                         $('#CANTCOMB4').hide();
                         $('#PRECIOCOMB4').hide();
+                        combo4  = [[0,0]];
                     }
                 }else if(id==5){
                     soda_grande = subtotal
@@ -431,10 +445,12 @@
                         $("#NOMBRECOMBO5").text(data.NOMBRE);
                         $("#CANTCOMB5").text("x"+cantidad);
                         $("#PRECIOCOMB5").text("L"+(Math.round(soda_grande * 100) / 100).toFixed(2));
+                        combo5  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO5').hide(); //OCULTAR DIV
                         $('#CANTCOMB5').hide();
                         $('#PRECIOCOMB5').hide();
+                        combo5  = [[0,0]];
                     }
                 }else if(id==6){
                     soda_mediana = subtotal
@@ -445,10 +461,12 @@
                         $("#NOMBRECOMBO6").text(data.NOMBRE);
                         $("#CANTCOMB6").text("x"+cantidad);
                         $("#PRECIOCOMB6").text("L"+(Math.round(soda_mediana * 100) / 100).toFixed(2));
+                        combo6  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO6').hide(); //OCULTAR DIV
                         $('#CANTCOMB6').hide();
                         $('#PRECIOCOMB6').hide();
+                        combo6  = [[0,0]];
                     }
                 }else if(id==7){
                     agua = subtotal
@@ -459,10 +477,12 @@
                         $("#NOMBRECOMBO7").text(data.NOMBRE);
                         $("#CANTCOMB7").text("x"+cantidad);
                         $("#PRECIOCOMB7").text("L"+(Math.round(agua * 100) / 100).toFixed(2));
+                        combo7  = [[id, cantidad]]; 
                     }else{
                         $('#NOMBRECOMBO7').hide(); //OCULTAR DIV
                         $('#CANTCOMB7').hide();
                         $('#PRECIOCOMB7').hide();
+                        combo7  = [[0,0]];
                     }
                 }
                 total = personal + WK + compartir + nacho + soda_grande + soda_mediana + agua
@@ -472,23 +492,16 @@
                 console.log(response)
             }
         });
-        $("#continuar").click(function(){
-            $.ajax({
-                method:"POST",
-                url:"inc/detalleVenta.php",
-                data:{ arreglo },
-                success:function(response){
-                console.log("response");
-                }
-            });
-        });
     }
-
-    //Impedir que le usuario escriba en el input
-    $('input').keydown(function() {
-    return false
+    $("#continuar").click(function(){
+        $.ajax({
+        method:"POST",
+        url:"inc/detalleVenta.php",
+        data:{ combo1, combo2, combo3, combo4, combo5, combo6, combo7 },
+        success:function(response){
+           console.log(response);
+        }
+        });
     });
-
-
 
 </script>

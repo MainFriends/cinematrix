@@ -14,6 +14,32 @@
     }
 
     // GUARDAMOS LOS ASIENTOS QUE SELECCIONO EL USUARIO
-    $data = $_POST['arreglo'];
-    $_SESSION['butacas'] = $data;
+    if(isset($_POST['arreglo'])){
+        $data = $_POST['arreglo'];
+        $_SESSION['butacas'] = $data;
+    }
+
+    // GUARDAMOS LOS COMBOS QUE SELECCIONO EL USUARIO
+    if(isset($_POST['combo1'])){
+        $_SESSION['COMBO1'] = $_POST['combo1'];
+    }
+    if(isset($_POST['combo2'])){
+        $_SESSION['COMBO2'] = $_POST['combo2'];
+    }
+    if(isset($_POST['combo3'])){
+        $_SESSION['COMBO3'] = $_POST['combo3'];
+    }
+    if(isset($_POST['combo4'])){
+        $_SESSION['COMBO4'] = $_POST['combo4'];
+    }
+    if(isset($_POST['combo5'])){
+        $_SESSION['COMBO5'] = $_POST['combo5'];
+    }
+    if(isset($_POST['combo6'])){
+        $_SESSION['COMBO6'] = $_POST['combo6'];
+    }
+    if(isset($_POST['combo7'])){
+        $_SESSION['COMBO7'] = $_POST['combo7'];
+    }
+    
 ?>

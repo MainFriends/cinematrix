@@ -21,6 +21,15 @@
         //Obtenemos los asientos del usuario
         $userAsientos = $_SESSION['butacas'];
 
+        //Obtenemos los combos del usuario
+        $combo1 = $_SESSION['COMBO1'];
+        $combo2 = $_SESSION['COMBO2'];
+        $combo3 = $_SESSION['COMBO3'];
+        $combo4 = $_SESSION['COMBO4'];
+        $combo5 = $_SESSION['COMBO5'];
+        $combo6 = $_SESSION['COMBO6'];
+        $combo7 = $_SESSION['COMBO7'];
+
         //CONSULTA CARTELERA
         $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
         FROM PELICULA, CARTELERA, FORMATO
@@ -203,6 +212,48 @@
                 ?>
             </div>
             <div class="row mt-2">
+                <h5 class="border-bottom text-danger">SNACKS</h5>
+                <?php
+                foreach($snacks as $combo){
+                    if($combo1[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo1[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo2[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo2[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo3[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo3[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo4[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo4[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo5[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo5[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo6[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo6[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                    if($combo7[0][0]==$combo['ID_COMBO']){
+                        $nombre = $combo['NOMBRE'];
+                        $cantidad = $combo7[0][1];
+                        echo "<span class='text-muted small'>x$cantidad $nombre</span>";
+                    }
+                }
+                ?>
+            </div>
+            <div class="row mt-2">
                 <h5 class="border-bottom text-danger">EMAIL</h5>
                 <p class="small text-muted"><?php echo $userEmail?></p>
             </div>
@@ -211,8 +262,8 @@
            
           </div><!-- FIN Columna Boletos--> 
           <div class="text-end mt-4">
-                <a href="asiento.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2">Volver</a>
-                <a href="snacks.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2" id="continuar">Pagar</a>
+                <a href="snacks.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2">Volver</a>
+                <a href="#" class="btn btn-danger btn-sm mt-2" id="continuar">Pagar</a>
             </div> 
         </div>        
       </div> 
