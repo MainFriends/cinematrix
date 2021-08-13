@@ -495,7 +495,6 @@
           </div><!-- FIN Columna Boletos--> 
           <div class="text-end mt-4">
                 <a href="snacks.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2">Volver</a>
-                <a href="#" class="btn btn-danger btn-sm mt-2" id="continuar">Pagar</a>
             </div> 
         </div>        
       </div> 
@@ -553,6 +552,18 @@
       });
     },
     onApprove: function(data, actions) {
+        var idCartelera = <?php echo $id?>;
+        var subtotal = <?php echo $subtotal?>;
+        var total = <?php echo $totalCompra?>;
+        $.ajax({
+            method:"POST",
+            url:"inc/addFactura.php",
+            data:{idCartelera:idCartelera, subtotal:subtotal, total:total},
+            success:function(response){
+            console.log(response);
+            }
+        });
+
         $("#success").modal("show");
         $("#success").modal("hide");
     }
