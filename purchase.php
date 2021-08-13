@@ -31,7 +31,10 @@
         $combo7 = $_SESSION['COMBO7'];
 
         //VARIABLE GLOBAL TOTAL
-        $totalCompra = 25;
+        $subtotal = 0;
+        $descuento = 0;
+        $cargoServicios = 25;
+        $totalCompra = 0;
         $conversion = 0.042;
 
         //CONSULTA CARTELERA
@@ -271,14 +274,15 @@
                     <p class="small text-muted mb-0">Observa el detalle de tu compra.</p>
                 </div>
                 <div class="card-body">
+                <h5 class="text-muted mb-1 ">Detalle de la compra</h5>
                     <div class="card">
                         <div class="card-body">
                             <div class="row border-bottom">
-                                <h5 class="card-title">Cinematrix - Multiplaza Tegucigalpa</h5>
-                                <p class="text-muted mb-2"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>
+                                <h5 class="card-title fw-bolder">Cinematrix - Multiplaza Tegucigalpa</h5>
+                                <p class="text-muted small mb-2"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>
                             </div> 
                             <div class="row">
-                            <h5 class="mt-3 mb-0">BUTACAS</h5>
+                            <h6 class="mt-3 mb-0 fw-bold">BUTACAS</h6>
                             <?php
                                 if($_SESSION['cantADULTREGULAR']>0){
                                     //CONSULTA PRECIO
@@ -289,7 +293,7 @@
                                     $cantidad = $_SESSION['cantADULTREGULAR'];
                                     $total = $cantidad * $boleto['PRECIO'];
                                     $nombre = $boleto['NOMBRE'];
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='small text-muted mb-0'>x$cantidad $nombre</span>
@@ -307,7 +311,7 @@
                                     $cantidad = $_SESSION['cantCINEPACKPAREJA2D']/2;
                                     $total = $cantidad * $boleto['PRECIO'];
                                     $nombre = $boleto['NOMBRE'];
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='small text-muted mb-0'>x$cantidad $nombre</span>
@@ -318,7 +322,7 @@
                                         </div>";
                                 }
                             ?>
-                            <h5 class="mt-2 mb-0">ALIMENTOS Y BEBIDAS</h5>
+                            <h6 class="mt-2 mb-0 fw-bold">ALIMENTOS Y BEBIDAS</h6>
                             <?php
                             foreach($snacks as $combo){
                                 if($combo1[0][0]==$combo['ID_COMBO']){
@@ -329,7 +333,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo1[0][1];
                                     $total = $comb1['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -347,7 +351,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo2[0][1];
                                     $total = $comb2['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -365,7 +369,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo3[0][1];
                                     $total = $comb3['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -383,7 +387,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo4[0][1];
                                     $total = $comb4['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -401,7 +405,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo5[0][1];
                                     $total = $comb5['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -419,7 +423,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo6[0][1];
                                     $total = $comb6['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -437,7 +441,7 @@
                                     $nombre = $combo['NOMBRE'];
                                     $cantidad = $combo7[0][1];
                                     $total = $comb7['PRECIO'] * $cantidad;
-                                    $totalCompra = $totalCompra + $total;
+                                    $subtotal = $subtotal + $total;
                                     echo "<div class='row'>
                                             <div class='col-md-4'>
                                                 <span class='text-muted small'>x$cantidad $nombre</span>
@@ -451,15 +455,30 @@
                             ?>
                             <div class="row">
                                 <div class="col-md-8 text-end text-muted small">
+                                    <span>Subtotal</span>
+                                </div>
+                                <div class="col-md-4 text-end text-muted small">
+                                    <span>L<?php echo number_format($subtotal,2)?></span>
+                                </div>
+                                <div class="col-md-8 text-end text-muted small">
+                                    <span>Descuentos</span>
+                                </div>
+                                <div class="col-md-4 text-end text-muted small">
+                                    <span>L<?php echo number_format($descuento,2)?></span>
+                                </div>
+                                <div class="col-md-8 text-end text-muted small">
                                     <span>+ Cargo por servicios</span>
                                 </div>
                                 <div class="col-md-4 text-end text-muted small">
                                     <span>L 25.00</span>
                                 </div>
                                 <div class="col-md-8 text-end">
-                                    <span class="text-danger fw-bold">TOTAL</span>
+                                    <span class="text-danger fw-bold">TOTAL A PAGAR</span>
                                 </div>
                                 <div class="col-md-4 text-end text-muted">
+                                    <?php
+                                    $totalCompra = $subtotal + $descuento + $cargoServicios;
+                                    ?>
                                     <span class="text-danger fw-bold">L <?php echo number_format($totalCompra,2)?></span>
                                 </div>
                             </div>
@@ -532,6 +551,11 @@
           }
         }]
       });
+    },
+    onApprove: function(data, actions) {
+        console.log("Compra realizada");
     }
   }).render('#paypal');
+  //This function displays Smart Payment Buttons on your web page.
+  
 </script>
