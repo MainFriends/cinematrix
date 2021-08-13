@@ -455,10 +455,10 @@
                             ?>
                             <div class="row">
                                 <div class="col-md-8 text-end text-muted small">
-                                    <span>Subtotal</span>
+                                    <span class="fw-bold">Subtotal</span>
                                 </div>
                                 <div class="col-md-4 text-end text-muted small">
-                                    <span>L<?php echo number_format($subtotal,2)?></span>
+                                    <span class="fw-bold">L<?php echo number_format($subtotal,2)?></span>
                                 </div>
                                 <div class="col-md-8 text-end text-muted small">
                                     <span>Descuentos</span>
@@ -553,9 +553,28 @@
       });
     },
     onApprove: function(data, actions) {
-        console.log("Compra realizada");
+        $("#success").modal("show");
+        $("#success").modal("hide");
     }
   }).render('#paypal');
   //This function displays Smart Payment Buttons on your web page.
   
 </script>
+
+<!-- Modal compra confirmada-->
+<div class="modal fade" id="success" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border: none;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h6 class="fw-bold">Felicidades, su compra se ha procesado con éxito.</h6>
+      </div>
+      <div class="modal-footer" style="border: none;">
+        <button type="button" class="btn btn-warning">Imprimir factura</button>
+        <button type="button" id="close" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
