@@ -21,7 +21,7 @@ $(document).ready(function() {
        {"data": "NOMBRE"},
        {"data": "DESCRIPCION"},
        {"data": "CANT_ASIENTOS"},
-       {"data": "ID_ESTADO"},
+       {"data": "ESTADO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -76,20 +76,32 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    nombre = fila.find('td:eq(1)').text();
-    descripcion = fila.find('td:eq(2)').text();
-    cantAsientos = parseInt(fila.find('td:eq(3)').text());
-    estado = parseInt(fila.find('td:eq(4)').text());
-    
-    $("#nombre").val(nombre);
-    $("#descripcion").val(descripcion);
-    $("#cantAsientos").val(cantAsientos);
-    $("#estado").val(estado);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        nombre = data.NOMBRE
+        descripcion = data.DESCRIPCION
+        cantAsientos = data.CANT_ASIENTOS
+        estado = data.ID_ESTADO
 
-    $("#modalSala").modal("show");
+        $("#nombre").val(nombre);
+        $("#descripcion").val(descripcion);
+        $("#cantAsientos").val(cantAsientos);
+        $("#estado").val(estado);
+        
+        opcion = 2;
+        $("#modalSala").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR

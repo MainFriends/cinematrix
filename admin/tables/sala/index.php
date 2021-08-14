@@ -117,7 +117,7 @@
                           <th>NOMBRE</th>
                           <th>DESCRIPCION</th>
                           <th>CANTIDAD ASIENTOS</th>
-                          <th>ID ESTADO</th>
+                          <th>ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>
