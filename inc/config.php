@@ -2,7 +2,7 @@
     // CONEXIÓN MEDIANTE PDO
     class Conexion{
         public static function Conectar() {
-            define('servidor','localhost:3306');
+            define('servidor','localhost:3307');
             define('nombre_db','cinematrix');
             define('usuario','root');
             define('password','');

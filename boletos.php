@@ -6,6 +6,7 @@
         if(isset($_SESSION['usuario'])){
             $userSession = $_SESSION['usuario'];
             $userId = $_SESSION['id_usuario'];
+            $userEmail = $_SESSION['correo'];
 
             $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
             $stm = $conexion->prepare($query);
@@ -17,24 +18,23 @@
         //Obtenemos el id de la pelicula
         $id = $_GET['id'];
 
-        //CONSULTA PELICULA
-        $query = "SELECT *
-        FROM PELICULA, GENERO, CLASIFICACION
-        WHERE PELICULA.ID_GENERO = GENERO.ID_GENERO
-        AND PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
-        AND ID_PELICULA = '$id'";
+        //CONSULTA CARTELERA
+        $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
+        FROM PELICULA, CARTELERA, FORMATO
+        WHERE PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+        AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO
+        AND ID_CARTELERA = '$id'";
         $stm = $conexion->prepare($query);
         $stm->execute();
         $data = $stm->fetch(PDO::FETCH_ASSOC);
-        
-        //Query fecha para generar la card
-        $queryDate = "SELECT DISTINCT  FECHA FROM CARTELERA
-        WHERE ID_PELICULA = '$id'
-        AND FECHA >= CURDATE()
-        ORDER BY FECHA";
-        $stm = $conexion->prepare($queryDate);
+
+        $fechaES = utf8_encode(strftime('%A %d %B %Y', strtotime($data['FECHA'])));
+
+        //CONSULTA BOLETO
+        $query = "SELECT * FROM BOLETO";
+        $stm = $conexion->prepare($query);
         $stm->execute();
-        $dataDate = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $boletos = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelicula - Cinematrix</title>
+    <title>Entradas - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- FONT -->
@@ -154,96 +154,69 @@
             </div>
             <div class="row mt-3">
                 <h5 class="border-bottom text-danger">TITULO ORIGINAL</h5>
-                <p><?php echo $data['TITULO'] ?></p>
+                <p class="text-muted"><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
-                <h5 class="border-bottom text-danger">SINOPSIS </h5>
-                <p><?php echo $data['SINOPSIS'] ?></p>
+                <h5 class="border-bottom text-danger">FORMATO</h5>
+                <abbr title=""><button class="btn btn-warning btn-sm fw-bold" disabled><?php echo $data['FORMATO'] ?></button></abbr>
+            </div>
+            <div class="row mt-3">
+                <h5 class="border-bottom text-danger">FECHA Y HORARIO</h5>
+                <p class="small text-muted"><?php echo strtoupper($fechaES) ." " .$data['HORA_INICIO'] ?></p>   
             </div>
             <div class="row">
-                <h5 class="border-bottom text-danger">REPARTO</h5>
-                <p><?php echo $data['REPARTO'] ?></p>
-            </div>
-            <div class="row">
-                <h5 class="border-bottom text-danger">DIRECTOR</h5>
-                <p><?php echo $data['DIRECTOR'] ?></p>
+                <h5 class="border-bottom text-danger">EMAIL</h5>
+                <p class="small text-muted"><?php echo $userEmail?></p>
             </div>
           </div><!-- FIN Columna descripción pelicula-->
-          <!-- Inicio Columna Cartelera-->  
-          <div class="col-md-9">
-            <div class="d-grid gap-2 d-md-block my-3">
-              <abbr title="<?php echo $data['DESCRIPCION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $data['CLASIFICACION'] ?></button></abbr>
-              <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $data['DURACION'] ?></button>
+          <div class="col-md-9"><!-- Inicio columna boletos--> 
+            <div class="row">
+                  <h5 class="fw-bold mb-0"><i class="fas fa-film me-2"></i>ENTRADAS</h5>
+                  <p class="small text-muted border-bottom">Selecciona tus entradas.</p>
             </div>
-            <?php
-              foreach($dataDate as $fecha){
-                //Guardar la fecha actual del ciclo   
-                $date = $fecha['FECHA'];
-
-                //Le damos formato a la fecha que se mostrará en el card
-                $fechaES = utf8_encode(strftime('%A %d', strtotime($fecha['FECHA'])));
-
-                // DOBLADA AL ESPAÑOL
-                $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
-                WHERE ID_PELICULA = '$id'
-                AND FECHA = '$date'
-                AND ID_IDIOMA = 1";
-                $stm = $conexion->prepare($queryDOB);
-                $stm->execute();
-                $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
-                $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
-
-                // ORIGINAL/SUBTITULADA
-                $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
-                WHERE ID_PELICULA = '$id'
-                AND FECHA = '$date'
-                AND ID_IDIOMA = 2";
-                $stm = $conexion->prepare($querySUB);
-                $stm->execute();
-                $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
-                $resulSUB = $stm->rowCount();
-            ?>
-            <div class="card my-2">
-              <div class="card-header fw-bold">
-                <?php echo  ($fechaES)?> - Multiplaza Tegucigalpa
-              </div>
-              <div class="card-body">
-                <p class="card-text fw-lighter text-muted small">*Los horarios aquí expuestos representan el inicio de cada función</p>
-            
-                <?php
-                // Si hay resultados para peliculas dobladas ejecuta esta sentencia
-                if($resulDOB >= 1){
-                ?>
-                    <p class="fw-bold"><span class="badge bg-secondary">DOB</span>
-                        <?php foreach($dataHI as $HIDOB){?>
-                        <a href="boletos.php?id=<?php echo $HIDOB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
-                        <?php
-                        }
-                        ?>
-                    </p>
-                <?php
-                }
-                ?>
-                <?php
-                // Si hay resultados para peliculas subtituladas ejecuta esta sentencia
-                if($resulSUB >= 1){
-                ?>
-                    <p class="fw-bold"><span class="badge bg-secondary">SUB</span>
-                        <?php foreach($dataSUB as $HISUB){?>
-                        <a href="boletos.php?id=<?php echo $HISUB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
-                        <?php
-                        }
-                        ?>
-                    </p>
-                <?php
-                }
-                ?>
-              </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="fw-bold small">SILLA GENERAL</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <?php
+                            foreach($boletos as $entrada){
+                            ?>
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-0"><i class="fas fa-ticket-alt me-2"></i><?php echo $entrada['NOMBRE']?></p>
+                                <p class="small text-muted"><?php echo $entrada['DESCRIPCION']?></p>
+                            </div>
+                                <div class="col-md-4">
+                                    <select id="<?php echo $entrada['ID_BOLETO']?>" class="form-select form-select-sm mb-1 <?php echo $entrada['NOMBRE']?>" style="width:100px">
+                                        <option selected value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="pelicula.php?id=<?php echo $data['ID_PELICULA']?>" class="btn btn-danger btn-sm mt-2">Volver</a>
+                    <a href="asiento.php?id=<?php echo $id?>" class="btn btn-danger btn-sm mt-2" id="continuar">Continuar</a>
+                </div>
             </div>
-            <?php
-              }
-            ?>
-          </div><!-- FIN Columna Cartelera-->  
+          </div><!-- FIN Columna Boletos-->  
         </div>        
       </div> 
         
@@ -283,5 +256,7 @@
     </div>
   </footer>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/validarCantidadBoleto.js"></script>
 </body>
 </html>
