@@ -22,3 +22,6 @@ Esta carpeta incluirá todas las clases en PHP necesarias para que la aplicació
 
 ### :file_folder: mod
 Esta carpeta almacena pequeños scripts o códigos html que serán insertados en los scripts de la raiz principal del proyecto. Uno de ellos es la estructura de la página principal.
+
+### :file_folder: resources
+Almacena recursos que podemos añadir para trabajar o realizar pruebas.
