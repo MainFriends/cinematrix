@@ -53,11 +53,11 @@
                     <i class="icon ion-ios-create lead me-2"></i> Tablas
                   </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body bg-light">
                     <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../pelicula/index.php">Películas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../cartelera/index.php">Carteleras</a>
-                    <a class="dropdown-item rounded fw-ligth active" href="../sala/index.php">Salas</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Salas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
@@ -107,17 +107,19 @@
               Gestión de contenido
             </div>
             <div class="card-body">
-              <button class="btn btn-danger rounded-pill" id="addSala"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
-              <hr>
               <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered" id="tablaSala" style="width:100%">
+                <table class="table table-striped table-hover table-bordered" id="tablaAdmin" style="width:100%">
                     <thead class="text-center">
                         <tr>
                           <th>ID</th>
                           <th>NOMBRE</th>
-                          <th>DESCRIPCION</th>
-                          <th>CANTIDAD ASIENTOS</th>
-                          <th>ID ESTADO</th>
+                          <th>APELLIDO</th>
+                          <th>CORREO</th>
+                          <th>ROL</th>
+                          <th>TELEFONO</th>
+                          <th>FECHA NACIMIENTO</th>
+                          <th>PAIS</th>
+                          <th>CIUDAD</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>
@@ -134,42 +136,30 @@
       </div>
   </div>
 
-   <!--Modal Asiento -->
- <div class="modal fade" id="modalSala" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
+   <!--Modal Usuario -->
+ <div class="modal fade" id="modalAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Sala</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="frmSala">
+              <form id="frmAdmin">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-5 mb-2">
-                            <label class="form-label">Nombre de la sala</label>
-                            <input class="form-control input-sm" type="text" id="nombre" required>
-                        </div>
-                        <div class="col-md-7">
-                            <label class="form-label">Descripción</label>
-                            <input class="form-control input-sm" type="text" id="descripcion" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Cantidad de asientos</label>
-                            <input class="form-control input-sm" type="number" min="0" step="1" value="1" id="cantAsientos" required>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <label class="form-label">Estado</label>
-                            <select id="estado" class="form-select mb-2" required>
-                                <option value="">-</option>
-                                <?php
-                                    mostrarEstados();
-                                ?>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
-                        </div>
+                      <div class="col-md-6">
+                          <label class="form-label">Asignar un rol</label>
+                          <select id="rol" class="form-select mb-2" required>
+                              <option value="">-</option>
+                              <?php
+                                mostrarRoles();
+                              ?>
+                          </select>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
+                      </div>
                     </div>
                 </div>
               </form>
@@ -177,24 +167,6 @@
           </div>
         </div>
     </div>
-
-         <!-- Modal eliminar -->
-  <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header"  style="border: none;">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <p>¿Esta seguro que desea eliminar esta sala? </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="btnSi" data-bs-dismiss="modal">Sí</button>
-        <button type="button" class="btn btn-primary" id="btnCancelar">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
   <!-- JQuery, Bundle.JS, Bootstrap JS -->
   <script src="../../../assets/js/jquery.js"></script>

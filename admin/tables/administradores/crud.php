@@ -26,7 +26,7 @@
             WHERE USUARIO.ID_PAIS = PAIS.ID_PAIS
             AND USUARIO.ID_USUARIO = LOGIN.ID_USUARIO
             AND ROLES.ID_ROL = LOGIN.ID_ROL
-            AND LOGIN.ID_ROL = 2";
+            AND LOGIN.ID_ROL = 1";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
