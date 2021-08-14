@@ -116,7 +116,7 @@
                           <th>ID</th>
                           <th>NOMBRE</th>
                           <th>DESCRIPCION</th>
-                          <th>ID_CATEGORIA</th>
+                          <th>CATEGORIA</th>
                           <th>PRECIO</th>
                           <th>ACCIONES</th>
                         </tr>

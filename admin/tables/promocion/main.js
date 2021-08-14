@@ -20,7 +20,7 @@ $(document).ready(function() {
        {"data": "ID_PROMO"},
        {"data": "NOMBRE"},
        {"data": "DESCRIPCION"},
-       {"data": "ID_CATEGORIA"},
+       {"data": "CATEGORIA"},
        {"data": "PRECIO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
@@ -77,20 +77,34 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    nombre = fila.find('td:eq(1)').text();
-    descripcion = fila.find('td:eq(2)').text();
-    categoria = fila.find('td:eq(3)').text();
-    precio = fila.find('td:eq(4)').text();
-    
-    $("#nombre").val(nombre);
-    $("#descripcion").val(descripcion);
-    $("#categoria").val(categoria);
-    $("#precio").val(precio);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        nombre = data.NOMBRE
+        descripcion = data.DESCRIPCION
+        categoria = data.ID_CATEGORIA
+        precio = data.PRECIO
+        imagen = data.IMAGEN
 
-    $("#modalPromo").modal("show");
+        $("#nombre").val(nombre);
+        $("#descripcion").val(descripcion);
+        $("#categoria").val(categoria);
+        $("#precio").val(precio);
+        $("#imagen").val(imagen);
+
+        opcion = 2;
+        $("#modalPromo").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR
