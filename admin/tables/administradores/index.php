@@ -45,7 +45,7 @@
         </div>
         <div class="menu list-group-flush">
           <a href="../usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-friends me-1"></i> Usuarios</a>
-          <a href="../administradores/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-shield me-1"></i> Administradores</a>
+          <a href="../administradores/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1 text-danger"><i class="fas fa-user-shield me-1"></i> Administradores</a>
             <div class="accordion accordion-flush" id="accordionFlushExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
