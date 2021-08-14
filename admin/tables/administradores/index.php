@@ -107,6 +107,8 @@
               Gestión de contenido
             </div>
             <div class="card-body">
+            <button class="btn btn-danger rounded-pill" id="addAdmin"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
+              <hr>
               <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered" id="tablaAdmin" style="width:100%">
                     <thead class="text-center">
@@ -141,11 +143,96 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Administradores</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form id="frmAdmin">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                          <label for="inputName" class="form-label">Nombre</label>
+                          <input type="text" name="nombre" class="form-control" id="nombre" required>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="inputLastname" class="form-label">Apellido</label>
+                          <input type="text" name="apellido" class="form-control" id="apellido" required>
+                      </div>
+                    </div>  
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                          <label for="inputEmail" class="form-label">Correo electrónico</label>
+                          <input type="email" name="correo" class="form-control" id="correo" required>
+                      </div>
+                    </div> 
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                          <label for="inputPassword" class="form-label">Contraseña</label>
+                          <input type="password" name="pass" class="form-control" id="pass" required>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-4">
+                          <label for="inputTel" class="form-label">Telefóno</label>
+                          <input type="tel" name="telefono" class="form-control" id="tel" required>
+                      </div>
+                      <div class="col-8">
+                          <label for="inputCity" class="form-label">Ciudad</label>
+                          <input type="text" name="ciudad" class="form-control" id="city" required>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-7">
+                          <label for="inputCountry" class="form-label">Pais</label>
+                          <select name="pais" id="pais" class="form-select" required>
+                              <option value="">Seleccione un país</option>
+                              <?php
+                                  // Llenar la lista de opciones con paises de la DB
+                                  registroPais();
+                              ?>
+                          </select>
+                      </div>
+                      <div class="col-md-5">
+                          <label for="inputDate" class="form-label">Fecha de nacimiento</label>
+                          <input type="date" name="date" class="form-control" id="date" required>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                          <label for="radioG" class="form-label">Genero</label>
+                      </div>
+                      <div class="row mt-2">
+                          <div class="col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
+                              <label class="btn">
+                                  <input type="radio" id="genero" name="sexo" value="H" autocomplete="off" required> Hombre
+                              </label>
+                              <label class="btn">
+                                  <input type="radio" name="sexo" value="M" autocomplete="off"> Mujer
+                              </label>
+                          </div>
+                      </div>
+                    </div>
+                      <div class="modal-footer">
+                          <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
+                      </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Modal Usuario -->
+ <div class="modal fade" id="editarAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Administradores</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="frmRol">
                 <div class="container">
                     <div class="row">
                       <div class="col-md-6">
@@ -158,7 +245,7 @@
                           </select>
                       </div>
                       <div class="modal-footer">
-                          <button type="submit" id="btnListo" class="btn btn-dark">Listo</button>
+                          <button type="submit" id="editListo" class="btn btn-dark">Listo</button>
                       </div>
                     </div>
                 </div>
