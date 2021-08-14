@@ -23,7 +23,7 @@ function Header()
     //Logo
     $this->Image('../assets/img/logos/logo-reporte.jpg',10,8,33);
     // Arial bold 15
-    $this->SetFont('Arial','I',12);
+    $this->SetFont('Arial','B',12);
     // Movernos a la derecha
     $this->Cell(65);
     // Título
@@ -31,7 +31,7 @@ function Header()
     // Salto de línea
     $this->Ln(30);
     // Encabezados
-    $this->SetFillColor(151,148,159);
+    $this->SetFillColor(233,236,240);
     $this->Cell(38,8,utf8_decode('Películas'),0,0,'C',1);
     $this->Cell(38,8,utf8_decode('Estado'),0,0,'C',1);
     $this->Cell(38,8,utf8_decode('Género'),0,0,'C',1);
