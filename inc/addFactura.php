@@ -73,7 +73,7 @@
         }
     }
 
-    /*INSERTAR COMBOS
+    //INSERTAR COMBOS
     $combo1 = $_SESSION['COMBO1'];
     $combo2 = $_SESSION['COMBO2'];
     $combo3 = $_SESSION['COMBO3'];
@@ -82,17 +82,120 @@
     $combo6 = $_SESSION['COMBO6'];
     $combo7 = $_SESSION['COMBO7'];
 
-    if(combo1[0][0]=1){
-        $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
-        $statement = $conexion->prepare($query);
-        $statement->bindParam(1, $userID, PDO::PARAM_INT);
-        $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
-        $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
-        $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
-        $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
-        $statement->execute();
+    if($combo1[0][0]=1){
+        $cantidad = $combo1[0][1];
+        $idCombo = $combo1[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
     }
-    */
+    if($combo2[0][0]=2){
+        $cantidad = $combo2[0][1];
+        $idCombo = $combo2[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+    if($combo3[0][0]=3){
+        $cantidad = $combo3[0][1];
+        $idCombo = $combo3[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+    if($combo4[0][0]=4){
+        $cantidad = $combo4[0][1];
+        $idCombo = $combo4[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+    if($combo5[0][0]=5){
+        $cantidad = $combo5[0][1];
+        $idCombo = $combo5[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+    if($combo6[0][0]=6){
+        $cantidad = $combo6[0][1];
+        $idCombo = $combo6[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+    if($combo7[0][0]=7){
+        $cantidad = $combo7[0][1];
+        $idCombo = $combo7[0][0];
+        $insert=0;
+        while($insert<$cantidad){
+            $query = "CALL SP_ADD_DETALLE(?,?,?,?,?)";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $userID, PDO::PARAM_INT);
+            $statement->bindParam(2, $idCartelera, PDO::PARAM_INT);
+            $statement->bindParam(3, $idAsiento, PDO::PARAM_INT);
+            $statement->bindParam(4, $idCombo, PDO::PARAM_INT);
+            $statement->bindParam(5, $nombreAsiento, PDO::PARAM_STR);
+            $statement->execute();
+            $insert++;
+        }
+    }
+
+    
 
 
 ?>
