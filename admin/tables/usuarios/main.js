@@ -49,31 +49,45 @@ $(document).ready(function() {
 
    var fila; //Capturar la fila para editar o borrar registro
 
-   $("#frmUsuario").submit(function(e) {
-    e.preventDefault(); //Evita que se recargue la pagina
+  //Boton EDITAR
+  $(document).on("click", ".btnEditar", function(){
+    opcion = 3;
+    fila = $(this).closest("tr");
+    id = parseInt(fila.find('td:eq(0)').text());
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id, opcion:opcion},
+      success: function(data){
+        id_rol = data.ID_ROL
+        $("#rol").val(id_rol);
+        $("#modalUsuario").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+      }
+    });
+  });
+
+  //Enviar rol
+  $("#btnListo").click(function(e){
+    e.preventDefault();
+    opcion = 1
     rol = $.trim($("#rol").val());
     $.ajax({
       url: "crud.php",
       type: "POST",
       dataType: "json",
       data: {id:id, rol:rol, opcion:opcion},
-      success: function(data){ // data es de CRUD.php
+      success: function(data){
         tablaUsuario.ajax.reload(null,false);
+        $("#modalUsuario").modal("hide");
       },
       error: function(response){
         console.log(response);
-    }
+      }
     });
-    $("#modalUsuario").modal("hide");
-  });
-
-  //Boton EDITAR
-  $(document).on("click", ".btnEditar", function(){
-    opcion = 1; //editar
-    fila = $(this).closest("tr");
-    id = parseInt(fila.find('td:eq(0)').text());
-
-    $("#modalUsuario").modal("show");
   });
     
 });
