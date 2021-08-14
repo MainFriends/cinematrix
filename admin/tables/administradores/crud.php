@@ -33,7 +33,7 @@
             $statement->bindParam(9, $city, PDO::PARAM_STR);
             $statement->execute();
 
-            $data = $statement->fetch(PDO::FETCH_ASSOC);
+            $data = $statement->rowCount();
             break;
         case 2: //RELLENAR MODAL
             $query = "SELECT ID_ROL FROM LOGIN

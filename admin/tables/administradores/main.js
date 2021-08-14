@@ -65,11 +65,14 @@ $(document).ready(function() {
       type: "POST",
       dataType: "json",
       data: {nombre:nombre, apellido:apellido, correo:correo, pass:pass, tel:tel, city:city, pais:pais, date:date, genero:genero, opcion:opcion},
-      success: function(data){ // data es de CRUD.php
+      success: function(data=1){ // data es de CRUD.php
         tablaAdmin.ajax.reload(null,false);
       },
-      error: function(response){
-        console.log(response);
+      error: function(data=0){
+        $("#modalWarning").modal("show");
+          $("#btnOk").on("click", function(){
+            $("#modalWarning").modal("hide");
+          });
     }
     })
     $("#modalAdmin").modal("hide");

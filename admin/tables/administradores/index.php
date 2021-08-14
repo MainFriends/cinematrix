@@ -255,6 +255,24 @@
         </div>
     </div>
 
+
+    <!-- Modal Advertencia -->
+<div class="modal fade" id="modalWarning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"  style="border: none;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h5 class="fw-bold">¡Error!</h5>
+        <p>El correo ingresado ya se encuentra registrado.</p>
+        <div class="text-end">
+          <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
+        </div>
+    </div>
+  </div>
+</div>
+
   <!-- JQuery, Bundle.JS, Bootstrap JS -->
   <script src="../../../assets/js/jquery.js"></script>
   <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
