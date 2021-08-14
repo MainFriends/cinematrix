@@ -24,9 +24,9 @@ $(document).ready(function() {
        {"data": "REPARTO"},
        {"data": "DIRECTOR"},
        {"data": "AÑO"},
-       {"data": "ID_GENERO"},
-       {"data": "ID_CLASIFICACION"},
-       {"data": "ID_ESTADO"},
+       {"data": "GENERO"},
+       {"data": "CLASIFICACION"},
+       {"data": "ESTADO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -68,7 +68,6 @@ $(document).ready(function() {
       dataType: "json",
       data: {id:id, titulo:titulo, genero:genero, clasificacion:clasificacion, sinopsis:sinopsis, reparto:reparto, director:director, duracion:duracion, año:año, estado:estado, portada:portada, opcion:opcion},
       success: function(data){ // data es de CRUD.php
-        console.log("Hola");
         tablaPelicula.ajax.reload(null,false);
       },
       error: function(response){
@@ -90,30 +89,47 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    titulo = fila.find('td:eq(1)').text();
-    sinopsis = fila.find('td:eq(2)').text();
-    duracion = fila.find('td:eq(3)').text();
-    reparto = fila.find('td:eq(4)').text();
-    director = fila.find('td:eq(5)').text();
-    año = fila.find('td:eq(6)').text();
-    genero = fila.find('td:eq(7)').text();
-    clasificacion = fila.find('td:eq(8)').text();
-    estado = fila.find('td:eq(9)').text();
-    
-    $("#titulo").val(titulo);
-    $("#sinopsis").val(sinopsis);
-    $("#duracion").val(duracion);
-    $("#reparto").val(reparto);
-    $("#director").val(director);
-    $("#año").val(año);
-    $("#genero").val(genero);
-    $("#clasificacion").val(clasificacion);
-    $("#estado").val(estado);
 
-    $("#modalPelicula").modal("show");
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        titulo = data.TITULO
+        sinopsis = data.SINOPSIS
+        duracion = data.DURACION
+        reparto = data.REPARTO
+        director = data.DIRECTOR
+        año = data.AÑO
+        genero = data.ID_GENERO
+        clasificacion = data.ID_CLASIFICACION
+        estado = data.ID_ESTADO
+        portada = data.PORTADA
+        console.log(genero)
+
+        $("#titulo").val(titulo);
+        $("#sinopsis").val(sinopsis);
+        $("#duracion").val(duracion);
+        $("#reparto").val(reparto);
+        $("#director").val(director);
+        $("#año").val(año);
+        $("#genero").val(genero);
+        $("#clasificacion").val(clasificacion);
+        $("#estado").val(estado);
+        $("#portada").val(portada);
+
+        opcion = 2;
+        $("#modalPelicula").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+      }
+    });
+    
   });
 
   //Boton BORRAR

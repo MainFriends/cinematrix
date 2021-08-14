@@ -40,7 +40,6 @@
         case 2: //Actualizar pelicula
             $query = "CALL SP_UPD_PELICULA(?,?,?,?,?,?,?,?,?,?,?)";
             $statement = $conexion->prepare($query);
-            $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $titulo, PDO::PARAM_STR);
             $statement->bindParam(3, $sinopsis, PDO::PARAM_STR);
@@ -63,11 +62,23 @@
             $data = $statement->rowCount();
             break;
         case 4: //Insertar registros
-            $query = "SELECT ID_PELICULA, TITULO, REPARTO, DIRECTOR, DURACION, ID_GENERO, ID_CLASIFICACION, AÑO, substring(SINOPSIS, 1, 50) SINOPSIS, PORTADA, ID_ESTADO
-             FROM PELICULA";
+            $query = "SELECT PELICULA.ID_PELICULA, TITULO, substring(SINOPSIS, 1, 50) SINOPSIS, DURACION, REPARTO, DIRECTOR, AÑO, GENERO, CLASIFICACION, ESTADO.DESCRIPCION ESTADO, PORTADA
+            FROM PELICULA, GENERO, CLASIFICACION, ESTADO
+            WHERE PELICULA.ID_GENERO = GENERO.ID_GENERO
+            AND PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION
+            AND PELICULA.ID_ESTADO = ESTADO.ID_ESTADO";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
+            break;
+        case 5:
+            $query = "SELECT ID_PELICULA, TITULO, substring(SINOPSIS, 1, 50) SINOPSIS, DURACION, REPARTO, DIRECTOR, AÑO, ID_GENERO, ID_CLASIFICACION, ID_ESTADO, PORTADA
+            FROM PELICULA
+            WHERE PELICULA.ID_PELICULA = ?";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $id, PDO::PARAM_INT);
+            $statement->execute();
+            $data = $statement->fetch(PDO::FETCH_ASSOC); //Leno el Array Data
             break;
     }
     print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
