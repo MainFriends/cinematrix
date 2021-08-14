@@ -18,10 +18,10 @@ $(document).ready(function() {
       },
       "columns":[
        {"data": "ID_PPROMO"},
-       {"data": "ID_PROMO"},
+       {"data": "PROMOCION"},
        {"data": "FECHA_INICIO"},
        {"data": "FECHA_FIN"},
-       {"data": "ID_ESTADO"},
+       {"data": "ESTADO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -76,20 +76,32 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    promo = fila.find('td:eq(1)').text();
-    fechaI = fila.find('td:eq(2)').text();
-    fechaF = fila.find('td:eq(3)').text();
-    estado = fila.find('td:eq(4)').text();
-    
-    $("#promo").val(promo);
-    $("#fechaI").val(fechaI);
-    $("#fechaF").val(fechaF);
-    $("#estado").val(estado);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        promo = data.ID_PROMO
+        fechaI = data.FECHA_INICIO
+        fechaF = data.FECHA_FIN
+        estado = data.ID_ESTADO
 
-    $("#modalProgra").modal("show");
+        $("#promo").val(promo);
+        $("#fechaI").val(fechaI);
+        $("#fechaF").val(fechaF);
+        $("#estado").val(estado);
+        
+        opcion = 2;
+        $("#modalProgra").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR

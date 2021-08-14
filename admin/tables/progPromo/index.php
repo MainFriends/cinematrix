@@ -114,10 +114,10 @@
                     <thead class="text-center">
                         <tr>
                           <th>ID</th>
-                          <th>ID PROMO</th>
+                          <th>PROMOCION</th>
                           <th>FECHA INICIO</th>
                           <th>FECHA FIN</th>
-                          <th>ID ESTADO</th>
+                          <th>ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>

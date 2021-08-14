@@ -42,10 +42,21 @@
             $statement->execute();
             break;
         case 4: //Insertar registros
-            $query = "SELECT * FROM PROGRAMACION_PROMO";
+            $query = "SELECT ID_PPROMO, NOMBRE PROMOCION, FECHA_INICIO, FECHA_FIN, ESTADO.DESCRIPCION ESTADO 
+            FROM PROGRAMACION_PROMO, PROMOCION, ESTADO
+            WHERE PROGRAMACION_PROMO.ID_PROMO = PROMOCION.ID_PROMO
+            AND PROGRAMACION_PROMO.ID_ESTADO = ESTADO.ID_ESTADO";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
+            break;
+        case 5:
+            $query = "SELECT * FROM PROGRAMACION_PROMO
+            WHERE ID_PPROMO = ?";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $id, PDO::PARAM_INT);
+            $statement->execute();
+            $data = $statement->fetch(PDO::FETCH_ASSOC); //Leno el Array Data
             break;
     }
     print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
