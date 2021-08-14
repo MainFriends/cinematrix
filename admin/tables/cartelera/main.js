@@ -18,12 +18,12 @@ $(document).ready(function() {
       },
       "columns":[
        {"data": "ID_CARTELERA"},
-       {"data": "ID_PELICULA"},
-       {"data": "ID_SALA"},
+       {"data": "TITULO"},
        {"data": "HORA_INICIO"},
        {"data": "HORA_FIN"},
-       {"data": "ID_IDIOMA"},
-       {"data": "ID_FORMATO"},
+       {"data": "SALA"},
+       {"data": "IDIOMA"},
+       {"data": "FORMATO"},
        {"data": "FECHA"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
@@ -84,26 +84,38 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    pelicula = fila.find('td:eq(1)').text();
-    sala = fila.find('td:eq(2)').text();
-    horaInicio = fila.find('td:eq(3)').text();
-    horaFin = fila.find('td:eq(4)').text();
-    idioma = fila.find('td:eq(5)').text();
-    formato = fila.find('td:eq(6)').text();
-    fecha = fila.find('td:eq(7)').text();
-    
-    $("#pelicula").val(pelicula);
-    $("#sala").val(sala);
-    $("#horaInicio").val(horaInicio);
-    $("#horaFin").val(horaFin);
-    $("#idioma").val(idioma);
-    $("#formato").val(formato);
-    $("#fecha").val(fecha);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        pelicula = data.ID_PELICULA
+        sala = data.ID_SALA
+        horaInicio = data.HORA_INICIO
+        horaFin = data.HORA_FIN
+        idioma = data.ID_IDIOMA
+        formato = data.ID_FORMATO
+        fecha = data.FECHA
 
-    $("#modalCartelera").modal("show");
+        $("#pelicula").val(pelicula);
+        $("#sala").val(sala);
+        $("#horaInicio").val(horaInicio);
+        $("#horaFin").val(horaFin);
+        $("#idioma").val(idioma);
+        $("#formato").val(formato);
+        $("#fecha").val(fecha);
+
+        opcion = 2;
+        $("#modalCartelera").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR

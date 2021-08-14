@@ -56,10 +56,22 @@
             $stmt->execute();
             break;
         case 4: //Insertar registros
-            $query = "SELECT * FROM CARTELERA";
+            $query = "SELECT CARTELERA.ID_CARTELERA, TITULO, HORA_INICIO, HORA_FIN, SALA.NOMBRE SALA, IDIOMA.NOMBRE IDIOMA, FORMATO, FECHA
+            FROM PELICULA, IDIOMA, FORMATO, CARTELERA, SALA
+            WHERE CARTELERA.ID_PELICULA = PELICULA.ID_PELICULA
+            AND CARTELERA.ID_IDIOMA = IDIOMA.ID_IDIOMA
+            AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO
+            AND CARTELERA.ID_SALA = SALA.ID_SALA";
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
+            break;
+        case 5:
+            $query = "SELECT * FROM CARTELERA WHERE ID_CARTELERA = ?";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $id, PDO::PARAM_INT);
+            $statement->execute();
+            $data = $statement->fetch(PDO::FETCH_ASSOC); //Leno el Array Data
             break;
     }
     print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX

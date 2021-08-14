@@ -120,9 +120,9 @@
                           <th>REPARTO</th>
                           <th>DIRECTOR</th>
                           <th>AÑO</th>
-                          <th>ID GENERO</th>
-                          <th>ID CLASIFICACION</th>
-                          <th>ID ESTADO</th>
+                          <th>GENERO</th>
+                          <th>CLASIFICACION</th>
+                          <th>ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>

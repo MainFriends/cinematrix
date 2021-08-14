@@ -114,12 +114,12 @@
                     <thead class="text-center">
                         <tr>
                           <th>ID</th>
-                          <th>ID PELICULA</th>
-                          <th>ID SALA</th>
+                          <th>PELICULA</th>
                           <th>HORA INICIO</th>
                           <th>HORA FIN</th>
-                          <th>ID IDIOMA</th>
-                          <th>ID FORMATO</th>
+                          <th>SALA</th>
+                          <th>IDIOMA</th>
+                          <th>FORMATO</th>
                           <th>FECHA</th>
                           <th>ACCIONES</th>
                         </tr>
