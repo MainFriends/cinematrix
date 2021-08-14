@@ -115,8 +115,8 @@
                         <tr>
                           <th>ID</th>
                           <th>NOMBRE ASIENTO</th>
-                          <th>ID SALA</th>
-                          <th>ID ESTADO</th>
+                          <th>SALA</th>
+                          <th>ESTADO</th>
                           <th>ACCIONES</th>
                         </tr>
                     </thead>

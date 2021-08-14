@@ -19,8 +19,8 @@ $(document).ready(function() {
       "columns":[
        {"data": "ID_ASIENTO"},
        {"data": "NUM_ASIENTO"},
-       {"data": "ID_SALA"},
-       {"data": "ID_ESTADO"},
+       {"data": "SALA"},
+       {"data": "ESTADO"},
        {"defaultContent": "<div class='btn-group'><button class='btn btn-warning btnEditar'><i class='icon ion-md-create'></i></button><button class='btn btn-danger btnBorrar'><i class='icon ion-md-trash'></i></button></div>"}  
       ],
        
@@ -74,18 +74,30 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    numAsiento = fila.find('td:eq(1)').text();
-    sala = fila.find('td:eq(2)').text();
-    estado = fila.find('td:eq(3)').text();
-    
-    $("#numAsiento").val(numAsiento);
-    $("#sala").val(sala);
-    $("#estado").val(estado);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id,opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        numAsiento = data.NUM_ASIENTO
+        sala = data.ID_SALA
+        estado = data.ID_ESTADO
 
-    $("#modalAsiento").modal("show");
+        $("#numAsiento").val(numAsiento);
+        $("#sala").val(sala);
+        $("#estado").val(estado);
+
+        opcion = 2;
+        $("#modalAsiento").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR
