@@ -72,7 +72,7 @@
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
             break;
         case 5:
-            $query = "SELECT ID_PELICULA, TITULO, substring(SINOPSIS, 1, 50) SINOPSIS, DURACION, REPARTO, DIRECTOR, AÑO, ID_GENERO, ID_CLASIFICACION, ID_ESTADO, PORTADA
+            $query = "SELECT ID_PELICULA, TITULO, SINOPSIS, DURACION, REPARTO, DIRECTOR, AÑO, ID_GENERO, ID_CLASIFICACION, ID_ESTADO, PORTADA
             FROM PELICULA
             WHERE PELICULA.ID_PELICULA = ?";
             $statement = $conexion->prepare($query);

@@ -19,7 +19,7 @@
         $id = $_GET['id'];
 
         //CONSULTA CARTELERA
-        $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
+        $query = "SELECT CARTELERA.ID_PELICULA, PORTADA, FORMATO, ID_IDIOMA, TITULO, FECHA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO
         FROM PELICULA, CARTELERA, FORMATO
         WHERE PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
         AND CARTELERA.ID_FORMATO = FORMATO.ID_FORMATO
@@ -166,8 +166,21 @@
                 <p class="text-muted"><?php echo $data['TITULO'] ?></p>
             </div>
             <div class="row">
-                <h5 class="border-bottom text-danger">FORMATO</h5>
-                <abbr title=""><button class="btn btn-warning btn-sm fw-bold" disabled><?php echo $data['FORMATO'] ?></button></abbr>
+                <h5 class="border-bottom text-danger">FORMATO/IDIOMA</h5>
+                <div class="col-md-1">
+                    <button class="btn btn-secondary btn-sm" disabled><?php echo $data['FORMATO'] ?></button>
+                </div>
+                <?php
+                if($data['ID_IDIOMA']==1){
+                    echo "<div class='col-md-1 ms-3'>
+                    <button class='btn btn-secondary btn-sm' disabled>DOB</button>
+                </div>";
+                }else{
+                    echo "<div class='col-md-1 ms-3'>
+                    <button class='btn btn-secondary btn-sm' disabled>SUB</button>
+                </div>";
+                }
+                ?>
             </div>
             <div class="row mt-3">
                 <h5 class="border-bottom text-danger">FECHA Y HORARIO</h5>

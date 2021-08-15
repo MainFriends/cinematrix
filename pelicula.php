@@ -181,6 +181,7 @@
             <div class="d-grid gap-2 d-md-block my-3">
               <abbr title="<?php echo $data['DESCRIPCION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $data['CLASIFICACION'] ?></button></abbr>
               <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $data['DURACION'] ?></button>
+              <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $data['GENERO'] ?></button>
             </div>
             <?php
               foreach($dataDate as $fecha){

@@ -199,7 +199,7 @@
                         $fechahoy = $hoy['FECHA'];
 
                         // DOBLADA AL ESPAÑOL
-                        $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechahoy'
                         AND ID_IDIOMA = 1
@@ -211,7 +211,7 @@
                         $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
 
                         // ORIGINAL/SUBTITULADA
-                        $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechahoy'
                         AND ID_IDIOMA = 2
@@ -223,8 +223,8 @@
                         $resulSUB = $stm->rowCount();
                     ?>
                   <div class="row mt-3">
-                    <div class="col-md-4">
-                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="200px" height="300px" alt="..."></a>
+                    <div class="col-md-4 text-center">
+                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto" width="200px" height="300px" alt="..."></a>
                     </div>
                     <div class="col-md-8">
                       <h5 class="card-title"><?php echo $datos['TITULO']?></h5>
@@ -250,7 +250,7 @@
                             ?>
                                 <p class="fw-bold"><span class="badge bg-secondary">DOB</span>
                                     <?php foreach($dataHI as $HIDOB){?>
-                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
+                                    <a href="boletos.php?id=<?php echo $HIDOB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
                                     <?php
                                     }
                                     ?>
@@ -264,7 +264,7 @@
                             ?>
                                 <p class="fw-bold"><span class="badge bg-secondary">SUB</span>
                                     <?php foreach($dataSUB as $HISUB){?>
-                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
+                                    <a href="boletos.php?id=<?php echo $HISUB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
                                     <?php
                                     }
                                     ?>
@@ -301,7 +301,7 @@
                         $id = $datos['ID_PELICULA'];
 
                         // DOBLADA AL ESPAÑOL
-                        $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechaactual'
                         AND ID_IDIOMA = 1
@@ -312,7 +312,7 @@
                         $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
 
                         // ORIGINAL/SUBTITULADA
-                        $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                        $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechaactual'
                         AND ID_IDIOMA = 2
@@ -323,8 +323,8 @@
                         $resulSUB = $stm->rowCount();
                     ?>
                   <div class="row my-3">
-                    <div class="col-md-4">
-                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto d-block" width="50%" alt="..."></a>
+                    <div class="col-md-4 text-center">
+                      <a href="pelicula.php?id=<?php echo $id?>"><img src="<?php echo $datos['PORTADA']?>" class="rounded mx-auto" width="200px" height="300px" alt="..."></a>
                     </div>
                     <div class="col-md-8">
                       <h5 class="card-title"><?php echo $datos['TITULO']?></h5>
@@ -346,7 +346,7 @@
                             ?>
                                 <p class="fw-bold"><span class="badge bg-secondary">DOB</span>
                                     <?php foreach($dataHI as $HIDOB){?>
-                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
+                                    <a href="boletos.php?id=<?php echo $HIDOB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HIDOB['HORA_INICIO']?></a>
                                     <?php
                                     }
                                     ?>
@@ -360,7 +360,7 @@
                             ?>
                                 <p class="fw-bold"><span class="badge bg-secondary">SUB</span>
                                     <?php foreach($dataSUB as $HISUB){?>
-                                    <a href="#" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
+                                    <a href="boletos.php?id=<?php echo $HISUB['ID_CARTELERA']?>" class="btn btn-danger btn-sm"><?php echo $HISUB['HORA_INICIO']?></a>
                                     <?php
                                     }
                                     ?>
