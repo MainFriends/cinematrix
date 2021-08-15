@@ -195,7 +195,8 @@
                   WHERE ID_PELICULA = '$id'
                   AND FECHA = '$date'
                   AND ID_IDIOMA = 1
-                  AND HORA_INICIO > now()";
+                  AND HORA_INICIO > now()
+                  ORDER BY HORA_INICIO";
                   $stm = $conexion->prepare($queryDOB);
                   $stm->execute();
                   $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -205,7 +206,8 @@
                   WHERE ID_PELICULA = '$id'
                   AND FECHA = '$date'
                   AND ID_IDIOMA = 2
-                  AND HORA_INICIO > now()";
+                  AND HORA_INICIO > now()
+                  ORDER BY HORA_INICIO";
                   $stm = $conexion->prepare($querySUB);
                   $stm->execute();
                   $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -215,7 +217,8 @@
                   $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                   WHERE ID_PELICULA = '$id'
                   AND FECHA = '$date'
-                  AND ID_IDIOMA = 1";
+                  AND ID_IDIOMA = 1
+                  ORDER BY HORA_INICIO";
                   $stm = $conexion->prepare($queryDOB);
                   $stm->execute();
                   $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -225,7 +228,8 @@
                   $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                   WHERE ID_PELICULA = '$id'
                   AND FECHA = '$date'
-                  AND ID_IDIOMA = 2";
+                  AND ID_IDIOMA = 2
+                  ORDER BY HORA_INICIO";
                   $stm = $conexion->prepare($querySUB);
                   $stm->execute();
                   $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);

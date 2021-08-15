@@ -37,7 +37,8 @@
   // RECOGER LAS FECHAS DESPUES DE HOY
   $queryf = "SELECT DISTINCT FECHA
   FROM CARTELERA
-  WHERE FECHA > CURDATE()";
+  WHERE FECHA > CURDATE()
+  ORDER BY FECHA ASC";
   $stm = $conexion->prepare($queryf);
   $stm->execute();
   $fecha = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -201,7 +202,9 @@
                         $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechahoy'
-                        AND ID_IDIOMA = 1";
+                        AND ID_IDIOMA = 1
+                        AND HORA_INICIO > now()
+                        ORDER BY HORA_INICIO";
                         $stm = $conexion->prepare($queryDOB);
                         $stm->execute();
                         $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -211,7 +214,9 @@
                         $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechahoy'
-                        AND ID_IDIOMA = 2";
+                        AND ID_IDIOMA = 2
+                        AND HORA_INICIO > now()
+                        ORDER BY HORA_INICIO";
                         $stm = $conexion->prepare($querySUB);
                         $stm->execute();
                         $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -233,8 +238,12 @@
                             Multiplaza Tegucigalpa
                           </div>
                           <div class="card-body">
-                            <p class="card-text fw-lighter text-muted small">*Los horarios aquí expuestos representan el inicio de cada función</p>
-                        
+                          <?php if($resulSUB >= 1 || $resulDOB >= 1){
+                              echo "<p class='card-text fw-lighter text-muted small'>*Los horarios aquí expuestos representan el inicio de cada función</p>";
+                            }else{
+                              echo "<p class='card-text fw-lighter text-muted small'>*No hay funciones disponibles para hoy</p>";
+                            }
+                            ?>
                             <?php
                             // Si hay resultados para peliculas dobladas ejecuta esta sentencia
                             if($resulDOB >= 1){
@@ -295,7 +304,8 @@
                         $queryDOB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechaactual'
-                        AND ID_IDIOMA = 1";
+                        AND ID_IDIOMA = 1
+                        ORDER BY HORA_INICIO";
                         $stm = $conexion->prepare($queryDOB);
                         $stm->execute();
                         $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -305,7 +315,8 @@
                         $querySUB = "SELECT DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
                         WHERE ID_PELICULA = '$id'
                         AND FECHA = '$fechaactual'
-                        AND ID_IDIOMA = 2";
+                        AND ID_IDIOMA = 2
+                        ORDER BY HORA_INICIO";
                         $stm = $conexion->prepare($querySUB);
                         $stm->execute();
                         $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
