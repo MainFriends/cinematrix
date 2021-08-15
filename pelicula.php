@@ -1,40 +1,47 @@
 <?php
-        setlocale(LC_TIME, 'Spanish');      
-        session_start();
-        require_once 'inc/session.php';
-        $_SESSION['pag'] = 'pelicula';
-        if(isset($_SESSION['usuario'])){
-            $userSession = $_SESSION['usuario'];
-            $userId = $_SESSION['id_usuario'];
+      setlocale(LC_TIME, "Spanish");      
+      session_start();
+      require_once 'inc/session.php';
+      $_SESSION['pag'] = 'pelicula';
+      if(isset($_SESSION['usuario'])){
+          $userSession = $_SESSION['usuario'];
+          $userId = $_SESSION['id_usuario'];
 
-            $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
-            $stm = $conexion->prepare($query);
-            $stm->execute();
-            $foto = $stm->fetch(PDO::FETCH_ASSOC);
-            $foto_perfil = $foto['FOTO_PERFIL'];
-        }
+          $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
+          $stm = $conexion->prepare($query);
+          $stm->execute();
+          $foto = $stm->fetch(PDO::FETCH_ASSOC);
+          $foto_perfil = $foto['FOTO_PERFIL'];
+      }
 
-        //Obtenemos el id de la pelicula
-        $id = $_GET['id'];
+      //Obtenemos el id de la pelicula
+      $id = $_GET['id'];
 
-        //CONSULTA PELICULA
-        $query = "SELECT *
-        FROM PELICULA, GENERO, CLASIFICACION
-        WHERE PELICULA.ID_GENERO = GENERO.ID_GENERO
-        AND PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
-        AND ID_PELICULA = '$id'";
-        $stm = $conexion->prepare($query);
-        $stm->execute();
-        $data = $stm->fetch(PDO::FETCH_ASSOC);
-        
-        //Query fecha para generar la card
-        $queryDate = "SELECT DISTINCT  FECHA FROM CARTELERA
-        WHERE ID_PELICULA = '$id'
-        AND FECHA >= CURDATE()
-        ORDER BY FECHA";
-        $stm = $conexion->prepare($queryDate);
-        $stm->execute();
-        $dataDate = $stm->fetchAll(PDO::FETCH_ASSOC);
+      //CONSULTA PELICULA
+      $query = "SELECT *
+      FROM PELICULA, GENERO, CLASIFICACION
+      WHERE PELICULA.ID_GENERO = GENERO.ID_GENERO
+      AND PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
+      AND ID_PELICULA = '$id'";
+      $stm = $conexion->prepare($query);
+      $stm->execute();
+      $data = $stm->fetch(PDO::FETCH_ASSOC);
+      
+      //Query fecha para generar la card
+      $queryDate = "SELECT DISTINCT  FECHA FROM CARTELERA
+      WHERE ID_PELICULA = '$id'
+      AND FECHA >= CURDATE()
+      ORDER BY FECHA";
+      $stm = $conexion->prepare($queryDate);
+      $stm->execute();
+      $dataDate = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+      //CONSULTAR FECHA ACTUAL QUERY
+      $queryDate = "SELECT CURDATE() HOY";
+      $stm = $conexion->prepare($queryDate);
+      $stm->execute();
+      $curdate = $stm->fetch(PDO::FETCH_ASSOC);
+      $hoy = $curdate['HOY'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,33 +190,59 @@
                 //Le damos formato a la fecha que se mostrará en el card
                 $fechaES = utf8_encode(strftime('%A %d', strtotime($fecha['FECHA'])));
 
-                // DOBLADA AL ESPAÑOL
-                $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
-                WHERE ID_PELICULA = '$id'
-                AND FECHA = '$date'
-                AND ID_IDIOMA = 1";
-                $stm = $conexion->prepare($queryDOB);
-                $stm->execute();
-                $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
-                $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
+                if($date==$hoy){
+                  $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                  WHERE ID_PELICULA = '$id'
+                  AND FECHA = '$date'
+                  AND ID_IDIOMA = 1
+                  AND HORA_INICIO > now()";
+                  $stm = $conexion->prepare($queryDOB);
+                  $stm->execute();
+                  $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
+                  $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
 
-                // ORIGINAL/SUBTITULADA
-                $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
-                WHERE ID_PELICULA = '$id'
-                AND FECHA = '$date'
-                AND ID_IDIOMA = 2";
-                $stm = $conexion->prepare($querySUB);
-                $stm->execute();
-                $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
-                $resulSUB = $stm->rowCount();
+                  $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                  WHERE ID_PELICULA = '$id'
+                  AND FECHA = '$date'
+                  AND ID_IDIOMA = 2
+                  AND HORA_INICIO > now()";
+                  $stm = $conexion->prepare($querySUB);
+                  $stm->execute();
+                  $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
+                  $resulSUB = $stm->rowCount();
+                }else{
+                  // DOBLADA AL ESPAÑOL
+                  $queryDOB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                  WHERE ID_PELICULA = '$id'
+                  AND FECHA = '$date'
+                  AND ID_IDIOMA = 1";
+                  $stm = $conexion->prepare($queryDOB);
+                  $stm->execute();
+                  $dataHI = $stm->fetchAll(PDO::FETCH_ASSOC);
+                  $resulDOB = $stm->rowCount(); //Obtenemos el numero de filas afectadas
+
+                  // ORIGINAL/SUBTITULADA
+                  $querySUB = "SELECT ID_CARTELERA, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO FROM CARTELERA
+                  WHERE ID_PELICULA = '$id'
+                  AND FECHA = '$date'
+                  AND ID_IDIOMA = 2";
+                  $stm = $conexion->prepare($querySUB);
+                  $stm->execute();
+                  $dataSUB = $stm->fetchAll(PDO::FETCH_ASSOC);
+                  $resulSUB = $stm->rowCount();
+                }
             ?>
             <div class="card my-2">
               <div class="card-header fw-bold">
                 <?php echo  ($fechaES)?> - Multiplaza Tegucigalpa
               </div>
               <div class="card-body">
-                <p class="card-text fw-lighter text-muted small">*Los horarios aquí expuestos representan el inicio de cada función</p>
-            
+                <?php if($resulSUB >= 1 || $resulDOB >= 1){
+                  echo "<p class='card-text fw-lighter text-muted small'>*Los horarios aquí expuestos representan el inicio de cada función</p>";
+                }else{
+                  echo "<p class='card-text fw-lighter text-muted small'>*No hay funciones disponibles para hoy</p>";
+                }
+                ?>
                 <?php
                 // Si hay resultados para peliculas dobladas ejecuta esta sentencia
                 if($resulDOB >= 1){
@@ -222,6 +255,8 @@
                         ?>
                     </p>
                 <?php
+                }else{
+                  
                 }
                 ?>
                 <?php
