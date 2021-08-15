@@ -13,6 +13,8 @@
             $stm->execute();
             $foto = $stm->fetch(PDO::FETCH_ASSOC);
             $foto_perfil = $foto['FOTO_PERFIL'];
+        }else{
+            header("location:login.php");
         }
 
         //Obtenemos el id de la cartelera
