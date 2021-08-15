@@ -554,7 +554,7 @@ INSERT INTO ASIENTO(NUM_ASIENTO, ID_SALA, ID_ESTADO) VALUES('L22', 1, 1);
 INSERT INTO BOLETO(NOMBRE, DESCRIPCION, PRECIO)
 VALUES('ADULTREGULAR-HO','valor: L 98.00 + Cargo por servicio',98);
 INSERT INTO BOLETO(NOMBRE, DESCRIPCION, PRECIO)
-VALUES('CINEPACKPAREJA2D-HN','valido lunes a domingo, paga 2 entradas a precio regular + megacombo valor: L 448.00 + Cargo por servicio',448);
+VALUES('CINEPACKPAREJA2D-HN','valido lunes a domingo, paga 2 entradas a precio de descuento. valor: L 170',170);
 
 -- COMBOS
 INSERT INTO COMBO(NOMBRE, DESCRIPCION, PRECIO, IMAGEN)

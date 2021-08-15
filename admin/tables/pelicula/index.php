@@ -197,9 +197,10 @@
                             <label class="form-input">Estado</label>
                             <select id="estado" class="form-select mb-2" required>
                                 <option value="">-</option>
-                                <?php
-                                    mostrarEstados();
-                                ?>
+                                <option value="5">Estreno</option>
+                                <option value="6">Pre-venta</option>
+                                <option value="7">Próximamente</option>
+                                <option value="8">En cartelera</option>
                             </select>
                         </div>
                         <div class="col-md-12 mb-2">

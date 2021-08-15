@@ -162,9 +162,8 @@
                           <label class="form-label">Estado</label>
                           <select id="estado" class="form-select mb-2" required>
                               <option value="">-</option>
-                              <?php
-                                  mostrarEstados();
-                              ?>
+                              <option value="1">Disponible</option>
+                              <option value="2">No disponible</option>
                           </select>
                       </div>
                       <div class="modal-footer">

@@ -109,7 +109,6 @@ $(document).ready(function() {
         clasificacion = data.ID_CLASIFICACION
         estado = data.ID_ESTADO
         portada = data.PORTADA
-        console.log(genero)
 
         $("#titulo").val(titulo);
         $("#sinopsis").val(sinopsis);
