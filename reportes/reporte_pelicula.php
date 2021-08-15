@@ -65,7 +65,7 @@ $pdf->SetFont('Arial','I',10);
 $pdf->SetMargins(10,30,20,20);
 
 foreach($data as $peli){
-    $pdf->Cell(38,8,$peli['TITULO'],0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($peli['TITULO']),0,0,'C',0);
     $pdf->Cell(38,8,utf8_decode($peli['DESCRIPCION']),0,0,'C',0);
     $pdf->Cell(38,8,utf8_decode($peli['GENERO']),0,0,'C',0);
     $pdf->Cell(38,8,utf8_decode($peli['CLASIFICACION']),0,0,'C',0);
