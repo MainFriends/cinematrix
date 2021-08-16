@@ -108,6 +108,7 @@
             </div>
             <div class="card-body">
               <button class="btn btn-danger rounded-pill" id="addPelicula"><i class="fas fa-plus me-2"></i>Agregar nuevo</button>
+              <a href="../../../reportes/reporte_pelicula.php" target="_blank" class="btn btn-danger rounded-pill"><i class="far fa-file me-2"></i>Imprimir</a>
               <hr>
               <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered" id="tablaPelicula" style="width:100%">
