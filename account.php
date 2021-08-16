@@ -1,4 +1,5 @@
 <?php
+   setlocale(LC_TIME, 'Spanish');  
    session_start();
    if(isset($_SESSION['usuario'])){
       $userSession = $_SESSION['usuario'];
@@ -15,6 +16,14 @@
    $stm = $conexion->prepare($query);
    $stm->execute();
    $foto = $stm->fetch(PDO::FETCH_ASSOC);
+
+   $query = "SELECT ID_FACTURA 
+   FROM FACTURA
+   WHERE ID_USUARIO = '$userId'
+   ORDER BY FECHA DESC";
+   $stm = $conexion->prepare($query);
+   $stm->execute();
+   $facturas = $stm->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,16 +135,16 @@
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active bg-dark text-light my-2" id="list-home-list"
               data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home"><i
-                class="far fa-eye ">  </i>  Vista general de la cuenta</a>
+                class="far fa-eye me-2"></i>Vista general de la cuenta</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-profile-list"
               data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile"
-              ><i class="fas fa-user-edit btnEditarP"></i>   Editar perfil</a>
+              ><i class="fas fa-user-edit btnEditarP me-2"></i>Editar perfil</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-contraseña-list"
               data-bs-toggle="list" href="#list-contraseña" role="tab" aria-controls="list-contraseña"><i
-                class="fas fa-user-lock"></i> Cambiar contraseña</a>
+                class="fas fa-user-lock me-2"></i>Cambiar contraseña</a>
             <a class="list-group-item list-group-item-action bg-dark text-light" id="list-settings-list"
               data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings"><i
-                class="fas fa-bell"></i> Notificaciones</a>
+                class="fas fa-ticket-alt me-2"></i>Tus tickets</a>
           </div>
         </div>
         <div class="col-8 rounded-end">
@@ -256,15 +265,39 @@
                   </div>
                 <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                   <!--CUERPO DE NOTIFICACIONES-->
-                  <h2 class="fw-bold my-4">CONFIGURACION DE NOTIFICACIONES</h2>
-                  <h4 class="bg-danger badge text-wrap fs-5 progress-bar">Nuevas peliculas <span class="badge badge-secondary"></span></h4>
-                  <p class="font-weight-light">Proximamente Spider-man no way home, estará llegando a nuestras pantallas.</p>
-                  <p class="font-weight-light">Se aproxima El titanic a la pantalla grande.</p>
-                  <p class="font-weight-light">Se viene la accion con Rapidos y furiosos 9.</p>
-                  <h4 class="bg-danger badge text-wrap fs-5 progress-bar" >Las mejores promociones<span class="badge badge-secondary"></span></h4>
-                  <p class="font-weight-light">Todos los martes estarán las entradas al 2x1.</p>
-                  <p class="font-weight-light">Descuento del 20% todos los dias para la tercera edad.</p>
-                  <p class="font-weight-light">Los viernes, los estudiantes con carné entran al 2x1.</p>
+                  <h2 class="fw-bold my-4">TICKETS</h2>
+                  <?php foreach($facturas as $factura){
+                    $id_factura = $factura['ID_FACTURA'];
+                    $query = "SELECT DISTINCT TITULO, DATE_FORMAT(HORA_INICIO, '%I:%i %p') HORA_INICIO, FECHA
+                    FROM PELICULA, CARTELERA, DETALLE
+                    WHERE PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+                    AND DETALLE.ID_CARTELERA = CARTELERA.ID_CARTELERA
+                    AND ID_FACTURA = '$id_factura'";
+                    $stm = $conexion->prepare($query);
+                    $stm->execute();
+                    $detalle = $stm->fetch(PDO::FETCH_ASSOC);
+                    $fechaES = utf8_encode(strftime('%A %d %B %Y', strtotime($detalle['FECHA'])));
+                  ?>
+                  <div class="row border-bottom mb-2">
+                    <div class="col-md-3">
+                      <h5 class="fw-bold">Pelicula</h5>
+                      <p class="text-muted small"><?php echo $detalle['TITULO']?></p>
+                    </div>
+                    <div class="col-md-3">
+                      <h5 class="fw-bold">Funcion</h5>
+                      <p class="text-muted small"><?php echo $detalle['HORA_INICIO']?></p>
+                    </div>
+                    <div class="col-md-3">
+                      <h5 class="fw-bold">Fecha</h5>
+                      <p class="text-muted small"><?php echo ucwords($fechaES)?></p>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="reportes/reporte_tickets.php?idFactura=<?php echo $id_factura?>" target="_blank" class="btn btn-danger rounded mt-2">Imprimir ticket</a>
+                    </div>
+                  </div>
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
             </div>

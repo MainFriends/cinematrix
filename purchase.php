@@ -597,7 +597,7 @@
       </div>
       <div class="modal-footer" style="border: none;">
         <a href="reportes/reporte_factura.php" target="_blank" class="btn btn-warning">Imprimir factura</a>
-        <a href="index.php" class="btn btn-danger">Listo</a>
+        <a href="index.php" class="btn btn-danger">Volver al inicio</a>
       </div>
     </div>
   </div>

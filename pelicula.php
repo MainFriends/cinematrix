@@ -239,7 +239,7 @@
             ?>
             <div class="card my-2">
               <div class="card-header fw-bold">
-                <?php echo  ($fechaES)?> - Multiplaza Tegucigalpa
+                <?php echo ucwords($fechaES)?> - Multiplaza Tegucigalpa
               </div>
               <div class="card-body">
                 <?php if($resulSUB >= 1 || $resulDOB >= 1){
