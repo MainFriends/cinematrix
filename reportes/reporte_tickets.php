@@ -114,6 +114,7 @@ foreach($ticket as $boletos){
     $pdf->Cell(20,18,utf8_decode('ADMIT '),0,0,'L');
     $pdf->Cell(2,18,($boletos['BUTACA']),0,0,'C',0);
     $pdf->Ln(10);
+}
 
             // BOLETO 1
             if($boleto1['CANTIDAD']>0){
@@ -132,7 +133,6 @@ foreach($ticket as $boletos){
                 //$pdf->Cell(38,32,'L '.number_format($boleto1['PRECIO'],2),0,0,'C',0);
             }
             $pdf->Ln(15);
-}
 $pdf->Output();
 
 ?>
