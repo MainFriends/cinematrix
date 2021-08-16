@@ -15,10 +15,11 @@
   }
 
   // CARTELERA HOY
-  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION
-  FROM PELICULA, CLASIFICACION, CARTELERA
+  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION, GENERO
+  FROM PELICULA, CLASIFICACION, CARTELERA, GENERO
   WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
   AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+  AND PELICULA.ID_GENERO = GENERO.ID_GENERO
   AND FECHA = CURDATE()";
   $stm = $conexion->prepare($query);
   $stm->execute();
@@ -231,6 +232,7 @@
                       <div class="d-grid gap-2 d-md-block my-3">
                           <abbr title="<?php echo $datos['CLASIFICACION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
                           <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['DURACION']?></button>
+                          <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['GENERO']?></button>
                       </div>
                         <!--TARJETA-->
                         <div class="card my-2">
@@ -285,10 +287,11 @@
                 <?php //CARTELERAS DESPUES DE HOY
                 foreach($fecha as $fechas2){
                   $fechaactual = $fechas2['FECHA'];
-                  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION
-                  FROM PELICULA, CLASIFICACION, CARTELERA
+                  $query = "SELECT DISTINCT TITULO, PELICULA.ID_PELICULA, PORTADA, CLASIFICACION, DESCRIPCION, DURACION, GENERO
+                  FROM PELICULA, CLASIFICACION, CARTELERA, GENERO
                   WHERE PELICULA.ID_CLASIFICACION = CLASIFICACION.ID_CLASIFICACION 
                   AND PELICULA.ID_PELICULA = CARTELERA.ID_PELICULA
+                  AND PELICULA.ID_GENERO = GENERO.ID_GENERO
                   AND FECHA = '$fechaactual'";
                   $stm = $conexion->prepare($query);
                   $stm->execute();
@@ -331,6 +334,7 @@
                       <div class="d-grid gap-2 d-md-block my-3">
                           <abbr title="<?php echo $datos['DESCRIPCION']?>"><button class="btn btn-warning btn-sm" disabled><?php echo $datos['CLASIFICACION']?></button></abbr>
                           <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['DURACION']?></button>
+                          <button class="btn btn-outline-secondary btn-sm" disabled><?php echo $datos['GENERO']?></button>
                       </div>
                         <!--TARJETA-->
                         <div class="card my-2">
