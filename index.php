@@ -234,6 +234,29 @@
          </section>
       </div>
 
+
+      <HTML>
+    <HEAD>
+        <TITLE>Maps</TITLE>
+    </HEAD>
+    <BODY>
+    <h1 class="col-md-2 my-5 mb-1">Ubicacion</h1>
+    <p>
+        Mall Multiplaza
+        <br>
+        Tegucigalpa
+    </p>
+    <hr>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.
+    8132073799766!2d-87.18554398594472!3d14.
+    08820139320635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+    1!3m3!1m2!1s0x8f6fa32711f11c45%3A0x2087a0ff9bdbdb6a!
+    2sMall%20Multiplaza%20Tegucigalpa!5e0!3m2!1ses!
+    2shn!4v1629148002250!5m2!1ses!2shn" 
+    width="1230" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </BODY>
+    </HTML>
+
           
    <footer>
       <div class="container-fluid">

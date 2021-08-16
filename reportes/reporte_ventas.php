@@ -11,7 +11,7 @@ session_start();
 // OBTENEMOS EL ID DEL USUARIO
 $id = $_SESSION['id_usuario'];
 
-$query = "select f.ID_FACTURA as IdFactura,P.TITULO,B.PRECIO,sum(f.SUBTOTAL) as Subtotal,SUM(F.TOTAL) as Total , F.FECHA from FACTURA F 
+$query = "select f.ID_FACTURA as Id_Factura,P.TITULO,B.PRECIO,sum(f.SUBTOTAL) as Subtotal,SUM(F.TOTAL) as Total , F.FECHA from FACTURA F 
 inner join detalle d on d.ID_FACTURA = F.ID_FACTURA 
 inner join CARTELERA c on c.ID_CARTELERA = d.ID_CARTELERA 
 inner join pelicula p on p.ID_PELICULA = c.ID_PELICULA
@@ -79,7 +79,7 @@ $pdf->SetMargins(10,30,20,20);
 
 foreach($venta as $ventas){
     $pdf->Cell(-10);
-    $pdf->Cell(38,8,utf8_decode($ventas['f.ID_FACTURA as IdFactura']),0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($ventas['f.ID_FACTURA as Id_Factura']),0,0,'C',0);
     $pdf->Cell(1);
     $pdf->Cell(40,8,utf8_decode($ventas['P.TITULO']),0,0,'C',0);
     $pdf->Cell(-5);
