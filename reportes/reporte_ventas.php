@@ -11,9 +11,12 @@ session_start();
 // OBTENEMOS EL ID DEL USUARIO
 $id = $_SESSION['id_usuario'];
 
-$query = "SELECT ID_FACTURA,TITULO, PRECIO, SUBTOTAL, TOTAL, FECHA
-FROM FACTURA, PELICULA, BOLETO
-WHERE id_usuario = $id";
+$query = "select f.ID_FACTURA as IdFactura,P.TITULO,B.PRECIO,sum(f.SUBTOTAL) as Subtotal,SUM(F.TOTAL) as Total , F.FECHA from FACTURA F 
+inner join detalle d on d.ID_FACTURA = F.ID_FACTURA 
+inner join CARTELERA c on c.ID_CARTELERA = d.ID_CARTELERA 
+inner join pelicula p on p.ID_PELICULA = c.ID_PELICULA
+inner join BOLETO b on b.ID_BOLETO = d.ID_BOLETO
+group by f.ID_FACTURA";
 $statement = $conexion->prepare($query);
 $statement->execute();
 $venta = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -76,17 +79,17 @@ $pdf->SetMargins(10,30,20,20);
 
 foreach($venta as $ventas){
     $pdf->Cell(-10);
-    $pdf->Cell(38,8,utf8_decode($ventas['ID_FACTURA']),0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($ventas['f.ID_FACTURA as IdFactura']),0,0,'C',0);
     $pdf->Cell(1);
-    $pdf->Cell(40,8,utf8_decode($ventas['TITULO']),0,0,'C',0);
+    $pdf->Cell(40,8,utf8_decode($ventas['P.TITULO']),0,0,'C',0);
     $pdf->Cell(-5);
-    $pdf->Cell(38,8,utf8_decode($ventas['PRECIO']),0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($ventas['B.PRECIO']),0,0,'C',0);
     $pdf->Cell(-10);
-    $pdf->Cell(38,8,utf8_decode($ventas['SUBTOTAL']),0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($ventas['sum(f.SUBTOTAL) as Subtotal']),0,0,'C',0);
     $pdf->Cell(-5);
-    $pdf->Cell(38,8,($ventas['TOTAL']),0,0,'C',0);
+    $pdf->Cell(38,8,($ventas['SUM(F.TOTAL) as Total']),0,0,'C',0);
     $pdf->Cell(1);
-    $pdf->Cell(30,8,($ventas['FECHA']),0,1,'C',0);
+    $pdf->Cell(30,8,($ventas['F.FECHA from FACTURA F']),0,1,'C',0);
 }
 
 $pdf->Output();
