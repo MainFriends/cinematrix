@@ -56,17 +56,13 @@ $query = "SELECT BOLETO.NOMBRE NOMBRE_BOLETO, ROUND(COUNT(BOLETO.ID_BOLETO)/2,0)
 FROM DETALLE, BOLETO
 WHERE ID_FACTURA = '$idFactura'
 AND DETALLE.ID_BOLETO = BOLETO.ID_BOLETO
-    AND DETALLE.ID_BOLETO = 2;";
-    $statement = $conexion->prepare($query);
-    $statement->execute();
-    $boleto2 = $statement->fetch(PDO::FETCH_ASSOC);
+AND DETALLE.ID_BOLETO = 2;";
+$statement = $conexion->prepare($query);
+$statement->execute();
+$boleto2 = $statement->fetch(PDO::FETCH_ASSOC);
 
 class PDF extends FPDF{
 
-function Header()
-{
-
-}
 }
 
 
@@ -87,7 +83,7 @@ foreach($ticket as $boletos){
     //Titulo
     $pdf->Cell(190,9,$title = utf8_decode('MULTIPLAZA CINEMATRIX'),0,0,'C');
     $pdf->SetFont('Courier','',11);
-    $pdf->Cell(-190,18,($boletos['TITULO']),0,0,'C',0);
+    $pdf->Cell(-190,18,utf8_decode($boletos['TITULO']),0,0,'C',0);
     $pdf->Cell(2);
     $pdf->Cell(180,28,($boletos['IDIOMA']),0,0,'C',0);
     $pdf->Cell(2);
@@ -113,10 +109,26 @@ foreach($ticket as $boletos){
     $pdf->SetFont('Courier','',11);
     $pdf->Cell(20,18,utf8_decode('ADMIT '),0,0,'L');
     $pdf->Cell(2,18,($boletos['BUTACA']),0,0,'C',0);
-
     $pdf->Ln(10);
-}
 
+                // BOLETO 1
+                if($boleto1['CANTIDAD']>0){
+                    $pdf->Cell(92);
+                    $pdf->SetFont('Courier','',10);
+                    $pdf->Cell(70,8,utf8_decode($boleto1['NOMBRE_BOLETO']),0,0,'L',0);
+                    //$pdf->Cell(38,16,'L '.number_format($boleto1['PRECIO'],2),0,0,'C',0);
+                }
+            
+                //BOLETO 2
+                if($boleto2['CANTIDAD']>0){
+                    $pdf->Cell(-79);
+                    $pdf->SetFont('Courier','',10);
+                    $pdf->Cell(1);
+                    $pdf->Cell(70,16,utf8_decode($boleto2['NOMBRE_BOLETO']),0,0,'L',0);
+                    //$pdf->Cell(38,32,'L '.number_format($boleto1['PRECIO'],2),0,0,'C',0);
+                }
+                $pdf->Ln(15);
+}
 $pdf->Output();
 
 ?>
