@@ -193,11 +193,11 @@
                 <?php
                 if($_SESSION['cantADULTREGULAR']>0){
                     $cantidad = $_SESSION['cantADULTREGULAR'];
-                    echo "<p class='small text-muted mb-0'>$cantidad ADULTREGULAR-HO</p>";
+                    echo "<p class='small text-muted mb-0'>$cantidad ADULTREGULAR2D-CM</p>";
                 }
                 if($_SESSION['cantCINEPACKPAREJA2D']>0){
                     $cantidad = $_SESSION['cantCINEPACKPAREJA2D']/2;
-                    echo "<p class='small text-muted'>$cantidad CINEPACKPAREJA2D-HN</p>";
+                    echo "<p class='small text-muted'>$cantidad CINEPAREJA2D-CM</p>";
                 }
                 ?>
             </div>

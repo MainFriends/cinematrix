@@ -1,12 +1,12 @@
 $(document).ready(function(){
     //Desactivar boton
     $("#continuar").addClass('disabled'); //Desactivar boton continuar
-    $('.ADULTREGULAR-HO').prop('selectedIndex','0'); //Reiniciar select al cargar página
-    $('.CINEPACKPAREJA2D-HN').prop('selectedIndex','0'); //Reiniciar select al cargar página
+    $('.ADULTREGULAR2D-CM').prop('selectedIndex','0'); //Reiniciar select al cargar página
+    $('.CINEPAREJA2D-CM').prop('selectedIndex','0'); //Reiniciar select al cargar página
     
     //Habilitar / Desabilitar boton Continuar
-    $(".ADULTREGULAR-HO").on("change",function(){  // Si cambian los select con class target
-        CINEPACKPAREJA2DHN = $.trim($(".CINEPACKPAREJA2D-HN").val());
+    $(".ADULTREGULAR2D-CM").on("change",function(){  // Si cambian los select con class target
+        CINEPACKPAREJA2DHN = $.trim($(".CINEPAREJA2D-CM").val());
         var selectADULTREGULAR=$(this).val()//obtenemos el valor seleccionado en una variable
         if (selectADULTREGULAR>0){
             $("#continuar").removeClass('disabled');
@@ -16,8 +16,8 @@ $(document).ready(function(){
         }
     }); 
 
-    $(".CINEPACKPAREJA2D-HN").on("change",function(){  // Si cambian los select con class target
-        ADULTREGULARHO = $.trim($(".ADULTREGULAR-HO").val());
+    $(".CINEPAREJA2D-CM").on("change",function(){  // Si cambian los select con class target
+        ADULTREGULARHO = $.trim($(".ADULTREGULAR2D-CM").val());
         var selectCINEPACKPAREJA2D=$(this).val()//obtenemos el valor seleccionado en una variable
         if (selectCINEPACKPAREJA2D>0){
             $("#continuar").removeClass('disabled');
@@ -29,8 +29,8 @@ $(document).ready(function(){
 
     //Pasar cantidad de boletos por ajax
     $("#continuar").click(function(){
-        selectADULTREGULAR = $.trim($(".ADULTREGULAR-HO").val());
-        selectCINEPACKPAREJA2DUO = $.trim($(".CINEPACKPAREJA2D-HN").val())*2;
+        selectADULTREGULAR = $.trim($(".ADULTREGULAR2D-CM").val());
+        selectCINEPACKPAREJA2DUO = $.trim($(".CINEPAREJA2D-CM").val())*2;
         $.ajax({
             url: "inc/detalleVenta.php",
             type: "POST",
