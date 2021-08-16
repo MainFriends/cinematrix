@@ -10,9 +10,6 @@ session_start();
 // OBTENEMOS EL ID DEL USUARIO
     $id = $_SESSION['id_usuario'];
 
-    //PAGO POR SERVICIOS
-    $pagoServicios = 25;
-
     //OBTENER EL ID DE LA ULTIMA COMPRA DEL USUARIO
     $query = "SELECT ID_FACTURA FROM FACTURA
     WHERE id_usuario = '$id'
@@ -89,7 +86,7 @@ function Header()
     $this->Cell(-38);
     $this->Cell(60,55,$_SESSION['usuario'],0,0,'L');
     $this->Cell(-43);
-    $this->Cell(60,55,$_SESSION['apellido'],0,0,'L');
+    $this->Cell(60,55," ".$_SESSION['apellido'],0,0,'L');
     $this->Ln(3);
     $this->Cell(14);
     $this->Cell(60,61,utf8_decode('Correo: '),0,0,'L');
@@ -207,12 +204,12 @@ $pdf->SetMargins(10,30,20,20);
     $pdf->Cell(22);
     $pdf->Cell(165,12,utf8_decode('Cargo por Servicio'),0,0,'C',1);
     $pdf->Cell(-48);
-    $pdf->Cell(38,12,'L '.number_format($pagoServicios,2),0,0,'C',0);
+    $pdf->Cell(38,12,'L '.number_format(25,2),0,0,'C',0);
     $pdf->Ln();
     $pdf->SetFont('Courier','B',12);
     $pdf->Cell(28);
     $pdf->Cell(165,5,utf8_decode('Total a Pagar'),0,0,'C',1);
     $pdf->Cell(-55);
-    $pdf->Cell(38,5,'L '.number_format($total['TOTAL'] + $pagoServicios,2),0,0,'C',0);
+    $pdf->Cell(38,5,'L '.number_format($total['TOTAL'],2),0,0,'C',0);
     $pdf->Output();
 ?>

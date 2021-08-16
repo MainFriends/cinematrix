@@ -579,7 +579,6 @@
         });
 
         $("#success").modal("show");
-        $("#success").modal("hide");
     }
   }).render('#paypal');
   //This function displays Smart Payment Buttons on your web page.
@@ -597,8 +596,8 @@
         <h6 class="fw-bold">Felicidades, su compra se ha procesado con éxito.</h6>
       </div>
       <div class="modal-footer" style="border: none;">
-        <button type="button" class="btn btn-warning">Imprimir factura</button>
-        <button type="button" id="close" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <a href="reportes/reporte_factura.php" target="_blank" class="btn btn-warning">Imprimir factura</a>
+        <a href="index.php" class="btn btn-danger">Listo</a>
       </div>
     </div>
   </div>
