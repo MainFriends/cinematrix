@@ -11,12 +11,23 @@ session_start();
 // OBTENEMOS EL ID DEL USUARIO
 $id = $_SESSION['id_usuario'];
 
-$query = "select f.ID_FACTURA as IdFactura,P.TITULO,B.PRECIO,sum(f.SUBTOTAL) as Subtotal,SUM(F.TOTAL) as Total , F.FECHA from FACTURA F 
-inner join detalle d on d.ID_FACTURA = F.ID_FACTURA 
-inner join CARTELERA c on c.ID_CARTELERA = d.ID_CARTELERA 
-inner join pelicula p on p.ID_PELICULA = c.ID_PELICULA
-inner join BOLETO b on b.ID_BOLETO = d.ID_BOLETO
-group by f.ID_FACTURA";
+//OBTENER EL ID DE LA ULTIMA COMPRA DEL USUARIO
+$query = "SELECT ID_FACTURA FROM FACTURA
+WHERE id_usuario = '$id'
+ORDER BY ID_FACTURA DESC
+LIMIT 1";
+$statement = $conexion->prepare($query);
+$statement->execute();
+$data = $statement->fetch(PDO::FETCH_ASSOC);
+$idFactura = $data['ID_FACTURA'];
+
+// OBTENEMOS EL REPORTE DE LAS VENTAS
+$query = "SELECT F.ID_FACTURA AS IdFactura, P.TITULO, B.PRECIO, SUM(F.SUBTOTAL) AS Subtotal, SUM(F.TOTAL) AS Total , F.FECHA FROM FACTURA F 
+INNER JOIN DETALLE D ON D.ID_FACTURA = F.ID_FACTURA 
+inner join CARTELERA C on C.ID_CARTELERA = D.ID_CARTELERA 
+inner join PELICULA P on P.ID_PELICULA = C.ID_PELICULA
+inner join BOLETO B on B.ID_BOLETO = D.ID_BOLETO
+group by F.ID_FACTURA";
 $statement = $conexion->prepare($query);
 $statement->execute();
 $venta = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -79,17 +90,17 @@ $pdf->SetMargins(10,30,20,20);
 
 foreach($venta as $ventas){
     $pdf->Cell(-10);
-    $pdf->Cell(38,8,utf8_decode($ventas['f.ID_FACTURA as IdFactura']),0,0,'C',0);
+    $pdf->Cell(38,8,utf8_decode($ventas['IdFactura']),0,0,'C',0);
     $pdf->Cell(1);
-    $pdf->Cell(40,8,utf8_decode($ventas['P.TITULO']),0,0,'C',0);
+    $pdf->Cell(40,8,utf8_decode($ventas['TITULO']),0,0,'C',0);
     $pdf->Cell(-5);
-    $pdf->Cell(38,8,utf8_decode($ventas['B.PRECIO']),0,0,'C',0);
-    $pdf->Cell(-10);
-    $pdf->Cell(38,8,utf8_decode($ventas['sum(f.SUBTOTAL) as Subtotal']),0,0,'C',0);
+    $pdf->Cell(38,8,'L '.number_format($ventas['PRECIO'],2),0,0,'C',0);
     $pdf->Cell(-5);
-    $pdf->Cell(38,8,($ventas['SUM(F.TOTAL) as Total']),0,0,'C',0);
+    $pdf->Cell(38,8,'L '.number_format($ventas['Subtotal'],2),0,0,'C',0);
+    $pdf->Cell(-9);
+    $pdf->Cell(38,8,'L '.number_format($ventas['Total'],2),0,0,'C',0);;
     $pdf->Cell(1);
-    $pdf->Cell(30,8,($ventas['F.FECHA from FACTURA F']),0,1,'C',0);
+    $pdf->Cell(30,8,($ventas['FECHA']),0,1,'C',0);
 }
 
 $pdf->Output();
