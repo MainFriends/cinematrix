@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Términos y condiciones - Cinematrix</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body >
@@ -134,23 +134,23 @@
             <div class="text-start">
              <h6 class="border-bottom">PROGRAMACIÓN</h6>
             </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">Cartelera</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Próximamente</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Preventa</a>
+            <a style="text-decoration:none" href="cartelera.php" class="text-secondary">Cartelera</a> <br>
+            <a style="text-decoration:none" href="peliculas.php" class="text-secondary">Próximamente</a> <br>
+            <a style="text-decoration:none" href="peliculas.php" class="text-secondary">Preventa</a>
           </div>
           <div class="col-md-2">
             <div class="text-start">
               <h6 class="border-bottom">SOBRE CINEMATRIX</h6>
             </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">¿Quienes somos?</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Términos y condiciones</a>
+            <a style="text-decoration:none" href="quienes-somos.php" class="text-secondary">¿Quienes somos?</a> <br>
+            <a style="text-decoration:none" href="terminos.php" class="text-secondary">Términos y condiciones</a>
           </div>
           <div class="col-md-2">
             <div class="text-start">
               <h6 class="border-bottom">CONTÁCTENOS</h6>
             </div>
-            <a style="text-decoration:none" href="#" class="text-secondary">Escríbenos</a> <br>
-            <a style="text-decoration:none" href="#" class="text-secondary">Trabaje con nosotros</a>
+            <a style="text-decoration:none" href="https://github.com/MainFriends" class="text-secondary">Escríbenos</a> <br>
+            <a style="text-decoration:none" href="https://github.com/MainFriends/cinematrix" class="text-secondary">Trabaje con nosotros</a>
           </div>
         </div>
       </div>
