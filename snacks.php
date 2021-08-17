@@ -55,6 +55,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alimentos y bebidas - Cinematrix</title>
+    <link rel="shortcut icon" href="assets/img/logos/cinematrix_ico.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- FONT -->

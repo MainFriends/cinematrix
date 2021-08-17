@@ -12,6 +12,8 @@
     <meta name="author" content="Diego Velázquez">
     <meta name="description" content="Tablero con Bootstrap 4 - Templune">
     <title>Cinematrix - Panel de Administración</title>
+    <link rel="shortcut icon" href="../../../assets/img/logos/cinematrix_ico.png">
+    <link rel="shortcut icon" href="../../../assets/img/logos/cinematrix_ico.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
      <!-- bootstrap5 y main.css -->
