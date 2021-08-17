@@ -75,18 +75,32 @@ $(document).ready(function() {
 
   //Boton EDITAR
   $(document).on("click", ".btnEditar", function(){
-    opcion = 2; //editar
+    opcion = 5;
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
-    nombre = fila.find('td:eq(1)').text();
-    descripcion = fila.find('td:eq(2)').text();
-    precio = parseInt(fila.find('td:eq(3)').text());
-    
-    $("#nombre").val(nombre);
-    $("#descripcion").val(descripcion);
-    $("#precio").val(precio);
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      dataType: "json",
+      data: {id:id, opcion:opcion},
+      success: function(data){ // data es de CRUD.php
+        nombre = data.NOMBRE
+        descripcion = data.DESCRIPCION
+        precio = data.PRECIO
+        imagen = data.IMAGEN
 
-    $("#modalCombo").modal("show");
+        $("#nombre").val(nombre);
+        $("#descripcion").val(descripcion);
+        $("#precio").val(precio);
+        $("#imagen").val(imagen);
+
+        opcion = 2;
+        $("#modalCombo").modal("show");
+      },
+      error: function(response){
+        console.log(response);
+    }
+    });
   });
 
   //Boton BORRAR

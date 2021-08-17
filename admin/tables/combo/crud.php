@@ -25,12 +25,13 @@
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             break;
         case 2: //Actualizar combo
-            $query = "CALL SP_UPD_COMBO(?,?,?,?)";
+            $query = "CALL SP_UPD_COMBO(?,?,?,?,?)";
             $statement = $conexion->prepare($query);
             $statement->bindParam(1, $id, PDO::PARAM_INT);
             $statement->bindParam(2, $nombre, PDO::PARAM_STR);
             $statement->bindParam(3, $descripcion, PDO::PARAM_STR);
             $statement->bindParam(4, $precio, PDO::PARAM_STR);
+            $statement->bindParam(5, $imagen, PDO::PARAM_STR);
             $statement->execute();
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -45,6 +46,14 @@
             $statement = $conexion->prepare($query);
             $statement->execute();
             $data = $statement->fetchAll(PDO::FETCH_ASSOC); //Leno el Array Data
+            break;
+        case 5:
+            $query = "SELECT * FROM COMBO
+            WHERE ID_COMBO = ?";
+            $statement = $conexion->prepare($query);
+            $statement->bindParam(1, $id, PDO::PARAM_INT);
+            $statement->execute();
+            $data = $statement->fetch(PDO::FETCH_ASSOC); //Leno el Array Data
             break;
     }
     print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
