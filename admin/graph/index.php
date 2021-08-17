@@ -237,7 +237,7 @@
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body bg-light">
-                    <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../pelicula/index.php">Películas</a>
+                    <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../tables/pelicula/index.php">Películas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../tables/cartelera/index.php">Carteleras</a>
                     <a class="dropdown-item rounded fw-ligth" href="../tables/sala/index.php">Salas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../tables/asiento/index.php">Asientos</a>
