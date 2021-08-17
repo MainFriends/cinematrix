@@ -44,7 +44,7 @@
         </div>  
         </div>
         <div class="menu list-group-flush">
-        <a href="../../graph/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-friends me-1"></i> Gráficos</a>
+        <a href="../../graph/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-chart-pie me-1"></i> Reportes gráficos</a>
           <a href="../usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1 text-danger"><i class="fas fa-user-friends me-1"></i> Usuarios</a>
           <a href="../administradores/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-shield me-1"></i> Administradores</a>
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -106,7 +106,7 @@
         <div class="col-lg-12">
           <div class="card text-left">
             <div class="card-header">
-              Gestión de contenido
+              Usuarios
             </div>
             <div class="card-body">
               <div class="table-responsive">

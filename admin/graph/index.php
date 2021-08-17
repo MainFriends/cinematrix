@@ -225,7 +225,7 @@
         </div>  
         </div>
         <div class="menu list-group-flush">
-        <a href="../tables/usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1 text-danger"><i class="fas fa-user-friends me-1"></i> Gráficos</a>
+        <a href="../tables/usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1 text-danger"><i class="fas fa-chart-pie me-1"></i> Reportes gráficos</a>
         <a href="../tables/usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-friends me-1"></i> Usuarios</a>
           <a href="../tables/administradores/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-shield me-1"></i> Administradores</a>
             <div class="accordion accordion-flush" id="accordionFlushExample">
