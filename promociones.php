@@ -242,38 +242,38 @@
   <!--FINAL DEL CUERPO-->
   </div>
   <footer>
-    <div class="container-fluid">
-      <div class="row bg-light">
-        <div class="col-md-4">
-          <div class="text-center">
-            <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="175" alt="">
+      <div class="container-fluid">
+        <div class="row bg-light">
+          <div class="col-md-4">
+            <div class="text-center">
+              <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="175" alt="">
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <div class="text-start">
-            <h6 class="border-bottom">PROGRAMACIÓN</h6>
+          <div class="col-md-2">
+            <div class="text-start">
+             <h6 class="border-bottom">PROGRAMACIÓN</h6>
+            </div>
+            <a style="text-decoration:none" href="cartelera.php" class="text-secondary">Cartelera</a> <br>
+            <a style="text-decoration:none" href="peliculas.php" class="text-secondary">Próximamente</a> <br>
+            <a style="text-decoration:none" href="peliculas.php" class="text-secondary">Preventa</a>
           </div>
-          <a style="text-decoration:none" href="#" class="text-secondary">Cartelera</a> <br>
-          <a style="text-decoration:none" href="#" class="text-secondary">Próximamente</a> <br>
-          <a style="text-decoration:none" href="#" class="text-secondary">Preventa</a>
-        </div>
-        <div class="col-md-2">
-          <div class="text-start">
-            <h6 class="border-bottom">SOBRE CINEMATRIX</h6>
+          <div class="col-md-2">
+            <div class="text-start">
+              <h6 class="border-bottom">SOBRE CINEMATRIX</h6>
+            </div>
+            <a style="text-decoration:none" href="quienes-somos.php" class="text-secondary">¿Quienes somos?</a> <br>
+            <a style="text-decoration:none" href="terminos.php" class="text-secondary">Términos y condiciones</a>
           </div>
-          <a style="text-decoration:none" href="#" class="text-secondary">¿Quienes somos?</a> <br>
-          <a style="text-decoration:none" href="#" class="text-secondary">Términos y condiciones</a>
-        </div>
-        <div class="col-md-2">
-          <div class="text-start">
-            <h6 class="border-bottom">CONTÁCTENOS</h6>
+          <div class="col-md-2">
+            <div class="text-start">
+              <h6 class="border-bottom">CONTÁCTENOS</h6>
+            </div>
+            <a style="text-decoration:none" href="https://github.com/MainFriends" class="text-secondary">Escríbenos</a> <br>
+            <a style="text-decoration:none" href="https://github.com/MainFriends/cinematrix" class="text-secondary">Trabaje con nosotros</a>
           </div>
-          <a style="text-decoration:none" href="#" class="text-secondary">Escríbenos</a> <br>
-          <a style="text-decoration:none" href="#" class="text-secondary">Trabaje con nosotros</a>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
