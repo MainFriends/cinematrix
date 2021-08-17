@@ -1,56 +1,117 @@
+<?php
+   session_start();
+   require_once 'inc/session.php';
+   $_SESSION['pag'] = 'terminos';
+   if(isset($_SESSION['usuario'])){
+      $userSession = $_SESSION['usuario'];
+      $userId = $_SESSION['id_usuario'];
+
+      $query = "SELECT FOTO_PERFIL FROM USUARIO where ID_USUARIO = '$userId'";
+      $stm = $conexion->prepare($query);
+      $stm->execute();
+      $foto = $stm->fetch(PDO::FETCH_ASSOC);
+      $foto_perfil = $foto['FOTO_PERFIL'];
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Términos y condiciones - Cinematrix</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Página principal - Cinematrix</title>
+   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/style-index.css">
+   <link rel="stylesheet" href="assets/css/lightslider.css">
+   <link rel="stylesheet" href="assets/css/multicarousel.css">
+   <link rel="stylesheet" href="assets/css/hover.css">
+
+   <!-- FONT -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+   <!-- ICONOS -->
+   <script src="https://kit.fontawesome.com/151b334714.js" crossorigin="anonymous"></script>
 </head>
-<body >
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt="">
-                <span class="me-2 fs-3 fw-bold mb-0">Cinematrix</span>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="mb-0 collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<body>
+   <div class="container-fluid bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+         <div class="container-fluid">
+            <a href="index.php"><img class="me-1 mb-2" src="assets/img/logos/cinematrix.svg" width="70" alt=""></a>
+            <span class="me-2 fs-3 fw-bold mb-0"><a class="fw-bold text-dark" href="index.php">Cinematrix</a></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+               aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="mb-0 collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">PELÍCULAS</a>
+                     <a class="nav-link" aria-current="page" href="peliculas.php">PELÍCULAS</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">CARTELERA</a>
+                     <a class="nav-link" href="cartelera.php">CARTELERA</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
+                     <a class="nav-link" href="promociones.php" tabindex="-1" aria-disabled="true">PROMOCIONES</a>
                   </li>
-                </ul>
-                <div class="nav-item dropdown">
-                  <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Ingresar
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
-                    <form class="px-4 py-1" action="#">
-                      <label class="label-control" for="">Correo electrónico</label>
-                      <input class="form-control" type="text">
-                      <label class="label-control" for="">Contraseña</label>
-                      <input class="form-control" type="password">
-                      <div class="py-2">
-                         <input type="checkbox" name="connected" class="form-check-input">
-                         <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                      </div>
-                      <div class="py-2 d-grid">
-                         <button type="button" class=" d-grid btn btn-primary">Iniciar sesión</button>
-                      </div>
-                    </form>
-                  </ul>
-                </div>
-              </div>
+               </ul>
+               <?php
+                  if(isset($_SESSION['usuario'])){
+                     $userApellido = $_SESSION["apellido"];
+                     if($_SESSION['rol']==1){
+                        echo "<div class='nav-item dropdown'>
+                        <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                           <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                           <span class='fw-bold'>$userSession $userApellido</span>
+                        </a>
+                        <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                        <li><a class='dropdown-item' href='admin/graph/index.php'><i class='fas fa-tachometer-alt me-2'></i>Dashboard</a></li>
+                        <li><a class='dropdown-item' href='account.php'><i class='fas fa-user-edit me-2'></i>Editar perfil</a></li>
+                        <li><a class='dropdown-item' href='inc/logout.php'><i class='fas fa-sign-out-alt me-2'></i>Cerrar sesión</a></li>
+                        </ul>
+                     </div>";
+                     }else{
+                        echo "<div class='nav-item dropdown'>
+                        <a class='nav-link text-dark dropdown-toggle' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                           <img src='data:image/jpeg;base64,".base64_encode($foto['FOTO_PERFIL']) ." ' width='35px' height='35px' class='rounded-circle me-2' alt=''>
+                           <span class='fw-bold'>$userSession $userApellido</span>
+                        </a>
+                        <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+                           <li><a class='dropdown-item' href='account.php'><i class='fas fa-user-edit me-2'></i>Editar perfil</a></li>
+                           <li><a class='dropdown-item' href='inc/logout.php'><i class='fas fa-sign-out-alt me-2'></i>Cerrar sesión</a></li>
+                        </ul>
+                     </div>";
+                     }
+                  }else{
+                     echo '<div class="nav-item dropdown">
+                     <a class="btn btn-danger dropdown" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Ingresar
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-end" style="width: 300px" aria-labelledby="navbarDropdown">
+                        <form class="px-4 py-1" method="POST">
+                           <label class="label-control" for="">Correo electrónico</label>
+                           <input class="form-control" name="correo" type="text">
+                           <label class="label-control" for="">Contraseña</label>
+                           <input class="form-control" name="pass" type="password">
+                           <div class="py-1">
+                              <input type="checkbox" name="connected" class="form-check-input">
+                              <label for="connected" class="form-check-label">Mantenerme conectado</label>
+                           </div>
+                           <div class="py-1 d-grid">
+                              <button type="submit" class=" d-grid btn btn-primary" name="login" >Iniciar sesión</button>
+                           </div>
+                           <p class="small">¿No tienes una cuenta? <a href="signup.php">Regístrate</a></p>
+                        </form>
+                     </ul>
+                  </div>';
+                  }
+               ?>
             </div>
-          </nav>
+         </div>
+      </nav>
 
           <div class="container">
             <div class="text-center my-4">

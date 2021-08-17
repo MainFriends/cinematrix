@@ -15,5 +15,9 @@
         header("location:../pelicula.php");
     }else if($_SESSION['pag']=='peliculas'){
         header("location:../peliculas.php");
+    }else if($_SESSION['pag']=='quienes-somos'){
+        header("location:../quienes-somos.php");
+    }else if($_SESSION['pag']=='terminos'){
+        header("location:../terminos.php");
     }
 ?>  

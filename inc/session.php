@@ -36,13 +36,17 @@
                 }else if($_SESSION['pag']=='detallePromo'){
                     header("location:detallePromo.php");
                 }else if($_SESSION['pag']=='login'){
-                    header("location:admin/tables/usuarios/index.php");
+                    header("location:admin/graph/index.php");
                 }else if($_SESSION['pag']=='cartelera'){
                     header("location:cartelera.php");
                 }else if($_SESSION['pag']=='pelicula'){
                     header("location:pelicula.php");
                 }else if($_SESSION['pag']=='peliculas'){
                     header("location:peliculas.php");
+                }else if($_SESSION['pag']=='quienes-somos'){
+                    header("location:quienes-somos.php");
+                }else if($_SESSION['pag']=='terminos'){
+                    header("location:terminos.php");
                 }
             }else{ //Cliente
                 //Iniciar las variables de la sesión
@@ -69,6 +73,10 @@
                     header("location:pelicula.php");
                 }else if($_SESSION['pag']=='peliculas'){
                     header("location:peliculas.php");
+                }else if($_SESSION['pag']=='quienes-somos'){
+                    header("location:quienes-somos.php");
+                }else if($_SESSION['pag']=='terminos'){
+                    header("location:terminos.php");
                 }
             }
             

@@ -106,7 +106,7 @@
                         <span class='fw-bold'>$userSession $userApellido</span>
                       </a>
                       <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
-                      <li><a class='dropdown-item' href='admin/tables/usuarios/index.php'><i class='fas fa-tachometer-alt me-2'></i>Dashboard</a></li>
+                      <li><a class='dropdown-item' href='admin/graph/index.php'><i class='fas fa-tachometer-alt me-2'></i>Dashboard</a></li>
                         <li><a class='dropdown-item' href='account.php'><i class='fas fa-user-edit me-2'></i>Editar perfil</a></li>
                         <li><a class='dropdown-item' href='inc/logout.php'><i class='fas fa-sign-out-alt me-2'></i>Cerrar sesión</a></li>
                       </ul>
