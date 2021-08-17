@@ -58,7 +58,7 @@
                   <div class="accordion-body bg-light">
                     <a class="dropdown-item rounded fw-ligth" aria-current="page" href="../pelicula/index.php">Películas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../cartelera/index.php">Carteleras</a>
-                    <a class="dropdown-item rounded fw-ligth active" href="../sala/index.php">Salas</a>
+                    <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Salas</a>
                     <a class="dropdown-item rounded fw-ligth" href="../asiento/index.php">Asientos</a>
                     <a class="dropdown-item rounded fw-ligth" href="../promocion/index.php">Promociones</a>
                     <a class="dropdown-item rounded fw-ligth" href="../progPromo/index.php">Programa de promociones</a>
@@ -68,21 +68,7 @@
                 </div>
               </div>        
             </div>
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button bg-light collapsed fw-bold text-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    <i class="icon ion-ios-create lead me-2"></i> Ventas
-                  </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body bg-light">
-                    <a class="dropdown-item rounded fw-ligth active" href="../facturas/index.php">Facturas</a>
-                    <a class="dropdown-item rounded fw-ligth" href="../sala/index.php">Detalle facturas</a>
-                  </div>
-                </div>
-              </div>        
-            </div>
+            <a href="../facturas/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1 text-danger"><i class="fas fa-money-check-alt me-1"></i> Ventas</a>
         </div>
       </div>
 

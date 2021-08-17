@@ -249,6 +249,7 @@
                 </div>
               </div>        
             </div>
+            <a href="../tables/facturas/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-money-check-alt me-1"></i> Ventas</a>
         </div>
       </div>
 
@@ -282,7 +283,7 @@
           </nav>
 
           <div class="container">
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-md-4 text-center">
                 <h5 class="fw-bold">Películas más vendidas</h5>
                 <div id="canvas-holder">

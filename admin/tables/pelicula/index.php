@@ -68,6 +68,7 @@
                 </div>
               </div>        
             </div>
+            <a href="../facturas/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-money-check-alt me-1"></i> Ventas</a>
         </div>
       </div>
 
