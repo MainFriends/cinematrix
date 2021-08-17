@@ -65,7 +65,8 @@
         require_once "config.php";
         $objeto = new Conexion();
         $conexion = $objeto->Conectar();
-        $query = "SELECT * FROM PELICULA";
+        $query = "SELECT * FROM PELICULA
+        WHERE ID_ESTADO != 2";
         $stm = $conexion->prepare($query);
         $stm->execute();
         $data = $stm->fetchAll(PDO::FETCH_ASSOC);

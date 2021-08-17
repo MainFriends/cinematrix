@@ -44,6 +44,7 @@
         </div>  
         </div>
         <div class="menu list-group-flush">
+        <a href="../../graph/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-friends me-1"></i> Gráficos</a>
           <a href="../usuarios/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-friends me-1"></i> Usuarios</a>
           <a href="../administradores/index.php" class="list-group-item list-group-item-action bg-light p-3 border-0 fw-bold ms-1"><i class="fas fa-user-shield me-1"></i> Administradores</a>
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -198,6 +199,7 @@
                             <label class="form-input">Estado</label>
                             <select id="estado" class="form-select mb-2" required>
                                 <option value="">-</option>
+                                <option value="2">No disponible</option>
                                 <option value="5">Estreno</option>
                                 <option value="6">Pre-venta</option>
                                 <option value="7">Próximamente</option>

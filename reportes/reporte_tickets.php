@@ -56,10 +56,6 @@ $boleto2 = $statement->fetch(PDO::FETCH_ASSOC);
 
 class PDF extends FPDF{
 
-function Header()
-{
-
-}
 }
 
 
