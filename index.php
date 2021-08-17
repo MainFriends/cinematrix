@@ -234,6 +234,20 @@
          </section>
       </div>
 
+
+   <!-- GOOGLE MAPS -->
+   <div class="container-fluid">
+      <h5 class="fw-bold"><i class="fas fa-map-marker-alt me-2 text-danger"></i>Ubicación</h5>
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.
+    8132073799766!2d-87.18554398594472!3d14.
+    08820139320635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+    1!3m3!1m2!1s0x8f6fa32711f11c45%3A0x2087a0ff9bdbdb6a!
+    2sMall%20Multiplaza%20Tegucigalpa!5e0!3m2!1ses!
+    2shn!4v1629148002250!5m2!1ses!2shn" 
+    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   </div>
+    
+
           
    <footer>
       <div class="container-fluid">
