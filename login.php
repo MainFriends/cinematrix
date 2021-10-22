@@ -37,7 +37,7 @@
                     <img src="assets/img/logos/cinematrix.svg" width="80" class="mb-1" alt="">
                 </div>
 
-                <h3 class="fw-bold text-center py-1">Bienvenido de nuevo.</h3>
+                <h3 class="fw-bold text-center py-1">Bienvenido de nuevo David.</h3>
                 <hr style="color: #0056b2;" />
                 <!-- LOGIN -->
                 <form method="POST">
