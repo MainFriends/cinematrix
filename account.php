@@ -20,6 +20,7 @@
    $query = "SELECT ID_FACTURA 
    FROM FACTURA
    WHERE ID_USUARIO = '$userId'
+   AND ID_FACTURA > 16
    ORDER BY FECHA DESC";
    $stm = $conexion->prepare($query);
    $stm->execute();
