@@ -25,3 +25,5 @@ Esta carpeta almacena pequeños scripts o códigos html que serán insertados en
 
 ### :file_folder: resources
 Almacena recursos que podemos añadir para trabajar o realizar pruebas.
+
+HOLA DAVID Y JASON
