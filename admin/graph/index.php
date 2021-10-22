@@ -221,7 +221,7 @@
             <img class="me-2" src="../../assets/img/logos/cinematrix.svg" width="70" alt="">
           </div>
           <div class="col-md-8" style="margin: 0px; padding: 0px;">
-          <span class=" fs-2 mb-3 fw-bold">Cinematrix</span>
+          <span class=" fs-2 mb-3 fw-bold">Cabojate Suppler</span>
           </div>
         </div>  
         </div>

@@ -15,7 +15,7 @@
     $userID = $_SESSION['id_usuario'];
     $subtotal = (isset($_POST['subtotal'])) ? $_POST['subtotal'] : '';
     $total = (isset($_POST['total'])) ? $_POST['total'] : '';
-
+f
     //INSERTAR FACTURA
     $query = "CALL SP_ADD_FACTURA(?,?,?)";
     $statement = $conexion->prepare($query);
